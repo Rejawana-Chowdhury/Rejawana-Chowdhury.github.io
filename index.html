@@ -3,78 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rejawana Chowdhury Mithila | Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .gradient-text {
-            background: linear-gradient(to right, #6366f1, #a855f7);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-    </style>
+    <title>Rejawana Chowdhury Mithila | Voice • Strategy • Presence</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
-<body class="bg-slate-50 text-slate-900 font-sans">
+<body>
 
-    <nav class="p-6 flex justify-between items-center bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
-        <h1 class="text-2xl font-black tracking-tighter gradient-text">MITHILA.</h1>
-        <div class="hidden md:flex space-x-8 text-sm font-bold uppercase tracking-widest">
-            <a href="#about" class="hover:text-indigo-600 transition">About</a>
-            <a href="#projects" class="hover:text-indigo-600 transition">Work</a>
-            <a href="#contact" class="hover:text-indigo-600 transition">Contact</a>
-        </div>
+    <nav class="navbar">
+        <div class="logo">MITHILA</div>
+        <ul class="nav-links">
+            <li><a href="#about">Philosophy</a></li>
+            <li><a href="#media">Media</a></li>
+            <li><a href="#copywriting">Writing</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="hamburger">&#9776;</div>
     </nav>
 
-    <header class="max-w-5xl mx-auto py-24 px-6 flex flex-col md:flex-row items-center justify-between">
-        <div class="md:w-2/3 text-center md:text-left">
-            <h2 class="text-6xl font-extrabold mb-6 leading-tight">Creating digital <span class="gradient-text">experiences.</span></h2>
-            <p class="text-xl text-slate-600 mb-8">Hi, I'm Rejawana Chowdhury Mithila. I help brands tell stories and make an impact — through PR and communications, copywriting, presentations, voiceovers, anchoring, and public speaking. </p>
-            <a href="#projects" class="bg-indigo-600 text-white px-8 py-4 rounded-2xl font-bold shadow-lg shadow-indigo-200 hover:bg-indigo-700 transition">View My Work</a>
-        </div>
-        <div class="mt-12 md:mt-0">
-            <img src="https://via.placeholder.com/300" alt="Mithila" class="w-64 h-64 rounded-3xl object-cover border-8 border-white shadow-2xl rotate-3 hover:rotate-0 transition duration-500">
-        </div>
-    </header>
-
-    <section id="projects" class="bg-indigo-50 py-24">
-        <div class="max-w-5xl mx-auto px-6">
-            <h3 class="text-3xl font-bold mb-12">Featured Projects</h3>
-            <div class="grid md:grid-cols-2 gap-10">
-                
-                <div class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition group">
-                    <img src="https://via.placeholder.com/600x400/6366f1/ffffff?text=Project+One" alt="Project 1" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
-                    <div class="p-8">
-                        <span class="text-indigo-600 font-bold text-xs uppercase tracking-widest">Web Design</span>
-                        <h4 class="font-bold text-2xl mt-2 mb-3">E-Commerce UI</h4>
-                        <p class="text-slate-600 mb-6">A colorful shopping experience built for modern users.</p>
-                        <a href="#" class="font-bold text-indigo-600">See Case Study →</a>
-                    </div>
-                </div>
-
-                <div class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl transition group">
-                    <img src="https://via.placeholder.com/600x400/a855f7/ffffff?text=Project+Two" alt="Project 2" class="w-full h-48 object-cover group-hover:scale-105 transition duration-500">
-                    <div class="p-8">
-                        <span class="text-purple-600 font-bold text-xs uppercase tracking-widest">Development</span>
-                        <h4 class="font-bold text-2xl mt-2 mb-3">Personal Branding</h4>
-                        <p class="text-slate-600 mb-6">Helping creators find their voice through minimalist design.</p>
-                        <a href="#" class="font-bold text-purple-600">See Case Study →</a>
-                    </div>
-                </div>
-
+    <section class="hero">
+        <div class="hero-content fade-in">
+            <h1>VOICE. STRATEGY. <br><span class="accent-text">PRESENCE.</span></h1>
+            <p>Bridging the gap between technical precision and creative impact. A communications strategist and voiceover artist shaping narratives that resonate.</p>
+            <div class="cta-group">
+                <a href="#media" class="btn primary">Watch Reel</a>
+                <a href="#copywriting" class="btn secondary">View Work</a>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-24 px-6 text-center">
-        <div class="max-w-3xl mx-auto bg-white p-12 rounded-[3rem] shadow-sm border border-slate-100">
-            <h3 class="text-4xl font-bold mb-6">Let's work together.</h3>
-            <p class="text-slate-600 mb-10 text-lg">Currently available for freelance projects and full-time roles.</p>
-            <a href="mailto:your-email@example.com" class="inline-block bg-slate-900 text-white px-10 py-4 rounded-2xl font-bold hover:bg-indigo-600 transition">Send an Email</a>
+    <section id="about" class="philosophy slide-up">
+        <div class="container">
+            <h2>The Approach</h2>
+            <p>Communication is not just about being heard; it’s about managing perception. My background in Computer Science [cite: 73] allows me to approach Public Relations with an analytical lens, ensuring every word is backed by a strategic objective.</p>
         </div>
     </section>
-    
-    <footer class="text-center py-12 text-slate-400 font-medium">
-        Made with 💜 by Mithila • 2026
-    </footer>
 
-</body>
+    </body>
 </html>
