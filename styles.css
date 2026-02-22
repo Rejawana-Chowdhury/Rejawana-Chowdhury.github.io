@@ -1,10 +1,11 @@
+/* Editorial Theme for Rejawana Chowdhury Mithila */
 :root {
     --bg: #0a0a0a;
-    --text: #f4f4f4;
-    --maroon: #5d0d0d;
-    --gold: #c5a059;
-    --font-serif: 'Playfair Display', serif;
-    --font-sans: 'Inter', sans-serif;
+    --text: #f5f5f5;
+    --maroon: #4A0404;
+    --gold: #C5A059;
+    --serif: 'Playfair Display', serif;
+    --sans: 'Inter', sans-serif;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -12,59 +13,77 @@
 body {
     background-color: var(--bg);
     color: var(--text);
-    font-family: var(--font-sans);
-    overflow-x: hidden;
+    font-family: var(--sans);
+    line-height: 1.6;
 }
 
-/* Navigation - Slick & Minimal */
-.navbar {
+/* Typography Hierarchy */
+h1, h2, .logo { font-family: var(--serif); font-weight: 700; }
+h1 { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 1.1; }
+
+/* Navigation */
+nav {
     display: flex;
     justify-content: space-between;
-    padding: 2rem 5%;
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-    background: rgba(10, 10, 10, 0.8);
-    backdrop-filter: blur(10px);
+    padding: 1.5rem 5%;
+    position: sticky;
+    top: 0;
+    background: rgba(10,10,10,0.9);
+    z-index: 100;
+    border-bottom: 1px solid rgba(197, 160, 89, 0.2);
 }
 
-.logo {
-    font-family: var(--font-serif);
-    font-size: 1.5rem;
-    letter-spacing: 3px;
-    color: var(--gold);
-}
+.logo { color: var(--gold); letter-spacing: 2px; }
 
-.nav-links {
+/* Hero Section */
+.hero {
+    height: 90vh;
     display: flex;
-    list-style: none;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10%;
+    border-left: 4px solid var(--maroon);
+    margin: 2rem 5%;
+}
+
+.hero p {
+    max-width: 600px;
+    font-size: 1.2rem;
+    color: #ccc;
+    margin: 1.5rem 0;
+}
+
+/* Call to Action Buttons */
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    transition: 0.3s ease;
+    border: 1px solid var(--gold);
+}
+
+.btn.primary { background: var(--maroon); color: white; border: none; }
+.btn.primary:hover { background: var(--gold); color: black; }
+
+/* Sections */
+section { padding: 4rem 10%; }
+.section-title { color: var(--gold); margin-bottom: 2rem; }
+
+/* Responsive Grid for Portfolio */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
 
-.nav-links a {
-    color: var(--text);
-    text-decoration: none;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: 0.3s;
+.card {
+    background: #141414;
+    padding: 2rem;
+    border-top: 2px solid var(--maroon);
+    transition: transform 0.3s;
 }
 
-.nav-links a:hover { color: var(--gold); }
-
-/* Animation Classes */
-.reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s ease-out;
-}
-
-.reveal.active {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Mobile responsive fixes */
-@media (max-width: 768px) {
-    .nav-links { display: none; } /* We will use JS to toggle this later */
-}
+.card:hover { transform: translateY(-10px); }
