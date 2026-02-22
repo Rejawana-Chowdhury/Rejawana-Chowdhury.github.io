@@ -1,0 +1,70 @@
+:root {
+    --bg: #0a0a0a;
+    --text: #f4f4f4;
+    --maroon: #5d0d0d;
+    --gold: #c5a059;
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Inter', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+}
+
+/* Navigation - Slick & Minimal */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 5%;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.logo {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    color: var(--gold);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover { color: var(--gold); }
+
+/* Animation Classes */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mobile responsive fixes */
+@media (max-width: 768px) {
+    .nav-links { display: none; } /* We will use JS to toggle this later */
+}
