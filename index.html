@@ -10,122 +10,84 @@
             --black: #0a0a0a;
             --offwhite: #fafafa;
             --maroon: #800020;
-            --white: #fff;
-            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            --white: #ffffff;
             --bg: var(--offwhite);
-            --text: #333;
+            --text: #1a1a1a;
             --card-bg: var(--white);
             --nav-bg: rgba(255, 255, 255, 0.98);
             --accent: var(--maroon);
-            --glow: none;
         }
 
         [data-theme="dark"] {
             --bg: #0a0a0a;
-            --text: #eee;
-            --card-bg: #151515;
+            --text: #f0f0f0;
+            --card-bg: #111111;
             --nav-bg: rgba(10, 10, 10, 0.98);
-            --offwhite: #1a1a1a;
-            --white: #151515;
-            --accent: #b00030;
-            --glow: 0 0 10px rgba(176, 0, 48, 0.3);
+            --accent: #e6003e; /* Higher contrast for black background */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
-        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
 
-        /* PRELOADER */
-        #loader { position: fixed; inset: 0; background: var(--black); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: 0.6s ease; }
-        .loader-name { color: white; font-family: 'Playfair Display'; font-size: 1.5rem; letter-spacing: 5px; text-transform: uppercase; }
-        .loaded #loader { opacity: 0; visibility: hidden; }
-
-        /* THEME TOGGLE */
-        .theme-switch { position: fixed; bottom: 30px; right: 30px; z-index: 3000; background: var(--accent); color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; box-shadow: var(--glow); font-size: 1rem; display: flex; align-items: center; justify-content: center; }
-
         /* NAVIGATION */
-        nav { position: fixed; top: 0; width: 100%; padding: 1.5rem 0; z-index: 1000; transition: var(--transition); }
-        nav.scrolled { background: var(--nav-bg); backdrop-filter: blur(10px); padding: 1rem 0; box-shadow: 0 2px 20px rgba(0,0,0,0.1); }
+        nav { position: fixed; top: 0; width: 100%; padding: 1.2rem 0; z-index: 1000; background: var(--nav-bg); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--accent); text-decoration: none; text-shadow: var(--glow); }
-        .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
-        .nav-links a:hover { color: var(--accent); }
+        .logo { font-family: 'Playfair Display'; font-size: 1.5rem; font-weight: 700; color: var(--accent); text-decoration: none; }
+        .nav-links { display: flex; list-style: none; gap: 2rem; }
+        .nav-links a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* HERO SECTION */
+        /* HERO */
         .hero { min-height: 100vh; display: flex; align-items: center; background: var(--black); color: white; padding-top: 80px; }
-        .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; align-items: center; gap: 60px; }
-        .hero-img { width: 100%; height: auto; border-left: 15px solid var(--accent); box-shadow: 20px 20px 0px rgba(176, 0, 48, 0.1); object-fit: cover; }
-        .hero-text h1 { font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.1; margin-bottom: 20px; color: var(--white); }
-        .tagline { color: var(--accent); font-weight: 600; letter-spacing: 4px; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 15px; display: block; text-shadow: var(--glow); }
-        
-        .btn-group { display: flex; gap: 15px; margin-top: 40px; }
-        .btn { padding: 14px 30px; text-decoration: none; font-weight: 600; border-radius: 2px; transition: var(--transition); font-size: 0.85rem; }
-        .btn-primary { background: var(--accent); color: white; border: 1px solid var(--accent); box-shadow: var(--glow); }
-        .btn-primary:hover { background: transparent; transform: translateY(-3px); }
-        .btn-outline { border: 1px solid white; color: white; }
-        .btn-outline:hover { background: white; color: var(--black); transform: translateY(-3px); }
+        .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 50px; align-items: center; }
+        .hero-text h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); color: var(--accent); line-height: 1.1; margin: 15px 0; }
+        .hero-img { width: 100%; border-left: 15px solid var(--accent); box-shadow: 25px 25px 0px rgba(176, 0, 62, 0.1); }
 
-        /* EXPERTISE SECTION - REFINED */
-        .expertise-section { padding: 100px 0; background: var(--card-bg); }
-        .expertise-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
-        .expertise-item { 
-            padding: 40px; background: var(--offwhite); border-bottom: 3px solid var(--accent); 
-            cursor: pointer; transition: var(--transition); position: relative;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-        }
-        .expertise-item:hover { transform: translateY(-8px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
-        .expertise-item h3 { font-size: 1.3rem; color: var(--text); margin-bottom: 12px; }
-        .expertise-item p { font-size: 0.95rem; color: #666; }
-        .item-num { position: absolute; top: 20px; right: 25px; font-weight: 800; font-size: 0.8rem; color: var(--accent); opacity: 0.4; }
+        /* EXPERTISE */
+        .expertise { padding: 100px 0; }
+        .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 40px; }
+        .exp-card { background: var(--card-bg); padding: 40px; border-bottom: 4px solid var(--accent); cursor: pointer; transition: 0.4s; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+        .exp-card:hover { transform: translateY(-10px); }
 
         /* MODAL */
-        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; display: none; justify-content: center; align-items: center; padding: 20px; }
-        .modal-content { background: var(--bg); color: var(--text); width: 100%; max-width: 1000px; max-height: 90vh; overflow-y: auto; padding: clamp(20px, 5vw, 50px); border-radius: 4px; position: relative; }
-        .close-btn { position: sticky; top: 0; float: right; font-size: 40px; cursor: pointer; color: var(--accent); z-index: 10; }
+        .modal { position: fixed; inset: 0; background: rgba(0,0,0,0.95); display: none; justify-content: center; align-items: center; z-index: 2000; padding: 20px; }
+        .modal-content { background: var(--bg); width: 100%; max-width: 1000px; max-height: 90vh; overflow-y: auto; padding: clamp(20px, 5vw, 60px); position: relative; }
+        .close { position: sticky; top: 0; float: right; font-size: 2.5rem; cursor: pointer; color: var(--accent); z-index: 10; }
         
-        .section-badge { background: var(--accent); color: white; padding: 5px 12px; font-size: 0.7rem; text-transform: uppercase; font-weight: 700; margin-bottom: 15px; display: inline-block; }
-        .description-box { background: var(--card-bg); padding: 25px; border-left: 4px solid var(--accent); margin-bottom: 30px; }
-        .stat-badge { display: inline-block; padding: 6px 12px; background: var(--card-bg); border: 1px solid #ddd; font-size: 0.75rem; font-weight: 800; margin-right: 10px; color: var(--accent); }
+        .modal-header-tag { background: var(--accent); color: white; padding: 6px 15px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; display: inline-block; margin-bottom: 20px; }
+        .description-box { border-left: 5px solid var(--accent); padding: 20px 30px; background: var(--card-bg); margin: 25px 0; }
+        .cert-container { display: flex; gap: 40px; align-items: center; margin-top: 30px; }
+        .cert-img { width: 280px; height: auto; border: 1px solid #eee; }
 
-        /* CERTIFICATE ALIGNMENT FIX */
-        .cert-row { display: flex; gap: 40px; align-items: center; margin: 30px 0; }
-        .cert-img { width: 280px; height: auto; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border: 1px solid #eee; }
-
-        .project-row { display: grid; grid-template-columns: 320px 1fr; gap: 40px; margin-bottom: 50px; align-items: center; }
-        .thumb-box { position: relative; width: 100%; aspect-ratio: 16/9; box-shadow: 8px 8px 0px var(--accent); overflow: hidden; }
+        /* PROJECTS */
+        .project-row { display: grid; grid-template-columns: 350px 1fr; gap: 40px; margin-top: 50px; align-items: center; }
+        .thumb-box { position: relative; aspect-ratio: 16/9; box-shadow: 10px 10px 0px var(--accent); overflow: hidden; background: #222; }
         .thumb-box img { width: 100%; height: 100%; object-fit: cover; }
-        .see-more { position: absolute; inset: 0; background: rgba(128,0,32,0.8); color: white; display: flex; align-items: center; justify-content: center; text-decoration: none; font-weight: 700; opacity: 0; transition: 0.3s; }
+        .see-more { position: absolute; inset: 0; background: rgba(128,0,32,0.85); color: white; display: flex; align-items: center; justify-content: center; text-decoration: none; font-weight: 700; opacity: 0; transition: 0.3s; }
         .thumb-box:hover .see-more { opacity: 1; }
+        .stat-badge { display: inline-block; padding: 5px 12px; border: 1px solid #ddd; color: var(--accent); font-weight: 800; font-size: 0.75rem; margin-right: 10px; text-transform: uppercase; }
 
         /* CONTACT */
-        .contact-section { padding: 100px 0; background: var(--black); color: white; text-align: center; }
-        .email-link { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 5vw, 2.5rem); color: white; text-decoration: none; transition: 0.3s; display: block; margin: 20px 0; }
+        .contact-section { padding: 120px 0; background: var(--black); color: white; text-align: center; }
+        .availability-tag { display: inline-block; padding: 10px 20px; border: 1px solid var(--accent); color: var(--accent); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
+        .email-link { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 5vw, 2.5rem); color: white; text-decoration: none; display: block; margin-bottom: 20px; }
         .email-link:hover { color: var(--accent); }
-        .social-link { color: #888; text-decoration: none; font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; }
 
-        .reveal { opacity: 0; transform: translateY(20px); transition: 0.8s ease-out; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        .theme-toggle { position: fixed; bottom: 30px; right: 30px; background: var(--accent); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 3000; font-size: 1.2rem; }
 
-        /* MOBILE RESPONSIVE */
         @media (max-width: 850px) {
-            .hero-grid, .project-row, .cert-row { grid-template-columns: 1fr; flex-direction: column; text-align: center; }
-            .cert-row { align-items: center; }
-            .hero-img { width: 85%; margin: 0 auto; }
-            .btn-group { justify-content: center; flex-direction: column; }
-            .nav-links { display: none; } /* Simplified for mobile */
-            .thumb-box { margin-bottom: 20px; }
+            .hero-grid, .cert-container, .project-row { grid-template-columns: 1fr; text-align: center; }
+            .cert-img { width: 100%; max-width: 250px; margin: 0 auto; }
+            .nav-links { display: none; }
         }
     </style>
 </head>
 <body>
 
-    <div id="loader"><div class="loader-name">MITHILA</div></div>
+    <button class="theme-toggle" onclick="document.body.toggleAttribute('data-theme')">🌓</button>
 
-    <button class="theme-switch" onclick="toggleTheme()">🌓</button>
-
-    <nav id="navbar">
+    <nav>
         <div class="container nav-container">
             <a href="#" class="logo">MITHILA</a>
             <ul class="nav-links">
@@ -138,118 +100,117 @@
 
     <section class="hero">
         <div class="container hero-grid">
-            <div class="hero-text reveal">
-                <span class="tagline">Strategic Communicator</span>
+            <div class="hero-text">
+                <span style="color: var(--accent); text-transform: uppercase; letter-spacing: 3px; font-weight: 600;">Strategic Communicator</span>
                 <h1>Rejawana Chowdhury Mithila</h1>
-                <p style="font-size: 1.05rem; color: #bbb;">PR & Communications Enthusiast | Copywriter & Storyteller | Voiceover Artist | Anchor & Public Speaker</p>
-                <div class="btn-group">
-                    <a href="#expertise" class="btn btn-primary">View Expertise</a>
-                    <a href="YOUR_DRIVE_LINK_HERE" target="_blank" class="btn btn-outline">Download Resume</a>
-                </div>
+                <p>PR & Communications Enthusiast | Copywriter & Storyteller | Voiceover Artist | Anchor & Public Speaker</p>
             </div>
-            <img src="profile.jpg" alt="Mithila" class="hero-img reveal">
+            <img src="profile.jpg" alt="Mithila" class="hero-img">
         </div>
     </section>
 
-    <section id="expertise" class="expertise-section">
+    <section id="expertise" class="expertise">
         <div class="container">
-            <h2 style="font-size: 2.2rem; margin-bottom: 10px;">Expertise</h2>
-            <div style="width: 50px; height: 3px; background: var(--accent); margin-bottom: 40px;"></div>
-            <div class="expertise-list">
-                <div class="expertise-item reveal" onclick="openModal('pr-modal')">
-                    <span class="item-num">01</span>
+            <h2>Expertise</h2>
+            <div class="expertise-grid">
+                <div class="exp-card" onclick="openModal('pr-modal')">
                     <h3>PR & Communications</h3>
                     <p>Leadership, branding, public relations and stakeholder management.</p>
                 </div>
-                <div class="expertise-item reveal">
-                    <span class="item-num">02</span>
-                    <h3>Marketing & Storytelling</h3>
-                    <p>Crafting narratives for digital growth and social impact.</p>
-                </div>
-                <div class="expertise-item reveal">
-                    <span class="item-num">03</span>
-                    <h3>Strategic Planning</h3>
-                    <p>Campaign management and organizational flow.</p>
-                </div>
-                <div class="expertise-item reveal">
-                    <span class="item-num">04</span>
-                    <h3>Voiceover</h3>
-                    <p>Professional narration for commercial and media projects.</p>
-                </div>
-                <div class="expertise-item reveal">
-                    <span class="item-num">05</span>
-                    <h3>Public Speaking</h3>
-                    <p>Live hosting, moderation, and on-screen presence.</p>
-                </div>
+                <div class="exp-card"><h3>Marketing & Storytelling</h3><p>Crafting narratives for digital growth.</p></div>
+                <div class="exp-card"><h3>Strategic Planning</h3><p>Campaign management and organizational flow.</p></div>
+                <div class="exp-card"><h3>Voiceover</h3><p>Professional narration for commercial projects.</p></div>
+                <div class="exp-card"><h3>Anchoring & Speaking</h3><p>Live hosting and on-screen presence.</p></div>
             </div>
         </div>
     </section>
 
     <div id="pr-modal" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModal('pr-modal')">&times;</span>
+            <span class="close" onclick="closeModal('pr-modal')">&times;</span>
             <h2 style="font-size: 2.5rem; color: var(--accent); margin-bottom: 30px;">PR & Communications</h2>
             
             <div class="modal-section">
-                <div class="section-badge">Leadership</div>
-                <h3>Head of Public Relations — UIU Computer Club (UIUCC)</h3>
-                <div class="description-box" style="margin-top:20px;">
-                    <p>Leading the PR department for UIU's largest tech community. Responsible for institutional branding, external communications, and managing media presence for massive campus events.</p>
-                </div>
+                <div class="modal-header-tag">Leadership Excellence</div>
+                <h3>Head of Public Relations — UIU Computer Club (UIU CCL)</h3>
+                <div class="description-box"><p>Leading the PR department for UIU's largest tech community. Responsible for institutional branding, external communications, and managing media presence for large-scale university events.</p></div>
             </div>
 
             <div class="modal-section">
-                <div class="section-badge">Certification</div>
-                <div class="cert-row">
+                <div class="modal-header-tag">Certification</div>
+                <div class="cert-container">
                     <img src="cert.jpg" alt="Certificate" class="cert-img">
                     <div>
-                        <h3 style="font-size:1.2rem;">Communications Apprentice</h3>
-                        <p style="color: #888; margin-bottom:15px;">UIU PRO & Comms | United International University</p>
-                        <p>Contributed to the institutional PR ecosystem through professional copywriting, content planning, and stakeholder communication.</p>
+                        <h3>Communications Apprentice</h3>
+                        <p style="color: #888;">UIU PRO & Comms | United International University</p>
+                        <div class="description-box"><p>During my tenure as a <strong>Communications Apprentice</strong>, I contributed to the institutional PR ecosystem through professional copywriting, content planning, and stakeholder communication. My work focused on corporate communication, strategic planning, and event management to bridge gaps between university initiatives and the student body.</p></div>
                     </div>
                 </div>
             </div>
 
-            <div class="modal-section" style="margin-top: 50px;">
-                <div class="section-badge">Projects</div>
-                <div class="project-row" style="margin-top: 20px;">
-                    <div class="thumb-box"><img src="victory_thumb.png" alt="Victory Day"><a href="https://fb.watch/example" class="see-more">Watch Video</a></div>
+            <div class="modal-section" style="margin-top: 60px;">
+                <div class="modal-header-tag">Project Highlights</div>
+                
+                <div class="project-row">
+                    <div class="thumb-box"><img src="victory_thumb.png"><a href="https://www.facebook.com/uiuinfo/videos/1105234857817150/?rdid=xs4haT5Wd7enugoc#" class="see-more">See Video</a></div>
                     <div>
                         <h3>Victory Day Tribute</h3>
-                        <div style="margin: 10px 0;"><span class="stat-badge">44k Views</span><span class="stat-badge">1.5k Reactions</span></div>
-                        <p>On-screen communication lead for a major national tribute.</p>
+                        <div style="margin: 10px 0;"><span class="stat-badge">51k Views</span><span class="stat-badge">1.4k Reactions</span></div>
+                        <div class="description-box"><p>On-screen communication lead and voice artist for a university-led tribute to Bangladesh’s Victory Day.</p></div>
+                    </div>
+                </div>
+
+                <div class="project-row">
+                    <div class="thumb-box"><img src="mother_language_thumb.png"><a href="https://www.facebook.com/uiuinfo/videos/1026092639345625/?mibextid=rS40aB7S9Ucbxw6v" class="see-more">See Video</a></div>
+                    <div>
+                        <h3>Dignity of Mother Tongue | Tribute to International Mother Language Day<</h3>
+                        <div style="margin: 10px 0;"><span class="stat-badge">174k Views</span><span class="stat-badge">4.5k Reactions</span></div>
+                        <div class="description-box"><p>Achieved maximum engagement within 48 hours of deployment. Responsible for script, screenplay, and voiceover.</p></div>
+                    </div>
+                </div>
+
+                <h3 style="margin: 60px 0 20px;">Digital Campaign Highlight: Breaking the Barrier (3-Part Series)</h3>
+                
+                <div class="project-row">
+                    <div class="thumb-box"><img src="womens_day_thumb.png"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7304373738345504769/" class="see-more">See Story 1</a></div>
+                    <div>
+                        <h3>Story 01 | Khushnur Binte Jahangir (Lecturer, UIU)</h3>
+                        <div style="margin: 10px 0;"><span class="stat-badge">29k Views</span></div>
+                        <div class="description-box"><p>Responsible for script, screenplay, and voiceover focusing on resilience narratives to humanize the university brand presence.</p></div>
+                    </div>
+                </div>
+
+                <div class="project-row">
+                    <div class="thumb-box"><img src="womens_day_2.png"><a href="https://www.facebook.com/uiuinfo/videos/3939268242995359/?rdid=YtuK4A9TlIL0b8bf#" class="see-more">See Story 2</a></div>
+                    <div>
+                        <h3>Story 02 | Sadia Ahmmed (Gold Medalist, IBO 2023)</h3>
+                        <div style="margin: 10px 0;"><span class="stat-badge">1M Views</span><span class="stat-badge">500+ Reactions</span></div>
+                        <div class="description-box"><p>Highlighting institutional female excellence through strategic visual storytelling.</p></div>
+                    </div>
+                </div>
+
+                <div class="project-row">
+                    <div class="thumb-box"><img src="womens_day_3.png"><a href="https://www.facebook.com/uiuinfo/videos/1523232558863076/" class="see-more">See Story 3</a></div>
+                    <div>
+                        <h3>Story 03 | Antara Raisa Sohana (Owner, Suggachi)</h3>
+                        <div style="margin: 10px 0;"><span class="stat-badge">34k Views</span><span class="stat-badge">500+ Reactions</span></div>
+                        <div class="description-box"><p>Final installment of the series, concluding the strategic narrative of empowerment.</p></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <section id="contact" class="contact-section reveal">
+    <section id="contact" class="contact-section">
         <div class="container">
-            <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem;">Let's Connect</h2>
+            <h2 style="font-size: 3rem; margin-bottom: 20px;">Let's Connect</h2>
+            <div class="availability-tag">Available for Internships, Freelance & Part-time Roles</div>
             <a href="mailto:rejawana.mithila@gmail.com" class="email-link">rejawana.mithila@gmail.com</a>
-            <a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank" class="social-link">LinkedIn Profile</a>
+            <a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank" style="color: #888; text-decoration: none; text-transform: uppercase; font-weight: 600; letter-spacing: 2px;">LinkedIn Profile</a>
         </div>
     </section>
 
     <script>
-        window.addEventListener('load', () => { setTimeout(() => { document.body.classList.add('loaded'); }, 600); });
-
-        function toggleTheme() {
-            const body = document.body;
-            body.getAttribute('data-theme') === 'dark' ? body.removeAttribute('data-theme') : body.setAttribute('data-theme', 'dark');
-        }
-
-        window.onscroll = () => {
-            const nav = document.getElementById('navbar');
-            window.scrollY > 50 ? nav.classList.add('scrolled') : nav.classList.remove('scrolled');
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
         function openModal(id) { document.getElementById(id).style.display = 'flex'; document.body.style.overflow = 'hidden'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; document.body.style.overflow = 'auto'; }
     </script>
