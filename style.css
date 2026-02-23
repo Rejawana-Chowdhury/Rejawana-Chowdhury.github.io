@@ -141,6 +141,73 @@ h1 {
     animation: fadeIn 1.2s ease-out;
 }
 
+/*sub page styles*/
+
+/* Sub-page Specifics */
+.sub-page { background-color: var(--bg); }
+.container { max-width: 1100px; margin: 0 auto; padding: 0 5%; }
+.section-hero { text-align: center; padding: 80px 0; background-color: var(--accent); margin-bottom: 60px; }
+
+.block-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    color: var(--maroon);
+    border-bottom: 2px solid var(--maroon);
+    display: inline-block;
+    margin-bottom: 40px;
+}
+
+/* Mentor Link Style */
+.mentor-link {
+    color: var(--maroon);
+    font-weight: 600;
+    text-decoration: none;
+    padding: 2px 5px;
+    border-bottom: 2px solid transparent;
+    transition: 0.3s;
+}
+.mentor-link:hover { border-bottom-color: var(--maroon); background: #8000001a; }
+
+/* Video Cards */
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+.video-card {
+    position: relative;
+    overflow: hidden;
+    height: 250px;
+    border-radius: 12px;
+}
+
+.video-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+
+.video-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(128, 0, 0, 0.85); /* Semi-transparent Maroon */
+    color: white;
+    padding: 20px;
+    transform: translateY(100%);
+    transition: 0.4s ease-in-out;
+}
+
+.video-card:hover .video-overlay { transform: translateY(0); }
+.video-card:hover img { transform: scale(1.1); }
+
+.see-details { color: white; text-decoration: none; font-weight: bold; font-size: 0.9rem; margin-top: 10px; display: block; }
+
+/* General Shadow Box */
+.shadow-box {
+    box-shadow: 10px 10px 0px var(--maroon);
+    border: 1px solid #ddd;
+    max-width: 100%;
+}
+
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
