@@ -23,11 +23,11 @@
             --text: #f0f0f0;
             --card-bg: #111111;
             --nav-bg: rgba(10, 10, 10, 0.98);
-            --accent: #e6003e; /* Higher contrast for black background */
+            --accent: #e6003e; /* Higher contrast for dark background */
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; transition: background 0.3s ease, color 0.3s ease; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
 
@@ -44,9 +44,25 @@
         .hero-text h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); color: var(--accent); line-height: 1.1; margin: 15px 0; }
         .hero-img { width: 100%; border-left: 15px solid var(--accent); box-shadow: 25px 25px 0px rgba(176, 0, 62, 0.1); }
 
-        /* EXPERTISE */
+        /* EXPERTISE DECORATION */
         .expertise { padding: 100px 0; }
-        .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 40px; }
+        .expertise h2 { 
+            font-size: 2.8rem; 
+            color: var(--text); 
+            margin-bottom: 10px; 
+            display: inline-block;
+            position: relative;
+        }
+        .expertise h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            margin-top: 8px;
+        }
+
+        .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 50px; }
         .exp-card { background: var(--card-bg); padding: 40px; border-bottom: 4px solid var(--accent); cursor: pointer; transition: 0.4s; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
         .exp-card:hover { transform: translateY(-10px); }
 
@@ -57,6 +73,11 @@
         
         .modal-header-tag { background: var(--accent); color: white; padding: 6px 15px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; display: inline-block; margin-bottom: 20px; }
         .description-box { border-left: 5px solid var(--accent); padding: 20px 30px; background: var(--card-bg); margin: 25px 0; }
+        
+        /* LEADERSHIP GRID FIX */
+        .leadership-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 20px 0; }
+        .leadership-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border: 1px solid rgba(0,0,0,0.1); border-radius: 2px; }
+
         .cert-container { display: flex; gap: 40px; align-items: center; margin-top: 30px; }
         .cert-img { width: 280px; height: auto; border: 1px solid #eee; }
 
@@ -74,18 +95,18 @@
         .email-link { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 5vw, 2.5rem); color: white; text-decoration: none; display: block; margin-bottom: 20px; }
         .email-link:hover { color: var(--accent); }
 
-        .theme-toggle { position: fixed; bottom: 30px; right: 30px; background: var(--accent); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 3000; font-size: 1.2rem; }
+        .theme-toggle { position: fixed; bottom: 30px; right: 30px; background: var(--accent); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 3000; font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
 
         @media (max-width: 850px) {
-            .hero-grid, .cert-container, .project-row { grid-template-columns: 1fr; text-align: center; }
-            .cert-img { width: 100%; max-width: 250px; margin: 0 auto; }
+            .hero-grid, .cert-container, .project-row, .leadership-grid { grid-template-columns: 1fr; text-align: center; }
+            .cert-img, .leadership-img { width: 100%; max-width: 250px; margin: 0 auto; }
             .nav-links { display: none; }
         }
     </style>
 </head>
-<body>
+<body id="body">
 
-    <button class="theme-toggle" onclick="document.body.toggleAttribute('data-theme')">🌓</button>
+    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
 
     <nav>
         <div class="container nav-container">
@@ -168,7 +189,7 @@
                 <div class="project-row">
                     <div class="thumb-box"><img src="mother_language_thumb.png"><a href="https://www.facebook.com/uiuinfo/videos/1026092639345625/?mibextid=rS40aB7S9Ucbxw6v" class="see-more">See Video</a></div>
                     <div>
-                        <h3>Dignity of Mother Tongue | Tribute to International Mother Language Day<</h3>
+                        <h3>Dignity of Mother Tongue | Tribute to International Mother Language Day</h3>
                         <div style="margin: 10px 0;"><span class="stat-badge">174k Views</span><span class="stat-badge">4.5k Reactions</span></div>
                         <div class="description-box"><p>Achieved maximum engagement within 48 hours of deployment. Responsible for script, screenplay, and voiceover.</p></div>
                     </div>
@@ -216,6 +237,15 @@
     </section>
 
     <script>
+        function toggleTheme() {
+            const body = document.getElementById('body');
+            if (body.hasAttribute('data-theme')) {
+                body.removeAttribute('data-theme');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+            }
+        }
+
         function openModal(id) { document.getElementById(id).style.display = 'flex'; document.body.style.overflow = 'hidden'; }
         function closeModal(id) { document.getElementById(id).style.display = 'none'; document.body.style.overflow = 'auto'; }
     </script>
