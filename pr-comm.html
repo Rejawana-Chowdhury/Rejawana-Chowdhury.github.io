@@ -14,14 +14,13 @@
         <button onclick="history.back()" class="back-btn-premium">BACK</button>
     </nav>
 
-    <header class="editorial-hero">
-        <div class="hero-text-center">
-            <h1 class="fade-in">PR & Communications</h1>
-            <p class="subtitle-centered">Strategic Branding • Communication • Media Relations • Corporate Storytelling</p>
-        </div>
-        
-        <div class="hero-main-image fade-in">
-            <img src="team-pr.jpg" alt="PR Team and Leadership" class="slick-img">
+    <header class="layered-hero fade-in">
+        <div class="hero-frame">
+            <img src="team-pr.jpg" alt="PR Team" class="hero-img">
+            <div class="hero-overlay-text">
+                <h1>PR & Communications</h1>
+                <p>Strategic Branding • Communication • Media Relations • Corporate Storytelling</p>
+            </div>
         </div>
     </header>
 
@@ -29,35 +28,42 @@
         
         <section class="work-block">
             <h2 class="block-title">Professional Apprenticeship</h2>
-            <div class="cert-grid">
-                <div class="cert-text">
+            <div class="editorial-grid">
+                <div class="text-side">
                     <h3>Communication Apprentice</h3>
-                    <p class="location">PRO & Comms Office, United International University</p>
-                    <p>Focused on high-level branding, copywriting, and OVC storytelling. Managed stakeholder communications and internal schedules under the mentorship of 
+                    <p class="meta">PRO & Comms Office, United International University</p>
+                    <p>Handled high-level branding, copywriting, and OVC storytelling. Managed stakeholder communications and internal schedules under the mentorship of 
                         <a href="https://mutiatur.com" target="_blank" class="mentor-link">Sumaiya Mutiatur Rahman</a> (Head of Communications, UIU).
                     </p>
                 </div>
-                <div class="cert-img-container">
-                    <img src="cert.jpg" alt="UIU PRO & Comms Communication Apprenticeship Certificate" class="shadow-box">
+                <div class="image-side">
+                    <img src="cert.jpg" alt="UIU Apprenticeship Certificate" class="styled-entry-img">
                 </div>
             </div>
         </section>
 
         <section class="work-block">
-            <h2 class="block-title">Featured Projects</h2>
+            <h2 class="block-title">Featured OVC & Video Projects</h2>
             <div class="video-grid">
-                <div class="video-card shadow-box">
-                    <img src="thumb1.jpg" alt="Project Thumbnail">
+                <div class="video-card">
+                    <img src="thumb1.jpg" alt="OVC Project">
                     <div class="video-overlay">
                         <h4>OVC: International Mother Language Day</h4>
                         <a href="project-details-1.html" target="_blank" class="see-details">See Details →</a>
                     </div>
                 </div>
-                <div class="video-card shadow-box">
-                    <img src="thumb2.jpg" alt="Project Thumbnail">
+                <div class="video-card">
+                    <img src="thumb2.jpg" alt="Documentary Project">
                     <div class="video-overlay">
                         <h4>Documentary: Impact</h4>
                         <a href="project-details-2.html" target="_blank" class="see-details">See Details →</a>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <img src="thumb3.jpg" alt="Event Highlights">
+                    <div class="video-overlay">
+                        <h4>Event Highlights: UIU Tech</h4>
+                        <a href="project-details-3.html" target="_blank" class="see-details">See Details →</a>
                     </div>
                 </div>
             </div>
@@ -65,14 +71,14 @@
 
         <section class="work-block">
             <h2 class="block-title">Leadership at UIU Computer Club</h2>
-            <div class="leadership-layout">
-                <div class="leadership-text">
+            <div class="editorial-grid">
+                <div class="text-side">
                     <h3>Head of PR Department</h3>
-                    <p class="tag">Oct 2024 - Present</p>
-                    <p>Leading the PR wing of the largest, oldest, and most active club at UIU. I manage brand image, press releases, and media outreach for all major events.</p>
+                    <p class="meta">Oct 2024 - Present</p>
+                    <p>Leading the PR wing of the oldest and most prestigious club at UIU. Managing brand advocacy, press relations, and media outreach for university-wide tech events.</p>
                 </div>
-                <div class="linkedin-container">
-                    <img src="linkedin-screenshot.png" alt="LinkedIn Journey" class="shadow-box">
+                <div class="image-side">
+                    <img src="linkedin-screenshot.png" alt="LinkedIn Journey" class="styled-entry-img">
                 </div>
             </div>
         </section>
@@ -80,7 +86,7 @@
     </main>
 
     <script>
-        // Theme persistence script
+        // Keep theme consistency when navigating
         if (localStorage.getItem('theme') === 'dark') {
             document.body.classList.add('dark-theme');
         }
