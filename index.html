@@ -75,8 +75,23 @@
         .cert-img { width: 100%; height: auto; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
         .project-row { display: grid; grid-template-columns: 320px 1fr; gap: 40px; margin-top: 40px; align-items: start; }
-        .thumb-box { position: relative; width: 100%; border-radius: 6px; overflow: hidden; }
-        .thumb-box img { width: 100%; height: auto; display: block; }
+        
+        /* FIX: CONSISTENT THUMBNAIL ALIGNMENT */
+        .thumb-box { 
+            position: relative; 
+            width: 100%; 
+            aspect-ratio: 16 / 9; 
+            background: #000; 
+            border-radius: 6px; 
+            overflow: hidden; 
+        }
+        .thumb-box img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: block; 
+        }
+
         .see-more { position: absolute; inset: 0; background: rgba(15, 23, 42, 0.85); color: var(--gold); display: flex; align-items: center; justify-content: center; text-decoration: none; font-weight: 700; opacity: 0; transition: 0.3s; }
         .thumb-box:hover .see-more { opacity: 1; }
         .stat-badge { display: inline-block; padding: 4px 10px; background: rgba(181, 148, 16, 0.1); border: 1px solid var(--gold); color: var(--gold); font-weight: 700; font-size: 0.7rem; margin-right: 8px; border-radius: 4px; }
