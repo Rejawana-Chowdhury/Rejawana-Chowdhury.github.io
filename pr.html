@@ -31,7 +31,31 @@
         .logo { font-family: 'Playfair Display'; font-size: 1.4rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1px; }
         [data-theme="dark"] .logo { color: var(--white); }
         .nav-links { display: flex; list-style: none; gap: 25px; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+        
+        /* Unified Nav Link Styles */
+        .nav-links a { 
+            text-decoration: none; 
+            color: var(--navy); 
+            font-weight: 700; 
+            font-size: 0.8rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1.5px; 
+            transition: 0.3s;
+        }
+        [data-theme="dark"] .nav-links a { color: var(--white); }
+        .nav-links a:hover { color: var(--gold); }
+
+        /* Specific "My Resume" Box Style from Reference */
+        .resume-btn {
+            border: 1.5px solid var(--gold);
+            padding: 10px 20px;
+            border-radius: 4px;
+            color: var(--gold) !important;
+        }
+        .resume-btn:hover {
+            background: var(--gold);
+            color: white !important;
+        }
 
         /* Page Header */
         .page-header { padding: 160px 0 80px; background: var(--navy); color: white; text-align: center; }
@@ -52,8 +76,9 @@
 
         .description-box { border-left: 4px solid var(--gold); padding: 20px 30px; background: rgba(181, 148, 16, 0.05); margin: 25px 0; font-style: italic; }
         
+        /* Club Links Color Update */
         .club-links { margin-top: 15px; font-size: 0.85rem; font-weight: 600; }
-        .club-links a { color: var(--navy); text-decoration: none; margin-right: 20px; border-bottom: 1px solid var(--gold); transition: 0.3s; }
+        .club-links a { color: var(--slate); text-decoration: none; margin-right: 20px; border-bottom: 1px solid var(--gold); transition: 0.3s; }
         [data-theme="dark"] .club-links a { color: var(--offwhite); }
         .club-links a:hover { color: var(--gold); border-bottom-color: transparent; }
 
@@ -140,7 +165,7 @@
                 <a href="https://naeemsadik.github.io/UIUCCL_BlogSite/index.html" class="see-more" target="_blank">Visit Site</a>
             </div>
             <div>
-                <h3>UIUCCL Blog Platform</h3>
+                <h3>UIU CCL Blogs</h3>
                 <div style="margin: 10px 0;">
                     <span class="stat-badge">Live: Static Site</span>
                     <span class="stat-badge">In Progress: Responsive Version</span>
