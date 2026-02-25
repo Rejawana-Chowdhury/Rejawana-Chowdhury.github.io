@@ -9,99 +9,94 @@
         :root {
             --navy: #0f172a; --gold: #b59410; --slate: #475569; --offwhite: #f8fafc;
             --white: #ffffff; --bg: var(--offwhite); --text: #1e293b;
-            --nav-bg: rgba(255, 255, 255, 0.98); --card-bg: #ffffff;
-        }
-
-        /* Dark Mode variables */
-        body.dark-mode {
-            --bg: #0f172a; --text: #f8fafc; --nav-bg: rgba(15, 23, 42, 0.95);
-            --card-bg: #1e293b; --slate: #cbd5e1; --offwhite: #1e293b;
+            --nav-bg: rgba(255, 255, 255, 0.98);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; transition: background 0.4s, color 0.4s; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; overflow-x: hidden; }
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
         html { scroll-behavior: smooth; }
 
         .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 25px; }
 
-        /* Navigation */
+        /* Navigation - Continuity with Portfolio */
         nav { position: fixed; top: 0; width: 100%; padding: 15px 0; z-index: 1000; background: var(--nav-bg); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-family: 'Playfair Display'; font-size: 1.4rem; font-weight: 700; color: var(--gold); text-decoration: none; letter-spacing: 1px; }
-        
-        .nav-right { display: flex; align-items: center; gap: 20px; }
+        .logo { font-family: 'Playfair Display'; font-size: 1.4rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1px; }
         .nav-links { display: flex; list-style: none; gap: 25px; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s; }
+        .nav-links a { text-decoration: none; color: var(--navy); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s; }
         .nav-links a:hover { color: var(--gold); }
-        
-        .back-btn { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--gold); text-decoration: none; display: flex; align-items: center; gap: 5px; }
-        .theme-toggle { background: none; border: none; cursor: pointer; font-size: 1.2rem; color: var(--gold); padding: 5px; }
+        .resume-btn { border: 1.5px solid var(--gold); padding: 10px 20px; border-radius: 4px; color: var(--gold) !important; }
+        .resume-btn:hover { background: var(--gold); color: white !important; }
 
-        /* Floating Music UI */
+        /* Floating Music Experience Controller */
         #music-control {
             position: fixed; bottom: 30px; left: 30px; z-index: 2000;
-            background: var(--navy); border: 1px solid var(--gold);
+            background: rgba(15, 23, 42, 0.85); border: 1px solid var(--gold);
             padding: 12px 20px; border-radius: 40px; color: var(--gold);
             cursor: pointer; display: flex; align-items: center; gap: 12px;
-            font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px;
-            backdrop-filter: blur(10px); transition: 0.4s; box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px;
+            backdrop-filter: blur(10px); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-        #music-control:hover { background: var(--gold); color: white; transform: translateY(-3px); }
+        #music-control:hover { background: var(--gold); color: white; transform: translateY(-5px); }
 
-        /* Hero Slider */
-        .hero-slider { position: relative; width: 100%; height: 85vh; overflow: hidden; background: #000; }
-        .slides { display: flex; width: 300%; height: 100%; transition: transform 1.5s cubic-bezier(0.6, 0, 0.4, 1); }
+        /* Automatic Photo Slider */
+        .hero-slider { position: relative; width: 100%; height: 85vh; overflow: hidden; background: #000; margin-top: 0; }
+        .slides { display: flex; width: 300%; height: 100%; transition: transform 1.5s cubic-bezier(0.645, 0.045, 0.355, 1); }
         .slide { width: 33.333%; height: 100%; position: relative; }
-        .slide img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
-        .hero-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; }
-        .hero-overlay h1 { font-size: clamp(2.2rem, 8vw, 4.5rem); color: var(--gold); margin-bottom: 10px; }
-        .hero-overlay p { text-transform: uppercase; letter-spacing: 4px; font-size: 0.9rem; opacity: 0.8; }
+        .slide img { width: 100%; height: 100%; object-fit: cover; opacity: 0.65; }
+        .hero-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; z-index: 10; padding: 0 20px; }
+        .hero-overlay h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); color: var(--gold); margin-bottom: 10px; text-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .hero-overlay p { font-size: 1.1rem; font-weight: 300; letter-spacing: 5px; text-transform: uppercase; }
 
-        /* Story Section (Aesthetic/Editorial Layout) */
-        .story-section { padding: 120px 0; background: var(--bg); }
-        .story-grid { display: grid; grid-template-columns: 1fr 1.8fr 1fr; gap: 40px; align-items: center; }
-        .story-photo { width: 100%; border-radius: 8px; box-shadow: 0 15px 40px rgba(0,0,0,0.1); transition: 0.5s; }
-        .photo-left { transform: translateY(40px) rotate(-2deg); }
-        .photo-right { transform: translateY(-40px) rotate(2deg); }
-        .story-content { text-align: center; }
-        .story-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.25rem; text-align: justify; line-height: 2.1; color: var(--slate); }
-
-        /* Project Highlight (Matching PR Styling) */
-        .project-highlight { padding: 100px 0; }
-        .section-title { font-size: 2.5rem; margin-bottom: 50px; border-bottom: 3px solid var(--gold); display: inline-block; padding-bottom: 10px; }
-        .featured-card { background: var(--card-bg); border-radius: 15px; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.1); margin-top: 20px; }
-        .main-thumb { width: 100%; aspect-ratio: 21/9; position: relative; background: #000; overflow: hidden; }
-        .main-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.8s; }
-        .main-thumb:hover img { transform: scale(1.03); opacity: 0.9; }
+        /* My Story Section - Aesthetic Portfolio Style */
+        .story-section { padding: 140px 0; background: var(--white); overflow: hidden; }
+        .story-grid { display: grid; grid-template-columns: 1fr 1.8fr 1fr; gap: 40px; align-items: center; position: relative; }
+        .story-photo { width: 100%; border-radius: 5px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); transition: 0.6s; object-fit: cover; }
+        .photo-left { transform: rotate(-2deg) translateY(50px); }
+        .photo-right { transform: rotate(2deg) translateY(-50px); }
+        .story-content { text-align: center; padding: 0 20px; z-index: 2; }
+        .story-content h2 { font-size: 3.2rem; color: var(--navy); margin-bottom: 40px; opacity: 0; transform: translateY(20px); transition: 1s forwards; }
+        .story-text { font-size: 1.2rem; color: var(--slate); text-align: justify; line-height: 2.2; font-style: italic; font-family: 'Playfair Display', serif; opacity: 0; transform: translateY(20px); transition: 1s 0.3s forwards; }
         
-        .project-content { padding: 70px; }
-        .badge { display: inline-block; padding: 6px 18px; border: 1px solid var(--gold); color: var(--gold); border-radius: 4px; font-size: 0.8rem; font-weight: 700; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px; }
-        .project-desc { border-left: 5px solid var(--gold); padding: 10px 0 10px 35px; margin: 35px 0; font-size: 1.35rem; line-height: 1.9; font-weight: 400; }
+        /* Reveal Class for Scroll Animation */
+        .reveal { opacity: 1 !important; transform: translateY(0) !important; }
 
-        /* Showcase Button */
-        .showcase-btn {
-            display: inline-block; padding: 18px 45px; background: var(--gold); color: white;
-            text-decoration: none; font-weight: 700; border-radius: 4px; text-transform: uppercase;
-            letter-spacing: 2px; transition: 0.3s; font-size: 0.9rem;
-        }
-        .showcase-btn:hover { background: var(--navy); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        /* Project Highlight - Bigger Body */
+        .section-title { font-size: 2.5rem; margin: 100px 0 60px; border-bottom: 3px solid var(--gold); display: inline-block; padding-bottom: 15px; }
+        .featured-project { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.06); margin-bottom: 140px; }
+        .main-thumb { position: relative; width: 100%; aspect-ratio: 21/9; background: #000; overflow: hidden; }
+        .main-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 1.2s; }
+        .main-thumb:hover img { transform: scale(1.05); opacity: 1; }
+        .see-more { position: absolute; inset: 0; background: rgba(15, 23, 42, 0.4); color: white; display: flex; align-items: center; justify-content: center; text-decoration: none; font-weight: 700; opacity: 0; transition: 0.5s; text-transform: uppercase; letter-spacing: 3px; font-size: 1.2rem; border: 1px solid rgba(255,255,255,0.2); }
+        .main-thumb:hover .see-more { opacity: 1; backdrop-filter: blur(3px); }
 
-        /* Footer */
-        .contact-footer { padding: 120px 0; background: var(--navy); color: white; text-align: center; }
-        .email-link { font-family: 'Playfair Display'; font-size: clamp(2rem, 6vw, 3.5rem); color: white; text-decoration: none; display: block; margin: 25px 0; transition: 0.3s; }
-        .email-link:hover { color: var(--gold); }
+        .project-body { padding: 80px; }
+        .project-body h3 { font-size: 2.8rem; color: var(--navy); margin-bottom: 25px; line-height: 1.2; }
+        .tag-group { margin-bottom: 30px; }
+        .stat-badge { display: inline-block; padding: 8px 18px; background: rgba(181, 148, 16, 0.08); border: 1px solid var(--gold); color: var(--gold); font-weight: 700; font-size: 0.85rem; margin: 0 12px 15px 0; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; }
+        .description-box { border-left: 6px solid var(--gold); padding: 40px; background: rgba(181, 148, 16, 0.03); margin: 40px 0; font-size: 1.3rem; line-height: 2; color: var(--text); }
 
-        @media (max-width: 950px) {
-            .story-grid { grid-template-columns: 1fr; }
-            .photo-left, .photo-right { display: none; }
-            .project-content { padding: 40px 25px; }
+        /* Contact Section */
+        .contact-section { padding: 140px 0; background: var(--navy); color: white; text-align: center; }
+        .availability-tag { display: inline-block; padding: 10px 25px; border: 1px solid var(--gold); color: var(--gold); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 40px; }
+        .email-link { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 4rem); color: white; text-decoration: none; display: block; margin-bottom: 30px; transition: 0.4s; }
+        .email-link:hover { color: var(--gold); transform: scale(1.02); }
+
+        /* Mobile Adjustments */
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .story-grid { grid-template-columns: 1fr; gap: 60px; }
+            .photo-left, .photo-right { transform: rotate(0) translateY(0); max-width: 350px; margin: 0 auto; order: 2; }
+            .story-content { order: 1; }
+            .project-body { padding: 40px 25px; }
             .main-thumb { aspect-ratio: 16/9; }
-            .hero-slider { height: 60vh; }
+            #music-control { bottom: 20px; left: 20px; padding: 10px 15px; font-size: 0.6rem; }
         }
     </style>
 </head>
-<body id="body">
+<body>
 
     <audio id="bgMusic" loop>
         <source src="soothing-track.mp3" type="audio/mpeg">
@@ -114,26 +109,25 @@
 
     <nav>
         <div class="container nav-container">
-            <a href="index.html" class="back-btn">← Back</a>
             <a href="index.html" class="logo">MITHILA</a>
-            <div class="nav-right">
-                <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank">LinkedIn</a></li>
-                </ul>
-                <button class="theme-toggle" id="theme-btn">◐</button>
-            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#expertise">Expertise</a></li>
+                <li><a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank">LinkedIn</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="YOUR_RESUME_URL" target="_blank" class="resume-btn">My Resume</a></li>
+            </ul>
         </div>
     </nav>
 
     <header class="hero-slider">
         <div class="slides" id="slider">
-            <div class="slide"><img src="marketing1.jpg" alt="Marketing Vision"></div>
-            <div class="slide"><img src="marketing2.jpg" alt="Creative Content"></div>
-            <div class="slide"><img src="marketing3.jpg" alt="Digital Storytelling"></div>
+            <div class="slide"><img src="cover1.jpg" alt="Creative Storytelling"></div>
+            <div class="slide"><img src="cover2.jpg" alt="Brand Strategy"></div>
+            <div class="slide"><img src="cover3.jpg" alt="Marketing Vision"></div>
         </div>
         <div class="hero-overlay">
-            <p>The Narrative Influence</p>
+            <p>Narratives that Resonate</p>
             <h1>Marketing & Storytelling</h1>
         </div>
     </header>
@@ -142,93 +136,104 @@
         
         <section class="story-section">
             <div class="story-grid">
-                <img src="my_photo_1.jpg" class="story-photo photo-left" alt="Perspective">
+                <img src="story-left.jpg" alt="Behind the scenes" class="story-photo photo-left">
+                
                 <div class="story-content">
-                    <h2 style="font-style: normal; text-align: center; margin-bottom: 30px; font-size: 2.5rem;">My Story</h2>
-                    <div class="story-text">
+                    <h2 id="story-title">The Narrative</h2>
+                    <div id="story-para" class="story-text">
                         <p>
-                            To me, marketing is not about selling—it’s about connecting. Every brand has a heartbeat, and my passion lies in finding the rhythm of that story and sharing it with the world. 
+                            Marketing, to me, has never been about selling a product—it is about sharing a heartbeat. My journey into storytelling began with the belief that every brand has a soul, and every project is a chapter waiting to be written. 
                             <br><br>
-                            I lead with empathy, crafting narratives that bridge the gap between corporate vision and human emotion. In a digital world of constant noise, I create the stories that people actually want to listen to.
+                            I specialize in finding the "why" behind the "what." In a world full of noise, I focus on the whisper that actually connects. By blending strategic marketing with human-centric storytelling, I create experiences that don't just reach audiences, they stay with them. 
+                            <br><br>
+                            Whether I am crafting digital landscapes or refining a brand's voice, I lead with empathy. Because at the end of the day, people don't follow companies—they follow stories they see themselves in.
                         </p>
                     </div>
                 </div>
-                <img src="my_photo_2.jpg" class="story-photo photo-right" alt="Vision">
+
+                <img src="story-right.jpg" alt="Creativity in action" class="story-photo photo-right">
             </div>
         </section>
 
-        <section class="project-highlight">
-            <h2 class="section-title">Project Highlight</h2>
-            <div class="featured-card">
-                <div class="main-thumb">
-                    <img src="marketing_project_large.png" alt="Featured Marketing Project">
-                </div>
-                <div class="project-content">
-                    <span class="badge">Strategic Marketing • Brand Narrative</span>
-                    <h3>The Power of Voice: [Insert Project Title]</h3>
-                    <div class="project-desc">
-                        A storytelling-first marketing initiative that completely revitalized the [Company/Organization] brand. By focusing on authentic human experiences rather than traditional ads, we drove an [X%] increase in organic reach.
-                    </div>
-                    <p style="margin-bottom: 30px; color: var(--slate);">
-                        This project involved deep audience research, content strategy across all social verticals, and a visual rebranding that aligned with the brand's core values. The result was a cohesive, inspiring narrative that fostered true community loyalty.
-                    </p>
-                    <a href="YOUR_PROJECT_LINK_HERE" class="showcase-btn" id="showcaseBtn">Professional Showcase</a>
-                </div>
+        <h2 class="section-title">Project Highlight</h2>
+        
+        <div class="featured-project">
+            <div class="main-thumb">
+                <img src="marketing-project-main.png" alt="Marketing Project Display">
+                <a href="YOUR_VIDEO_URL" class="see-more" id="projectVideo" target="_blank">▶ Play Project Video</a>
             </div>
-        </section>
+            
+            <div class="project-body">
+                <h3>Crafting a Movement: [Project Name Here]</h3>
+                <div class="tag-group">
+                    <span class="stat-badge">Lead Strategist</span>
+                    <span class="stat-badge">Visual Content</span>
+                    <span class="stat-badge">Brand Evolution</span>
+                </div>
+                
+                <div class="description-box">
+                    This project was a deep dive into [Industry/Topic]. My role was to transition the brand from a traditional corporate tone to an engaging, story-driven identity. We redefined the core messaging across all platforms, resulting in a [X%] increase in meaningful engagement and a narrative that finally matched the organization's true impact.
+                </div>
+                
+                <p style="color: var(--slate); font-size: 1.15rem; max-width: 900px;">
+                    Beyond the metrics, this project succeeded because we stopped talking <i>at</i> the audience and started talking <i>with</i> them. By implementing a new storytelling framework, we showcased the human side of the initiative, proving that authenticity is the most powerful marketing tool in existence.
+                </p>
+            </div>
+        </div>
 
     </main>
 
-    <footer class="contact-footer">
+    <section id="contact" class="contact-section">
         <div class="container">
-            <div style="text-transform: uppercase; letter-spacing: 3px; color: var(--gold); font-weight: 700; font-size: 0.85rem;">Let's Create Together</div>
+            <div class="availability-tag">Now accepting creative strategy collaborations</div>
+            <h2>Let's build a story together</h2>
             <a href="mailto:rejawana.mithila@gmail.com" class="email-link">rejawana.mithila@gmail.com</a>
-            <p style="opacity: 0.6; font-size: 0.8rem;">© 2026 Rejawana Chowdhury Mithila</p>
+            <a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank" style="color: var(--gold); text-decoration: none; text-transform: uppercase; font-weight: 700; letter-spacing: 3px; font-size: 0.9rem;">LinkedIn Profile</a>
         </div>
-    </footer>
+    </section>
 
     <script>
-        // Theme Toggle Logic
-        const themeBtn = document.getElementById('theme-btn');
-        const body = document.getElementById('body');
-        
-        themeBtn.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            const mode = body.classList.contains('dark-mode') ? 'dark' : 'light';
-            localStorage.setItem('theme', mode);
-        });
-
-        if (localStorage.getItem('theme') === 'dark') {
-            body.classList.add('dark-mode');
-        }
-
-        // Automatic Hero Slider
-        let currentSlide = 0;
+        // Automatic Slider (5 seconds)
+        let currentIdx = 0;
         const slider = document.getElementById('slider');
-        setInterval(() => {
-            currentSlide = (currentSlide + 1) % 3;
-            slider.style.transform = `translateX(-${currentSlide * 33.333}%)`;
-        }, 5000);
+        function rotateSlides() {
+            currentIdx = (currentIdx + 1) % 3;
+            slider.style.transform = `translateX(-${currentIdx * 33.333}%)`;
+        }
+        setInterval(rotateSlides, 5000);
 
-        // Background Music Control
-        const audio = document.getElementById('bgMusic');
-        const musicText = document.getElementById('music-text');
-        audio.volume = 0.15; // Subtle, non-overpowering volume
+        // Music Control Logic
+        const music = document.getElementById('bgMusic');
+        const mBtn = document.getElementById('music-text');
+        music.volume = 0.15; // Subtle background level
 
         function toggleMusic() {
-            if (audio.paused) {
-                audio.play();
-                musicText.innerText = "Experience Active";
+            if (music.paused) {
+                music.play();
+                mBtn.innerText = "Experience Active";
             } else {
-                audio.pause();
-                musicText.innerText = "Experience Paused";
+                music.pause();
+                mBtn.innerText = "Experience Paused";
             }
         }
 
-        // Auto-pause music when showcase video/link is clicked
-        document.getElementById('showcaseBtn').addEventListener('click', () => {
-            audio.pause();
-            musicText.innerText = "Experience Paused";
+        // Auto-pause music when project video is clicked
+        document.getElementById('projectVideo').addEventListener('click', () => {
+            music.pause();
+            mBtn.innerText = "Experience Paused";
+        });
+
+        // Simple Scroll Reveal for Story Section
+        window.addEventListener('scroll', () => {
+            const title = document.getElementById('story-title');
+            const para = document.getElementById('story-para');
+            const pos = title.getBoundingClientRect().top;
+            const screen = window.innerHeight / 1.3;
+            
+            if(pos < screen) {
+                title.classList.add('reveal');
+                para.classList.add('reveal');
+            }
         });
     </script>
 </body>
