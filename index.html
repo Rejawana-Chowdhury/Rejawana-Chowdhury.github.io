@@ -7,131 +7,96 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --navy: #0f172a;
-            --gold: #b59410;
-            --slate: #475569;
-            --offwhite: #f8fafc;
-            --white: #ffffff;
-            --bg: var(--offwhite);
-            --text: #1e293b;
-            --card-bg: var(--white);
-            --nav-bg: rgba(255, 255, 255, 0.98);
-            --accent: #800020;
+            --navy: #0f172a; --gold: #b59410; --slate: #475569; --offwhite: #f8fafc;
+            --white: #ffffff; --bg: var(--offwhite); --text: #1e293b;
+            --card-bg: var(--white); --nav-bg: rgba(255, 255, 255, 0.98);
         }
-
         [data-theme="dark"] {
-            --bg: #0f172a;
-            --text: #f1f5f9;
-            --card-bg: #1e293b;
+            --bg: #0f172a; --text: #f1f5f9; --card-bg: #1e293b;
             --nav-bg: rgba(15, 23, 42, 0.98);
-            --accent: #d4af37;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; transition: all 0.3s ease; overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
-        
-        p { text-align: justify; hyphens: auto; }
+        p { text-align: justify; }
+
         .container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
 
-        /* NAVIGATION */
+        /* Navigation */
         nav { position: fixed; top: 0; width: 100%; padding: 1rem 0; z-index: 1000; background: var(--nav-bg); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-family: 'Playfair Display'; font-size: 1.5rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1px; }
         [data-theme="dark"] .logo { color: var(--white); }
+        
         .nav-links { display: flex; list-style: none; gap: 2rem; align-items: center; }
         .nav-links a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .nav-links a:hover { color: var(--gold); }
+        .resume-btn { border: 1.5px solid var(--gold) !important; padding: 8px 20px !important; border-radius: 4px; color: var(--gold) !important; }
+        .resume-btn:hover { background: var(--gold); color: white !important; }
         .hamburger { display: none; font-size: 1.8rem; cursor: pointer; color: var(--text); }
 
-        /* HERO */
-        .hero { min-height: 90vh; display: flex; align-items: center; background: var(--navy); color: white; padding-top: 80px; }
+        /* Hero Section */
+        .hero { min-height: 100vh; display: flex; align-items: center; background: var(--navy); color: white; padding-top: 80px; position: relative; }
         .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 50px; align-items: center; }
-        .hero-text h1 { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--gold); line-height: 1.1; margin: 15px 0; }
-        .hero-img { width: 100%; border: 10px solid rgba(255,255,255,0.05); box-shadow: 20px 20px 0px var(--gold); }
+        .hero-text span { color: var(--gold); text-transform: uppercase; letter-spacing: 4px; font-weight: 700; font-size: 0.8rem; display: block; margin-bottom: 10px; }
+        .hero-text h1 { font-size: clamp(2.5rem, 5vw, 4rem); color: var(--gold); line-height: 1.1; margin-bottom: 20px; }
+        .hero-img { width: 100%; border: 10px solid rgba(255,255,255,0.05); box-shadow: 20px 20px 0px var(--gold); animation: slideUp 1s ease-out; }
 
-        /* EXPERTISE */
-        .expertise { padding: 100px 0; }
-        .expertise h2 { font-size: 2.8rem; margin-bottom: 40px; position: relative; display: inline-block; }
+        /* Expertise Section */
+        .expertise { padding: 120px 0; }
+        .expertise h2 { font-size: 3rem; margin-bottom: 50px; position: relative; display: inline-block; }
         .expertise h2::after { content: ''; display: block; width: 60%; height: 4px; background: var(--gold); margin-top: 10px; }
-        .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .exp-card { background: var(--card-bg); padding: 40px; border-top: 5px solid var(--gold); transition: 0.4s; box-shadow: 0 10px 30px rgba(0,0,0,0.05); cursor: pointer; }
-        .exp-card:hover { transform: translateY(-10px); }
+        
+        .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .exp-link { text-decoration: none; color: inherit; display: block; opacity: 0; transform: translateY(20px); transition: 0.6s all ease-out; }
+        .exp-link.reveal { opacity: 1; transform: translateY(0); }
+        
+        .exp-card { background: var(--card-bg); padding: 50px 40px; border-top: 5px solid var(--gold); transition: 0.4s; box-shadow: 0 10px 30px rgba(0,0,0,0.05); height: 100%; position: relative; overflow: hidden; }
+        .exp-card::before { content: '→'; position: absolute; right: 20px; bottom: 20px; color: var(--gold); font-size: 1.5rem; opacity: 0; transition: 0.3s; }
+        .exp-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .exp-card:hover::before { opacity: 1; right: 30px; }
+        .exp-card h3 { font-size: 1.6rem; margin-bottom: 15px; }
+        /* YOUR EXACT ORIGINAL P STYLING */
         .exp-card p { line-height: 1.15; color: var(--gold); font-size: 0.85rem; margin-top: 12px; text-align: left; }
 
-        /* MODAL FIXES */
-        .modal { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.95); display: none; justify-content: center; align-items: center; z-index: 2000; padding: 20px; }
-        .modal-content { background: var(--bg); width: 100%; max-width: 1000px; max-height: 90vh; overflow-y: auto; padding: clamp(25px, 5vw, 60px); position: relative; border-radius: 8px; }
-        .close { position: sticky; top: 0; float: right; font-size: 2rem; cursor: pointer; color: var(--gold); z-index: 10; font-weight: bold; }
-        .modal-header-tag { background: var(--gold); color: white; padding: 6px 15px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; display: inline-block; margin-bottom: 15px; border-radius: 2px; }
-        .description-box { border-left: 4px solid var(--gold); padding: 15px 25px; background: rgba(181, 148, 16, 0.05); margin: 20px 0; }
-        
-        /* NO CROP IMAGE GRIDS */
-        .leadership-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 20px 0; align-items: start; }
-        .leadership-img { width: 100%; height: auto; border-radius: 4px; display: block; }
+        /* Contact Section */
+        .contact-section { padding: 120px 0; background: var(--navy); color: white; text-align: center; }
+        .availability-tag { display: inline-block; padding: 8px 20px; border: 1px solid var(--gold); color: var(--gold); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
+        .email-link { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 5vw, 3.5rem); color: white; text-decoration: none; display: block; margin-bottom: 20px; transition: 0.3s; }
+        .email-link:hover { color: var(--gold); transform: scale(1.02); }
 
-        .cert-container { display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: start; margin-top: 20px; }
-        .cert-img { width: 100%; height: auto; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        /* Theme Toggle */
+        .theme-toggle { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; border: none; width: 55px; height: 55px; border-radius: 50%; cursor: pointer; z-index: 3000; box-shadow: 0 5px 15px rgba(0,0,0,0.2); font-size: 1.2rem; }
 
-        .project-row { display: grid; grid-template-columns: 320px 1fr; gap: 40px; margin-top: 40px; align-items: start; }
-        
-        /* FIX: CONSISTENT THUMBNAIL ALIGNMENT */
-        .thumb-box { 
-            position: relative; 
-            width: 100%; 
-            aspect-ratio: 16 / 9; 
-            background: #000; 
-            border-radius: 6px; 
-            overflow: hidden; 
-        }
-        .thumb-box img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: cover; 
-            display: block; 
-        }
-
-        .see-more { position: absolute; inset: 0; background: rgba(15, 23, 42, 0.85); color: var(--gold); display: flex; align-items: center; justify-content: center; text-decoration: none; font-weight: 700; opacity: 0; transition: 0.3s; }
-        .thumb-box:hover .see-more { opacity: 1; }
-        .stat-badge { display: inline-block; padding: 4px 10px; background: rgba(181, 148, 16, 0.1); border: 1px solid var(--gold); color: var(--gold); font-weight: 700; font-size: 0.7rem; margin-right: 8px; border-radius: 4px; }
-
-        /* SUB-HEADING FOR CAMPAIGN */
-        .campaign-sub-header { margin: 60px 0 10px; padding-bottom: 5px; border-bottom: 1px solid var(--gold); }
-        .campaign-sub-header h4 { font-size: 1rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
-
-        /* MOBILE ALIGNMENT */
+        /* Mobile Responsive */
         @media (max-width: 850px) {
-            .nav-links { display: none; flex-direction: column; position: absolute; top: 70px; left: 0; width: 100%; background: var(--nav-bg); padding: 2rem; }
-            .nav-links.active { display: flex; }
             .hamburger { display: block; }
-            .hero-grid, .project-row, .cert-container { grid-template-columns: 1fr; gap: 30px; text-align: center; }
-            .hero-img { max-width: 300px; margin: 0 auto; }
-            .leadership-grid { grid-template-columns: 1fr; }
-            .description-box { border-left: none; border-top: 3px solid var(--gold); padding: 20px 10px; }
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--nav-bg); padding: 2rem; border-bottom: 1px solid var(--gold); }
+            .nav-links.active { display: flex; }
+            .hero-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+            .hero-img { max-width: 350px; margin: 0 auto; }
+            .expertise h2 { font-size: 2.2rem; }
             p { text-align: center; }
         }
 
-        .theme-toggle { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 3000; display: flex; align-items: center; justify-content: center; }
-        .contact-section { padding: 120px 0; background: var(--navy); color: white; text-align: center; }
-        .availability-tag { display: inline-block; padding: 8px 20px; border: 1px solid var(--gold); color: var(--gold); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
-        .email-link { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 5vw, 3rem); color: white; text-decoration: none; display: block; margin-bottom: 20px; transition: 0.3s; }
-        .email-link:hover { color: var(--gold); }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body id="body">
 
-    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle Dark Mode">🌓</button>
 
     <nav>
         <div class="container nav-container">
-            <a href="#" class="logo">MITHILA</a>
+            <a href="index.html" class="logo">MITHILA</a>
             <div class="hamburger" onclick="toggleMenu()">☰</div>
             <ul class="nav-links" id="navMenu">
                 <li><a href="#expertise" onclick="toggleMenu()">Expertise</a></li>
                 <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+                <li><a href="YOUR_DRIVE_LINK_HERE" target="_blank" class="resume-btn">My Resume</a></li>
                 <li><a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank">LinkedIn</a></li>
-                <li><a href="YOUR_DRIVE_LINK_HERE" target="_blank" style="color: var(--gold); border: 1px solid var(--gold); padding: 5px 15px; border-radius: 4px;">My Resume</a></li>
             </ul>
         </div>
     </nav>
@@ -139,11 +104,13 @@
     <section class="hero">
         <div class="container hero-grid">
             <div class="hero-text">
-                <span style="color: var(--gold); text-transform: uppercase; letter-spacing: 4px; font-weight: 700; font-size: 0.8rem;">Communications • Strategy • Presence</span>
+                <span>Communications • Strategy • Presence</span>
                 <h1>Rejawana Chowdhury Mithila</h1>
-                <p>PR & Communications Enthusiast | Copywriter & Storyteller | Voiceover Artist | Anchor & Public Speaker</p>
+                <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; text-align: left;">PR & Communications Enthusiast | Copywriter & Storyteller | Voiceover Artist | Anchor & Public Speaker</p>
             </div>
-            <img src="profile.jpg" alt="Mithila" class="hero-img">
+            <div class="hero-image-wrapper">
+                <img src="profile.jpg" alt="Rejawana Chowdhury Mithila" class="hero-img">
+            </div>
         </div>
     </section>
 
@@ -151,104 +118,43 @@
         <div class="container">
             <h2>Expertise</h2>
             <div class="expertise-grid">
-                <div class="exp-card" onclick="openModal('pr-modal')">
-                    <h3>PR & Communications</h3>
-                    <p>Leadership, branding, public relations and stakeholder management.</p>
-                </div>
-                <div class="exp-card"><h3>Marketing & Storytelling</h3><p>Crafting narratives for digital growth.</p></div>
-                <div class="exp-card"><h3>Strategic Planning</h3><p>End-to-end campaign management.</p></div>
-                <div class="exp-card"><h3>Voiceover</h3><p>Professional narration for digital projects.</p></div>
-                <div class="exp-card"><h3>Anchoring & Public Speaking</h3><p>Live event hosting and public speaking.</p></div>
+                <a href="pr.html" class="exp-link">
+                    <div class="exp-card">
+                        <h3>PR & Communications</h3>
+                        <p>Leadership, branding, public relations and stakeholder management.</p>
+                    </div>
+                </a>
+                
+                <a href="marketing.html" class="exp-link">
+                    <div class="exp-card">
+                        <h3>Marketing & Storytelling</h3>
+                        <p>Crafting narratives for digital growth.</p>
+                    </div>
+                </a>
+                
+                <a href="strategy.html" class="exp-link">
+                    <div class="exp-card">
+                        <h3>Strategic Planning</h3>
+                        <p>End-to-end event management and problem solving.</p>
+                    </div>
+                </a>
+                
+                <a href="voiceover.html" class="exp-link">
+                    <div class="exp-card">
+                        <h3>Voiceover</h3>
+                        <p>Professional narration for digital and commercial projects.</p>
+                    </div>
+                </a>
+                
+                <a href="speaking.html" class="exp-link">
+                    <div class="exp-card">
+                        <h3>Anchoring & Public Speaking</h3>
+                        <p>Live event hosting and public speaking.</p>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
-
-    <div id="pr-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('pr-modal')">&times;</span>
-            <h2 style="font-size: 2.5rem; color: var(--gold); margin-bottom: 30px;">PR & Communications</h2>
-            
-            <div class="modal-section">
-                <div class="modal-header-tag">Leadership Excellence</div>
-                <h3>Head of Public Relations — UIU Computer Club (UIU CCL)</h3>
-                <div class="leadership-grid">
-                    <img src="leadership1.jpg" alt="PR Lead 1" class="leadership-img">
-                    <img src="leadership2.jpg" alt="PR Lead 2" class="leadership-img">
-                    <img src="leadership3.jpg" alt="PR Lead 3" class="leadership-img">
-                </div>
-                <div class="description-box">
-                    <p>Leading the PR department for UIU's largest tech community. Responsible for institutional branding, external communications, and managing media presence for large-scale university events.</p>
-                </div>
-            </div>
-
-            <div class="modal-section" style="margin-top: 50px;">
-                <div class="modal-header-tag">Certification</div>
-                <div class="cert-container">
-                    <img src="cert.jpg" alt="Certificate" class="cert-img">
-                    <div>
-                        <h3>Communication Apprentice</h3>
-                        <p style="color: var(--gold); font-weight: 600; font-size: 0.9rem;">UIU PRO & Comms | United International University</p>
-                        <div class="description-box">
-                            <p>Contributed to university PR and branding through clear writing and communication, connecting university initiatives with students and the public.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal-section" style="margin-top: 60px;">
-                <div class="modal-header-tag">Project Highlights</div>
-                
-                <div class="project-row">
-                    <div class="thumb-box"><img src="victory_thumb.png"><a href="https://www.facebook.com/uiuinfo/videos/1105234857817150/?rdid=SMDyeqdABwWhJ9Sn#" class="see-more">See Video</a></div>
-                    <div>
-                        <h3>Victory Day Tribute</h3>
-                        <div style="margin: 10px 0;"><span class="stat-badge">51k Views</span><span class="stat-badge">1.4k Reactions</span></div>
-                        <div class="description-box"><p>On-screen communication lead and voice artist for a university tribute to Bangladesh’s Victory Day.</p></div>
-                    </div>
-                </div>
-
-                <div class="project-row">
-                    <div class="thumb-box"><img src="mother_language_thumb.png"><a href="https://www.facebook.com/uiuinfo/videos/1026092639345625/?mibextid=rS40aB7S9Ucbxw6v" class="see-more">See Video</a></div>
-                    <div>
-                        <h3>Tribute to International Mother Language Day</h3>
-                        <div style="margin: 10px 0;"><span class="stat-badge">174k Views</span></div>
-                        <div class="description-box"><p>Achieved peak engagement within 48 hours. Led script, screenplay, and voiceover.</p></div>
-                    </div>
-                </div>
-
-                <div class="campaign-sub-header">
-                    <h4>Digital Campaign: Breaking the Barrier (3-Part Series)</h4>
-                </div>
-
-                <div class="project-row">
-                    <div class="thumb-box"><img src="womens_day_thumb.png"><a href="https://www.linkedin.com/feed/update/urn:li:activity:7304373738345504769/" class="see-more">See Story 1</a></div>
-                    <div>
-                        <h3>Story 01 | Khushnur Binte Jahangir (Lecturer, UIU)</h3>
-                        <div class="stat-badge">29k Views</div>
-                        <div class="description-box"><p>Led script, screenplay, and voiceover to present the university brand through resilience-focused storytelling.</p></div>
-                    </div>
-                </div>
-
-                <div class="project-row">
-                    <div class="thumb-box"><img src="womens_day_2.png"><a href="https://www.facebook.com/uiuinfo/videos/3939268242995359/?rdid=b3DYiva0QXkaVH1W#" class="see-more">See Story 2</a></div>
-                    <div>
-                        <h3>Story 02 | Sadia Ahmmed (Gold Medalist, IBO 2023)</h3>
-                        <div class="stat-badge">1M Views</div>
-                        <div class="description-box"><p>Highlighting institutional female excellence through strategic visual storytelling.</p></div>
-                    </div>
-                </div>
-
-                <div class="project-row">
-                    <div class="thumb-box"><img src="womens_day_3.png"><a href="https://www.facebook.com/uiuinfo/videos/1523232558863076/" class="see-more">See Story 3</a></div>
-                    <div>
-                        <h3>Story 03 | Antara Raisa Sohana (Student & Entrepreneur)</h3>
-                        <div class="stat-badge">34k Views</div>
-                        <div class="description-box"><p>Final installment of the series, concluding the strategic narrative of empowerment.</p></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <section id="contact" class="contact-section">
         <div class="container">
@@ -264,9 +170,23 @@
             const body = document.getElementById('body');
             body.hasAttribute('data-theme') ? body.removeAttribute('data-theme') : body.setAttribute('data-theme', 'dark');
         }
-        function toggleMenu() { document.getElementById('navMenu').classList.toggle('active'); }
-        function openModal(id) { document.getElementById(id).style.display = 'flex'; document.body.style.overflow = 'hidden'; }
-        function closeModal(id) { document.getElementById(id).style.display = 'none'; document.body.style.overflow = 'auto'; }
+        function toggleMenu() {
+            if(window.innerWidth <= 850) {
+                document.getElementById('navMenu').classList.toggle('active');
+            }
+        }
+
+        // Scroll Reveal Animation
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.exp-link').forEach(el => observer.observe(el));
     </script>
 </body>
 </html>
