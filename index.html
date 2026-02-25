@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Rejawana Chowdhury Mithila | Communications • Strategy • Presence</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
@@ -16,73 +16,95 @@
             --nav-bg: rgba(15, 23, 42, 0.98);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; transition: all 0.3s ease; overflow-x: hidden; width: 100%; }
-        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        /* Essential Reset to prevent "Scattering" */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        html, body { overflow-x: hidden; width: 100%; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; transition: background 0.3s ease; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; line-height: 1.2; }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; width: 100%; }
+        .container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 20px; }
 
         /* Navigation */
-        nav { position: fixed; top: 0; width: 100%; padding: 0.8rem 0; z-index: 1000; background: var(--nav-bg); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        nav { position: fixed; top: 0; width: 100%; padding: 15px 0; z-index: 1000; background: var(--nav-bg); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-family: 'Playfair Display'; font-size: 1.4rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1px; }
         [data-theme="dark"] .logo { color: var(--white); }
         
-        .nav-links { display: flex; list-style: none; gap: 1.5rem; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
-        .resume-btn { border: 1.5px solid var(--gold) !important; padding: 6px 15px !important; border-radius: 4px; color: var(--gold) !important; }
-        .hamburger { display: none; font-size: 1.6rem; cursor: pointer; color: var(--text); }
+        .nav-links { display: flex; list-style: none; gap: 25px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+        .resume-btn { border: 1.5px solid var(--gold) !important; padding: 8px 18px !important; border-radius: 4px; color: var(--gold) !important; transition: 0.3s; }
+        .resume-btn:hover { background: var(--gold); color: white !important; }
+        .hamburger { display: none; font-size: 1.8rem; cursor: pointer; }
 
-        /* Hero Section Fix */
-        .hero { min-height: 100vh; display: flex; align-items: center; background: var(--navy); color: white; padding: 100px 0 60px; position: relative; width: 100%; }
-        .hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: center; width: 100%; }
-        .hero-text { text-align: left; }
-        .hero-text span { color: var(--gold); text-transform: uppercase; letter-spacing: 3px; font-weight: 700; font-size: 0.75rem; display: block; margin-bottom: 12px; }
-        .hero-text h1 { font-size: clamp(2.2rem, 5vw, 4rem); color: var(--gold); line-height: 1.2; margin-bottom: 20px; }
-        .hero-text p { color: rgba(255,255,255,0.8); font-size: 1.05rem; margin-bottom: 30px; text-align: left; }
+        /* Hero - Flex Logic for Stability */
+        .hero { min-height: 100vh; display: flex; align-items: center; background: var(--navy); color: white; padding: 120px 0 80px; }
+        .hero-flex { display: flex; flex-wrap: wrap; align-items: center; gap: 40px; }
+        .hero-text { flex: 1; min-width: 300px; }
+        .hero-text span { color: var(--gold); text-transform: uppercase; letter-spacing: 3px; font-weight: 700; font-size: 0.8rem; display: block; margin-bottom: 15px; }
+        .hero-text h1 { font-size: clamp(2.2rem, 5vw, 4rem); color: var(--gold); margin-bottom: 20px; }
+        .hero-text p { color: rgba(255,255,255,0.8); font-size: 1.1rem; max-width: 600px; }
         
-        .hero-image-wrapper { width: 100%; display: flex; justify-content: center; }
-        .hero-img { width: 100%; max-width: 450px; height: auto; border: 8px solid rgba(255,255,255,0.05); box-shadow: 15px 15px 0px var(--gold); animation: slideUp 1s ease-out; display: block; }
+        .hero-image-area { flex: 0.8; min-width: 300px; display: flex; justify-content: center; }
+        .hero-img { width: 100%; max-width: 400px; height: auto; border: 10px solid rgba(255,255,255,0.05); box-shadow: 20px 20px 0px var(--gold); }
 
-        /* Expertise Section */
+        /* Expertise Grid - Fixed Alignment */
         .expertise { padding: 100px 0; }
-        .expertise h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 40px; position: relative; display: inline-block; }
-        .expertise h2::after { content: ''; display: block; width: 60%; height: 4px; background: var(--gold); margin-top: 8px; }
-        .expertise-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .expertise h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 50px; position: relative; display: inline-block; }
+        .expertise h2::after { content: ''; display: block; width: 60%; height: 4px; background: var(--gold); margin-top: 10px; }
         
-        .exp-link { text-decoration: none; color: inherit; display: block; }
-        .exp-card { background: var(--card-bg); padding: 40px 30px; border-top: 5px solid var(--gold); transition: 0.4s; box-shadow: 0 10px 30px rgba(0,0,0,0.05); height: 100%; }
-        .exp-card:hover { transform: translateY(-8px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-        .exp-card h3 { font-size: 1.4rem; margin-bottom: 15px; }
-        .exp-card p { line-height: 1.4; color: var(--gold); font-size: 0.85rem; text-align: left; }
+        .expertise-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+            gap: 30px; 
+            align-items: stretch;
+        }
+        
+        .exp-link { text-decoration: none; color: inherit; display: flex; }
+        .exp-card { 
+            background: var(--card-bg); 
+            padding: 40px; 
+            border-top: 5px solid var(--gold); 
+            transition: 0.4s ease; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .exp-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .exp-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .exp-card p { line-height: 1.4; color: var(--gold); font-size: 0.9rem; text-align: left; }
 
-        /* Contact */
-        .contact-section { padding: 80px 0; background: var(--navy); color: white; text-align: center; }
-        .availability-tag { display: inline-block; padding: 6px 15px; border: 1px solid var(--gold); color: var(--gold); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 25px; }
-        .email-link { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 5vw, 3rem); color: white; text-decoration: none; display: block; margin-bottom: 20px; word-wrap: break-word; }
+        /* Contact Section */
+        .contact-section { padding: 100px 0; background: var(--navy); color: white; text-align: center; }
+        .availability-tag { display: inline-block; padding: 8px 20px; border: 1px solid var(--gold); color: var(--gold); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
+        .email-link { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 5vw, 3.5rem); color: white; text-decoration: none; display: block; margin-bottom: 20px; transition: 0.3s; word-break: break-all; }
+        .email-link:hover { color: var(--gold); }
 
-        /* Theme Toggle Fix */
-        .theme-toggle { position: fixed; bottom: 20px; right: 20px; background: var(--gold); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 3000; box-shadow: 0 4px 10px rgba(0,0,0,0.2); font-size: 1.1rem; }
+        /* Theme Toggle Control */
+        .theme-toggle { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; border: none; width: 55px; height: 55px; border-radius: 50%; cursor: pointer; z-index: 3000; box-shadow: 0 5px 15px rgba(0,0,0,0.2); font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
 
-        /* MOBILE RESPONSIVE FIXES */
+        /* THE FIX FOR MOBILE & SCATTERED VIEW */
         @media (max-width: 850px) {
             .hamburger { display: block; }
-            .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--nav-bg); padding: 2rem; border-bottom: 1px solid var(--gold); text-align: center; gap: 1.5rem; }
+            .nav-links { 
+                display: none; flex-direction: column; position: absolute; top: 100%; left: 0; 
+                width: 100%; background: var(--nav-bg); padding: 40px 20px; 
+                border-bottom: 2px solid var(--gold); gap: 25px; text-align: center;
+            }
             .nav-links.active { display: flex; }
             
-            .hero { padding-top: 120px; }
-            .hero-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-            .hero-text { text-align: center; order: 1; }
-            .hero-text p { text-align: center; }
-            .hero-image-wrapper { order: 2; }
-            .hero-img { max-width: 300px; box-shadow: 10px 10px 0px var(--gold); }
+            .hero { padding-top: 100px; text-align: center; }
+            .hero-text { order: 1; width: 100%; }
+            .hero-text p { margin: 0 auto; text-align: center; }
+            .hero-image-area { order: 2; width: 100%; }
+            .hero-img { max-width: 280px; box-shadow: 12px 12px 0px var(--gold); }
             
-            .expertise { padding: 60px 0; }
-            .expertise-grid { grid-template-columns: 1fr; }
+            .expertise { padding: 80px 0; }
+            .expertise h2 { width: 100%; text-align: center; }
+            .expertise-grid { grid-template-columns: 1fr; gap: 20px; }
+            .exp-card { padding: 30px; text-align: center; }
+            .exp-card p { text-align: center; }
         }
-
-        @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body id="body">
@@ -96,20 +118,20 @@
             <ul class="nav-links" id="navMenu">
                 <li><a href="#expertise" onclick="toggleMenu()">Expertise</a></li>
                 <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
-                <li><a href="YOUR_DRIVE_LINK_HERE" target="_blank" class="resume-btn">My Resume</a></li>
+                <li><a href="YOUR_DRIVE_LINK" target="_blank" class="resume-btn">My Resume</a></li>
                 <li><a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank">LinkedIn</a></li>
             </ul>
         </div>
     </nav>
 
     <section class="hero">
-        <div class="container hero-grid">
+        <div class="container hero-flex">
             <div class="hero-text">
                 <span>Communications • Strategy • Presence</span>
                 <h1>Rejawana Chowdhury Mithila</h1>
                 <p>PR & Communications Enthusiast | Copywriter & Storyteller | Voiceover Artist | Anchor & Public Speaker</p>
             </div>
-            <div class="hero-image-wrapper">
+            <div class="hero-image-area">
                 <img src="profile.jpg" alt="Mithila Profile" class="hero-img">
             </div>
         </div>
@@ -124,7 +146,7 @@
                         <h3>PR & Communications</h3>
                         <p>Leadership, branding, public relations and stakeholder management.</p>
                     </div>
-                </a>ch
+                </a>
                 <a href="marketing.html" class="exp-link">
                     <div class="exp-card">
                         <h3>Marketing & Storytelling</h3>
@@ -155,7 +177,7 @@
 
     <section id="contact" class="contact-section">
         <div class="container">
-            <div class="availability-tag">Available for Part-time roles • Internships • Freelance projects</div>
+            <div class="availability-tag">Available for Part-time • Internships • Freelance</div>
             <a href="mailto:rejawana.mithila@gmail.com" class="email-link">rejawana.mithila@gmail.com</a>
             <a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank" style="color: var(--gold); text-decoration: none; text-transform: uppercase; font-weight: 700; letter-spacing: 2px; font-size: 0.8rem;">LinkedIn Profile</a>
         </div>
