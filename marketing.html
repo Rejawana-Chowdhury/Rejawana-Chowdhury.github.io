@@ -19,10 +19,32 @@
 
         .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 25px; }
 
-        /* Navigation - Continuity with Portfolio */
+        /* Navigation - Back Button & Dropdown Requirements */
         nav { position: fixed; top: 0; width: 100%; padding: 15px 0; z-index: 1000; background: var(--nav-bg); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        
+        .logo-wrap { display: flex; align-items: center; gap: 12px; position: relative; }
+        .back-symbol { font-size: 1.2rem; color: var(--navy); cursor: pointer; transition: 0.3s; padding-right: 5px; }
+        .back-symbol:hover { color: var(--gold); }
         .logo { font-family: 'Playfair Display'; font-size: 1.4rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1px; }
+        
+        .dropdown-trigger { cursor: pointer; font-size: 0.9rem; transition: 0.4s; color: var(--navy); display: inline-block; }
+        .dropdown-trigger.active { transform: rotate(180deg); color: var(--gold); }
+        
+        .nav-dropdown { 
+            position: absolute; top: 100%; left: 40px; background: white; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1); list-style: none; 
+            padding: 10px 0; min-width: 220px; display: none; 
+            border-radius: 4px; z-index: 1001; margin-top: 10px;
+        }
+        .nav-dropdown.show { display: block; }
+        .nav-dropdown li a { 
+            display: block; padding: 12px 20px; text-decoration: none; 
+            color: var(--navy); font-size: 0.75rem; text-transform: uppercase; 
+            font-weight: 600; letter-spacing: 1px;
+        }
+        .nav-dropdown li a:hover { background: var(--offwhite); color: var(--gold); }
+
         .nav-links { display: flex; list-style: none; gap: 25px; align-items: center; }
         .nav-links a { text-decoration: none; color: var(--navy); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s; }
         .nav-links a:hover { color: var(--gold); }
@@ -36,71 +58,81 @@
             padding: 12px 20px; border-radius: 40px; color: var(--gold);
             cursor: pointer; display: flex; align-items: center; gap: 12px;
             font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px;
-            backdrop-filter: blur(10px); transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px); transition: 0.4s;
         }
         #music-control:hover { background: var(--gold); color: white; transform: translateY(-5px); }
 
         /* Automatic Photo Slider */
-        .hero-slider { position: relative; width: 100%; height: 85vh; overflow: hidden; background: #000; margin-top: 0; }
+        .hero-slider { position: relative; width: 100%; height: 85vh; overflow: hidden; background: #000; }
         .slides { display: flex; width: 300%; height: 100%; transition: transform 1.5s cubic-bezier(0.645, 0.045, 0.355, 1); }
-        .slide { width: 33.333%; height: 100%; position: relative; }
+        .slide { width: 33.333%; height: 100%; }
         .slide img { width: 100%; height: 100%; object-fit: cover; opacity: 0.65; }
-        .hero-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; z-index: 10; padding: 0 20px; }
-        .hero-overlay h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); color: var(--gold); margin-bottom: 10px; text-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .hero-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; z-index: 10; }
+        .hero-overlay h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); color: var(--gold); margin-bottom: 10px; }
         .hero-overlay p { font-size: 1.1rem; font-weight: 300; letter-spacing: 5px; text-transform: uppercase; }
 
-        /* My Story Section - Aesthetic Portfolio Style */
-        .story-section { padding: 140px 0; background: var(--white); overflow: hidden; }
-        .story-grid { display: grid; grid-template-columns: 1fr 1.8fr 1fr; gap: 40px; align-items: center; position: relative; }
-        .story-photo { width: 100%; border-radius: 5px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); transition: 0.6s; object-fit: cover; }
-        .photo-left { transform: rotate(-2deg) translateY(50px); }
-        .photo-right { transform: rotate(2deg) translateY(-50px); }
-        .story-content { text-align: center; padding: 0 20px; z-index: 2; }
-        .story-content h2 { font-size: 3.2rem; color: var(--navy); margin-bottom: 40px; opacity: 0; transform: translateY(20px); transition: 1s forwards; }
-        .story-text { font-size: 1.2rem; color: var(--slate); text-align: justify; line-height: 2.2; font-style: italic; font-family: 'Playfair Display', serif; opacity: 0; transform: translateY(20px); transition: 1s 0.3s forwards; }
+        /* The Narrative - Professional Wrap Layout */
+        .story-section { padding: 120px 0; background: var(--white); }
+        .editorial-layout { position: relative; max-width: 900px; margin: 0 auto; }
         
-        /* Reveal Class for Scroll Animation */
-        .reveal { opacity: 1 !important; transform: translateY(0) !important; }
+        .story-header { text-align: center; margin-bottom: 60px; }
+        .story-header h2 { font-size: 3.5rem; color: var(--navy); }
 
-        /* Project Highlight - Bigger Body */
+        .content-wrapper { position: relative; overflow: hidden; }
+        
+        .img-float-left { 
+            float: left; width: 40%; margin: 0 40px 20px 0; 
+            border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .img-float-right { 
+            float: right; width: 35%; margin: 20px 0 20px 40px; 
+            border-radius: 4px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .story-text-wrap { 
+            font-size: 1.25rem; color: var(--slate); line-height: 2.2; 
+            font-style: italic; font-family: 'Playfair Display', serif;
+            text-align: justify;
+        }
+
+        .reveal { opacity: 1 !important; transform: translateY(0) !important; transition: 1s; }
+
+        /* Project Highlight - Professional Showcase Style */
         .section-title { font-size: 2.5rem; margin: 100px 0 60px; border-bottom: 3px solid var(--gold); display: inline-block; padding-bottom: 15px; }
         .featured-project { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.06); margin-bottom: 140px; }
-        .main-thumb { position: relative; width: 100%; aspect-ratio: 21/9; background: #000; overflow: hidden; }
-        .main-thumb img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 1.2s; }
-        .main-thumb:hover img { transform: scale(1.05); opacity: 1; }
-        .see-more { position: absolute; inset: 0; background: rgba(15, 23, 42, 0.4); color: white; display: flex; align-items: center; justify-content: center; text-decoration: none; font-weight: 700; opacity: 0; transition: 0.5s; text-transform: uppercase; letter-spacing: 3px; font-size: 1.2rem; border: 1px solid rgba(255,255,255,0.2); }
-        .main-thumb:hover .see-more { opacity: 1; backdrop-filter: blur(3px); }
+        
+        .main-thumb { position: relative; width: 100%; aspect-ratio: 21/9; background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .main-thumb img { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.75; transition: 1.2s; }
+        
+        .professional-showcase-btn { 
+            position: relative; z-index: 5; background: var(--gold); 
+            color: white; padding: 12px 30px; text-decoration: none; 
+            font-weight: 700; text-transform: uppercase; font-size: 0.85rem; 
+            letter-spacing: 2px; border-radius: 2px; transition: 0.3s;
+        }
+        .professional-showcase-btn:hover { background: var(--navy); transform: scale(1.05); }
 
         .project-body { padding: 80px; }
-        .project-body h3 { font-size: 2.8rem; color: var(--navy); margin-bottom: 25px; line-height: 1.2; }
-        .tag-group { margin-bottom: 30px; }
-        .stat-badge { display: inline-block; padding: 8px 18px; background: rgba(181, 148, 16, 0.08); border: 1px solid var(--gold); color: var(--gold); font-weight: 700; font-size: 0.85rem; margin: 0 12px 15px 0; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; }
-        .description-box { border-left: 6px solid var(--gold); padding: 40px; background: rgba(181, 148, 16, 0.03); margin: 40px 0; font-size: 1.3rem; line-height: 2; color: var(--text); }
+        .project-body h3 { font-size: 2.8rem; color: var(--navy); margin-bottom: 25px; }
+        .stat-badge { display: inline-block; padding: 8px 18px; background: rgba(181, 148, 16, 0.08); border: 1px solid var(--gold); color: var(--gold); font-weight: 700; font-size: 0.85rem; margin: 0 12px 15px 0; border-radius: 4px; text-transform: uppercase; }
+        .description-box { border-left: 6px solid var(--gold); padding: 40px; background: rgba(181, 148, 16, 0.03); margin: 40px 0; font-size: 1.3rem; }
 
         /* Contact Section */
         .contact-section { padding: 140px 0; background: var(--navy); color: white; text-align: center; }
-        .availability-tag { display: inline-block; padding: 10px 25px; border: 1px solid var(--gold); color: var(--gold); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 40px; }
-        .email-link { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 4rem); color: white; text-decoration: none; display: block; margin-bottom: 30px; transition: 0.4s; }
-        .email-link:hover { color: var(--gold); transform: scale(1.02); }
+        .email-link { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 4rem); color: white; text-decoration: none; display: block; margin-bottom: 30px; }
 
-        /* Mobile Adjustments */
         @media (max-width: 900px) {
             .nav-links { display: none; }
-            .story-grid { grid-template-columns: 1fr; gap: 60px; }
-            .photo-left, .photo-right { transform: rotate(0) translateY(0); max-width: 350px; margin: 0 auto; order: 2; }
-            .story-content { order: 1; }
-            .project-body { padding: 40px 25px; }
+            .img-float-left, .img-float-right { float: none; width: 100%; margin: 20px 0; }
+            .project-body { padding: 40px 20px; }
             .main-thumb { aspect-ratio: 16/9; }
-            #music-control { bottom: 20px; left: 20px; padding: 10px 15px; font-size: 0.6rem; }
         }
     </style>
 </head>
 <body>
 
-    <audio id="bgMusic" loop>
-        <source src="soothing-track.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="bgMusic" loop><source src="soothing-track.mp3" type="audio/mpeg"></audio>
 
     <div id="music-control" onclick="toggleMusic()">
         <span id="music-icon">♫</span>
@@ -109,22 +141,33 @@
 
     <nav>
         <div class="container nav-container">
-            <a href="index.html" class="logo">MITHILA</a>
+            <div class="logo-wrap">
+                <span class="back-symbol" onclick="history.back()">&#10094;</span>
+                <a href="index.html" class="logo">MITHILA</a>
+                <span class="dropdown-trigger" id="dropTrigger" onclick="toggleDropdown()">&#10087;</span>
+                <ul class="nav-dropdown" id="navDropdown">
+                    <li><a href="pr.html">PR & Communications</a></li>
+                    <li><a href="marketing.html">Marketing & Storytelling</a></li>
+                    <li><a href="strategy.html">Creative Strategy</a></li>
+                    <li><a href="digital.html">Digital Presence</a></li>
+                    <li><a href="branding.html">Brand Evolution</a></li>
+                </ul>
+            </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#expertise">Expertise</a></li>
-                <li><a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank">LinkedIn</a></li>
+                <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="YOUR_RESUME_URL" target="_blank" class="resume-btn">My Resume</a></li>
+                <li><a href="#" class="resume-btn">My Resume</a></li>
             </ul>
         </div>
     </nav>
 
     <header class="hero-slider">
         <div class="slides" id="slider">
-            <div class="slide"><img src="cover1.jpg" alt="Creative Storytelling"></div>
-            <div class="slide"><img src="cover2.jpg" alt="Brand Strategy"></div>
-            <div class="slide"><img src="cover3.jpg" alt="Marketing Vision"></div>
+            <div class="slide"><img src="cover1.jpg" alt="1"></div>
+            <div class="slide"><img src="cover2.jpg" alt="2"></div>
+            <div class="slide"><img src="cover3.jpg" alt="3"></div>
         </div>
         <div class="hero-overlay">
             <p>Narratives that Resonate</p>
@@ -133,108 +176,79 @@
     </header>
 
     <main class="container">
-        
         <section class="story-section">
-            <div class="story-grid">
-                <img src="story-left.jpg" alt="Behind the scenes" class="story-photo photo-left">
-                
-                <div class="story-content">
+            <div class="editorial-layout">
+                <div class="story-header">
                     <h2 id="story-title">The Narrative</h2>
-                    <div id="story-para" class="story-text">
-                        <p>
-                            Marketing, to me, has never been about selling a product—it is about sharing a heartbeat. My journey into storytelling began with the belief that every brand has a soul, and every project is a chapter waiting to be written. 
-                            <br><br>
-                            I specialize in finding the "why" behind the "what." In a world full of noise, I focus on the whisper that actually connects. By blending strategic marketing with human-centric storytelling, I create experiences that don't just reach audiences, they stay with them. 
-                            <br><br>
-                            Whether I am crafting digital landscapes or refining a brand's voice, I lead with empathy. Because at the end of the day, people don't follow companies—they follow stories they see themselves in.
-                        </p>
+                </div>
+                
+                <div class="content-wrapper">
+                    <img src="story-left.jpg" alt="Behind the scenes" class="img-float-left">
+                    <div class="story-text-wrap" id="story-para">
+                        Marketing, to me, has never been about selling a product—it is about sharing a heartbeat. My journey into storytelling began with the belief that every brand has a soul, and every project is a chapter waiting to be written.
+                        <br><br>
+                        I specialize in finding the "why" behind the "what." In a world full of noise, I focus on the whisper that actually connects. By blending strategic marketing with human-centric storytelling, I create experiences that don't just reach audiences, they stay with them.
+                        <img src="story-right.jpg" alt="Creativity in action" class="img-float-right">
+                        Whether I am crafting digital landscapes or refining a brand's voice, I lead with empathy. Because at the end of the day, people don't follow companies—they follow stories they see themselves in.
                     </div>
                 </div>
-
-                <img src="story-right.jpg" alt="Creativity in action" class="story-photo photo-right">
             </div>
         </section>
 
         <h2 class="section-title">Project Highlight</h2>
-        
         <div class="featured-project">
             <div class="main-thumb">
-                <img src="marketing-project-main.png" alt="Marketing Project Display">
-                <a href="YOUR_VIDEO_URL" class="see-more" id="projectVideo" target="_blank">▶ Play Project Video</a>
+                <img src="marketing-project-main.png" alt="Project">
+                <a href="#" class="professional-showcase-btn">Professional Showcase</a>
             </div>
-            
             <div class="project-body">
-                <h3>Crafting a Movement: [Project Name Here]</h3>
+                <h3>Crafting a Movement</h3>
                 <div class="tag-group">
                     <span class="stat-badge">Lead Strategist</span>
-                    <span class="stat-badge">Visual Content</span>
                     <span class="stat-badge">Brand Evolution</span>
                 </div>
-                
                 <div class="description-box">
-                    This project was a deep dive into [Industry/Topic]. My role was to transition the brand from a traditional corporate tone to an engaging, story-driven identity. We redefined the core messaging across all platforms, resulting in a [X%] increase in meaningful engagement and a narrative that finally matched the organization's true impact.
+                    This project was a deep dive into story-driven identity, transitioning a traditional corporate tone into a human-centric narrative.
                 </div>
-                
-                <p style="color: var(--slate); font-size: 1.15rem; max-width: 900px;">
-                    Beyond the metrics, this project succeeded because we stopped talking <i>at</i> the audience and started talking <i>with</i> them. By implementing a new storytelling framework, we showcased the human side of the initiative, proving that authenticity is the most powerful marketing tool in existence.
-                </p>
             </div>
         </div>
-
     </main>
 
     <section id="contact" class="contact-section">
         <div class="container">
-            <div class="availability-tag">Now accepting creative strategy collaborations</div>
             <h2>Let's build a story together</h2>
             <a href="mailto:rejawana.mithila@gmail.com" class="email-link">rejawana.mithila@gmail.com</a>
-            <a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank" style="color: var(--gold); text-decoration: none; text-transform: uppercase; font-weight: 700; letter-spacing: 3px; font-size: 0.9rem;">LinkedIn Profile</a>
         </div>
     </section>
 
     <script>
-        // Automatic Slider (5 seconds)
+        function toggleDropdown() {
+            const drop = document.getElementById('navDropdown');
+            const trigger = document.getElementById('dropTrigger');
+            drop.classList.toggle('show');
+            trigger.classList.toggle('active');
+        }
+
         let currentIdx = 0;
         const slider = document.getElementById('slider');
-        function rotateSlides() {
+        setInterval(() => {
             currentIdx = (currentIdx + 1) % 3;
             slider.style.transform = `translateX(-${currentIdx * 33.333}%)`;
-        }
-        setInterval(rotateSlides, 5000);
+        }, 5000);
 
-        // Music Control Logic
         const music = document.getElementById('bgMusic');
         const mBtn = document.getElementById('music-text');
-        music.volume = 0.15; // Subtle background level
-
         function toggleMusic() {
-            if (music.paused) {
-                music.play();
-                mBtn.innerText = "Experience Active";
-            } else {
-                music.pause();
-                mBtn.innerText = "Experience Paused";
-            }
+            if (music.paused) { music.play(); mBtn.innerText = "Experience Active"; }
+            else { music.pause(); mBtn.innerText = "Experience Paused"; }
         }
 
-        // Auto-pause music when project video is clicked
-        document.getElementById('projectVideo').addEventListener('click', () => {
-            music.pause();
-            mBtn.innerText = "Experience Paused";
-        });
-
-        // Simple Scroll Reveal for Story Section
-        window.addEventListener('scroll', () => {
-            const title = document.getElementById('story-title');
-            const para = document.getElementById('story-para');
-            const pos = title.getBoundingClientRect().top;
-            const screen = window.innerHeight / 1.3;
-            
-            if(pos < screen) {
-                title.classList.add('reveal');
-                para.classList.add('reveal');
+        window.onclick = function(e) {
+            if (!e.target.matches('.dropdown-trigger')) {
+                document.getElementById('navDropdown').classList.remove('show');
+                document.getElementById('dropTrigger').classList.remove('active');
             }
-        });
+        }
     </script>
 </body>
 </html>
