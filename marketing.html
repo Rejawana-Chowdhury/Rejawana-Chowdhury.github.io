@@ -14,10 +14,9 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        /* Body text font size reduced */
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; font-size: 0.85rem; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; font-size: 0.85rem; text-align: justify; }
         
-        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; text-align: left; }
         html { scroll-behavior: smooth; }
 
         .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 25px; }
@@ -43,20 +42,22 @@
         .page-header { padding: 160px 0 80px; background: var(--navy); color: white; text-align: center; }
         .header-tag { background: var(--gold); color: white; padding: 6px 15px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; display: inline-block; margin-bottom: 20px; border-radius: 2px; }
         .page-header h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--gold); margin-bottom: 20px; }
+        .page-header p { text-align: center; }
 
-        /* The Narrative */
-        .story-section { padding: 100px 0; background: var(--white); }
+        /* The Narrative & Alignment Fixes */
+        .story-section { padding: 80px 0; background: var(--white); }
         .editorial-layout { position: relative; max-width: 950px; margin: 0 auto; }
-        .story-header { text-align: center; margin-bottom: 50px; }
+        .story-header { text-align: left; margin-bottom: 40px; }
         .story-header h2 { font-size: 2.8rem; color: var(--navy); border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 8px; }
-        .content-wrapper { position: relative; overflow: hidden; margin-top: 40px; }
-        .img-float-left { float: left; width: 38%; margin: 0 40px 20px 0; border-radius: 4px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-        .img-float-right { float: right; width: 35%; margin: 20px 0 20px 40px; border-radius: 4px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-        .story-text-wrap { font-size: 1.05rem; color: var(--slate); line-height: 2; font-style: italic; font-family: 'Playfair Display', serif; text-align: justify; }
+        
+        .content-wrapper { overflow: hidden; }
+        .img-float-right { float: right; width: 40%; margin: 0 0 20px 30px; border-radius: 4px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+        .story-text-wrap { font-size: 1.05rem; color: var(--slate); line-height: 2; font-style: italic; font-family: 'Playfair Display', serif; }
 
-        /* Project Section */
-        .section-title { font-size: 2.2rem; margin: 40px 0 20px; border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 10px; }
-        .featured-project { background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.06); margin-bottom: 50px; max-width: 1000px; margin-left: auto; margin-right: auto; }
+        /* Project Section Alignment and Gap Fix */
+        .section-title { font-size: 2.2rem; margin: 0 0 30px 0; border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 10px; text-align: left; }
+        .featured-project { background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.06); margin-bottom: 50px; max-width: 1000px; }
+        
         .main-thumb { position: relative; width: 100%; aspect-ratio: 16/9; background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center; cursor: pointer; text-decoration: none; }
         .main-thumb img { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.6s ease; }
         .watch-video-overlay { position: relative; z-index: 5; color: var(--gold); font-weight: 700; text-transform: uppercase; font-size: 1rem; letter-spacing: 3px; opacity: 0; transform: translateY(10px); transition: 0.4s ease; padding: 10px 20px; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); border-radius: 4px; }
@@ -67,18 +68,30 @@
         .project-body h3 { font-size: 1.8rem; color: var(--navy); margin-bottom: 15px; }
         .client-info { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(0,0,0,0.05); }
         .client-logo { width: 45px; height: 45px; border-radius: 50%; object-fit: contain; background: #f1f5f9; border: 1px solid rgba(0,0,0,0.05); }
-        .client-meta { font-size: 0.85rem; }
+        .client-meta { font-size: 0.85rem; text-align: left; }
         .client-meta a { color: var(--gold); text-decoration: none; font-weight: 600; }
         .stat-badge { display: inline-block; padding: 4px 12px; background: rgba(181, 148, 16, 0.08); border: 1px solid var(--gold); color: var(--gold); font-weight: 700; font-size: 0.7rem; margin: 0 8px 8px 0; border-radius: 4px; text-transform: uppercase; }
         
-        /* Box width and styling matched to screenshot */
         .description-box { border-left: 4px solid var(--gold); padding: 20px 30px; background: rgba(181, 148, 16, 0.03); margin: 20px 0; font-size: 0.9rem; color: var(--slate); line-height: 1.7; }
 
-        /* IDENTICAL CONTACT SECTION - 1:1 REPLICA OF PR SCREENSHOT */
         /* Contact Section */
         .contact-section { padding: 120px 0; background: var(--navy); color: white; text-align: center; }
-        .availability-tag { display: inline-block; padding: 8px 20px; border: 1px solid var(--gold); color: var(--gold); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
-        .email-link { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 5vw, 3rem); color: white; text-decoration: none; display: block; margin-bottom: 20px; }
+        .contact-section h2, .contact-section a { text-align: center; }
+        .availability-box { display: inline-block; padding: 10px 20px; border: 1px solid var(--gold); margin-bottom: 40px; }
+        .availability-tag { color: var(--gold); font-weight: 700; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; }
+        .contact-heading { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; font-weight: 400; margin-bottom: 10px; color: #ffffff; }
+        .email-link { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 4rem); color: #ffffff; text-decoration: none; display: block; margin-bottom: 20px; font-weight: 400; }
+        .social-link { color: var(--gold); text-decoration: none; text-transform: uppercase; font-weight: 700; font-size: 0.75rem; letter-spacing: 2px; }
+
+        /* Mobile Responsivity */
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .img-float-right { float: none; width: 100%; margin: 20px 0; }
+            .project-body { padding: 30px 20px; }
+            .section-title { font-size: 1.8rem; }
+            h2, h3 { text-align: center; }
+            .story-header { text-align: center; }
+        }
     </style>
 </head>
 <body>
@@ -101,7 +114,7 @@
                     <li><a href="marketing.html">Marketing & Storytelling</a></li>
                     <li><a href="strategy.html">Strategic Planning</a></li>
                     <li><a href="digital.html">Voiceover</a></li>
-                    <li><a href="branding.html">Anchoeing & Public Speaking</a></li>
+                    <li><a href="branding.html">Anchoring & Public Speaking</a></li>
                 </ul>
             </div>
             <ul class="nav-links">
@@ -130,26 +143,27 @@
                 </div>
                 <div class="content-wrapper">
                     <div class="story-text-wrap" id="story-para">
-                       There resides a tree skeleton in the palms of our hands- that’s what I grew up believing. When I pressed my palms together, I saw branches in those scattered lines. An old tree. Leafless. Waiting. I used to wonder if winter was the only season in human life.
+                        <img src="story-left.jpg" alt="Narrative Image" class="img-float-right">
+                        There resides a tree skeleton in the palms of our hands- that’s what I grew up believing. When I pressed my palms together, I saw branches in those scattered lines. An old tree. Leafless. Waiting. I used to wonder if winter was the only season in human life.
                         <br><br>
-                         <img src="story-left.jpg" alt="Creativity in action" class="img-float-right">
-                       I drew suns in blue, flowers in impossible shapes, and forests inspired by 'রুশদেশের উপকথা'. A single word could unfold an entire universe in my mind. I would spend hours narrating those imaginary worlds to my mother- much to her exhaustion. Creation, for me, was never an activity. It was instinct.
-                       Painting taught me flow. Music taught me rhythm. Even leaving pickles to dry on the rooftop taught me patience, and gratitude for air, for time, for process.
+                        I drew suns in blue, flowers in impossible shapes, and forests inspired by 'রুশদেশের উপকথা'. A single word could unfold an entire universe in my mind. I would spend hours narrating those imaginary worlds to my mother- much to her exhaustion. Creation, for me, was never an activity. It was instinct. Painting taught me flow. Music taught me rhythm. Even leaving pickles to dry on the rooftop taught me patience, and gratitude for air, for time, for process.
                         <br><br>
                         That is how I understand brands.
                         <br><br>
                         I don’t see products. I see seasons. I see roots. I see the silent winters before a spring. Marketing, to me, is not persuasion- it is interpretation. It is finding the story already living beneath the surface and giving it language.
                         <br><br>
                         I learned early that nothing is ever just what it looks like. Not palms. Not seasons. Not brands.
-                        <br>
+                        <br><br>
                         I translate heartbeats into narratives people recognize as their own.
+                    </div>
                 </div>
             </div>
         </section>
+
         <h2 class="section-title">Project Highlights</h2>
-    
+        
         <div class="featured-project">
-            <a href="https://web.facebook.com/HomelyInterior.Ltd/videos/1113501406687012/?mibextid=rS40aB7S9Ucbxw6v&_rdc=1&_rdr#" target="_blank" class="main-thumb">
+            <a href="https://web.facebook.com/HomelyInterior.Ltd/videos/1113501406687012/" target="_blank" class="main-thumb">
                 <img src="homely_thumb.png" alt="Project Thumbnail">
                 <div class="watch-video-overlay">Watch Video</div>
             </a>
@@ -177,12 +191,14 @@
         </div>
     </main>
 
-   <section id="contact" class="contact-section">
+    <section id="contact" class="contact-section">
         <div class="container">
-            <div class="availability-tag">Available for Part-time roles, Internships, and Freelance projects.</div>
-            <h2>Let's Connect</h2>
+            <div class="availability-box">
+                <div class="availability-tag">AVAILABLE FOR PART-TIME ROLES, INTERNSHIPS, AND FREELANCE PROJECTS.</div>
+            </div>
+            <h2 class="contact-heading">Let's Connect</h2>
             <a href="mailto:rejawana.mithila@gmail.com" class="email-link">rejawana.mithila@gmail.com</a>
-            <a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank" style="color: var(--gold); text-decoration: none; text-transform: uppercase; font-weight: 700; letter-spacing: 2px;">LinkedIn Profile</a>
+            <a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank" class="social-link">LINKEDIN PROFILE</a>
         </div>
     </section>
 
