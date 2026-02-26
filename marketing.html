@@ -58,16 +58,17 @@
             backdrop-filter: blur(10px);
         }
 
-        /* Hero Slider */
-        .hero-slider { position: relative; width: 100%; height: 85vh; overflow: hidden; background: #000; }
+        /* Hero matched to PR Styling */
+        .page-header { padding: 160px 0 80px; background: var(--navy); color: white; text-align: center; position: relative; overflow: hidden; }
+        .header-tag { background: var(--gold); color: white; padding: 6px 15px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; display: inline-block; margin-bottom: 20px; border-radius: 2px; position: relative; z-index: 2; }
+        .page-header h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--gold); margin-bottom: 20px; position: relative; z-index: 2; }
+        .page-header p { max-width: 800px; margin: 0 auto; opacity: 0.9; position: relative; z-index: 2; }
+
+        /* Hero Slider Integration */
+        .hero-bg-slider { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; }
         .slides { display: flex; width: 300%; height: 100%; transition: transform 1.5s cubic-bezier(0.645, 0.045, 0.355, 1); }
         .slide { width: 33.333%; height: 100%; }
-        .slide img { width: 100%; height: 100%; object-fit: cover; opacity: 0.65; }
-        
-        .hero-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; z-index: 10; padding: 0 20px; }
-        .showcase-badge { background: var(--gold); color: white; padding: 6px 15px; font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 2px; margin-bottom: 20px; }
-        .hero-overlay h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); color: var(--gold); margin-bottom: 15px; }
-        .hero-overlay .sub-text { font-size: clamp(0.9rem, 2vw, 1.1rem); max-width: 700px; font-weight: 300; letter-spacing: 1px; color: rgba(255,255,255,0.9); }
+        .slide img { width: 100%; height: 100%; object-fit: cover; opacity: 0.3; }
 
         /* The Narrative Layout */
         .story-section { padding: 120px 0; background: var(--white); }
@@ -96,13 +97,12 @@
         .stat-badge { display: inline-block; padding: 6px 14px; background: rgba(181, 148, 16, 0.08); border: 1px solid var(--gold); color: var(--gold); font-weight: 700; font-size: 0.75rem; margin: 0 10px 10px 0; border-radius: 4px; text-transform: uppercase; }
         .description-box { border-left: 4px solid var(--gold); padding: 25px 40px; background: rgba(181, 148, 16, 0.03); margin: 30px 0; font-size: 1.1rem; color: var(--slate); }
 
-        /* Contact Section - Matched to PR Code precisely with reduced gaps */
+        /* Contact Section - Matched precisely to PR code width and styling */
         .contact-section { padding: 120px 0; background: var(--navy); color: white; text-align: center; }
-        .availability-tag { display: inline-block; padding: 8px 20px; border: 1px solid var(--gold); color: var(--gold); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; }
-        .contact-label { font-family: 'Inter', sans-serif; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; color: var(--white); font-weight: 400; opacity: 0.9; }
-        .email-link { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 5vw, 3rem); color: white; text-decoration: none; display: block; margin-bottom: 10px; transition: 0.4s; }
+        .availability-tag { display: inline-block; padding: 8px 20px; border: 1px solid var(--gold); color: var(--gold); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
+        .email-link { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 5vw, 3rem); color: white; text-decoration: none; display: block; margin-bottom: 20px; }
         .email-link:hover { color: var(--gold); }
-        .linkedin-footer { color: var(--gold); text-decoration: none; text-transform: uppercase; font-weight: 700; letter-spacing: 3px; font-size: 0.9rem; transition: 0.3s; }
+        .linkedin-footer { color: var(--gold); text-decoration: none; text-transform: uppercase; font-weight: 700; letter-spacing: 2px; font-size: 0.9rem; transition: 0.3s; }
         .linkedin-footer:hover { color: white; }
 
         @media (max-width: 900px) {
@@ -145,16 +145,18 @@
         </div>
     </nav>
 
-    <header class="hero-slider">
-        <div class="slides" id="slider">
-            <div class="slide"><img src="cover1.jpg" alt="1"></div>
-            <div class="slide"><img src="cover2.jpg" alt="2"></div>
-            <div class="slide"><img src="cover3.jpg" alt="3"></div>
+    <header class="page-header">
+        <div class="hero-bg-slider">
+            <div class="slides" id="slider">
+                <div class="slide"><img src="cover1.jpg" alt="1"></div>
+                <div class="slide"><img src="cover2.jpg" alt="2"></div>
+                <div class="slide"><img src="cover3.jpg" alt="3"></div>
+            </div>
         </div>
-        <div class="hero-overlay">
-            <div class="showcase-badge">Professional Showcase</div>
+        <div class="container">
+            <div class="header-tag">Professional Showcase</div>
             <h1>Marketing & Storytelling</h1>
-            <p class="sub-text">Crafting narratives for digital and commercial growth.</p>
+            <p>Crafting narratives for digital and commercial growth.</p>
         </div>
     </header>
 
@@ -198,8 +200,8 @@
 
     <section id="contact" class="contact-section">
         <div class="container">
-            <div class="availability-tag">AVAILABLE FOR PART-TIME ROLES, INTERNSHIPS, AND FREELANCE PROJECTS.</div>
-            <div class="contact-label">Let's Connect</div>
+            <div class="availability-tag">Available for Part-time roles, Internships, and Freelance projects.</div>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 20px;">Let's Connect</h2>
             <a href="mailto:rejawana.mithila@gmail.com" class="email-link">rejawana.mithila@gmail.com</a>
             <a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank" class="linkedin-footer">LINKEDIN PROFILE</a>
         </div>
