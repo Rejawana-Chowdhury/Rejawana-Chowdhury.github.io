@@ -19,13 +19,12 @@
 
         .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 25px; }
 
-        /* Navigation - Consistent Gold Symbols */
+        /* Navigation */
         nav { position: fixed; top: 0; width: 100%; padding: 15px 0; z-index: 1000; background: var(--nav-bg); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         
         .logo-wrap { display: flex; align-items: center; gap: 8px; position: relative; }
         .back-symbol { font-size: 1.2rem; color: var(--gold); cursor: pointer; transition: 0.3s; padding-right: 5px; font-weight: bold; }
-        .back-symbol:hover { opacity: 0.7; }
         
         .logo { font-family: 'Playfair Display'; font-size: 1.4rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1px; }
         
@@ -44,13 +43,10 @@
             color: var(--navy); font-size: 0.75rem; text-transform: uppercase; 
             font-weight: 600; letter-spacing: 1px;
         }
-        .nav-dropdown li a:hover { background: var(--offwhite); color: var(--gold); }
 
         .nav-links { display: flex; list-style: none; gap: 25px; align-items: center; }
         .nav-links a { text-decoration: none; color: var(--navy); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s; }
-        .nav-links a:hover { color: var(--gold); }
         .resume-btn { border: 1.5px solid var(--gold); padding: 10px 20px; border-radius: 4px; color: var(--gold) !important; }
-        .resume-btn:hover { background: var(--gold); color: white !important; }
 
         /* Floating Music Experience Controller */
         #music-control {
@@ -59,20 +55,22 @@
             padding: 12px 20px; border-radius: 40px; color: var(--gold);
             cursor: pointer; display: flex; align-items: center; gap: 12px;
             font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px;
-            backdrop-filter: blur(10px); transition: 0.4s;
+            backdrop-filter: blur(10px);
         }
-        #music-control:hover { background: var(--gold); color: white; transform: translateY(-5px); }
 
         /* Hero Slider */
         .hero-slider { position: relative; width: 100%; height: 85vh; overflow: hidden; background: #000; }
         .slides { display: flex; width: 300%; height: 100%; transition: transform 1.5s cubic-bezier(0.645, 0.045, 0.355, 1); }
         .slide { width: 33.333%; height: 100%; }
         .slide img { width: 100%; height: 100%; object-fit: cover; opacity: 0.65; }
-        .hero-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; z-index: 10; }
-        .hero-overlay h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); color: var(--gold); margin-bottom: 10px; }
-        .hero-overlay p { font-size: 1.1rem; font-weight: 300; letter-spacing: 5px; text-transform: uppercase; }
+        
+        /* Updated Hero Overlay with Showcase Badge and Description */
+        .hero-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; z-index: 10; padding: 0 20px; }
+        .showcase-badge { background: var(--gold); color: white; padding: 6px 15px; font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border-radius: 2px; margin-bottom: 20px; }
+        .hero-overlay h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); color: var(--gold); margin-bottom: 15px; }
+        .hero-overlay .sub-text { font-size: clamp(0.9rem, 2vw, 1.1rem); max-width: 700px; font-weight: 300; letter-spacing: 1px; color: rgba(255,255,255,0.9); }
 
-        /* The Narrative - Editorial Wrap Layout */
+        /* The Narrative Layout */
         .story-section { padding: 120px 0; background: var(--white); }
         .editorial-layout { position: relative; max-width: 950px; margin: 0 auto; }
         .story-header { text-align: center; margin-bottom: 60px; }
@@ -82,33 +80,23 @@
         .img-float-right { float: right; width: 35%; margin: 20px 0 20px 40px; border-radius: 4px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
         .story-text-wrap { font-size: 1.25rem; color: var(--slate); line-height: 2.2; font-style: italic; font-family: 'Playfair Display', serif; text-align: justify; }
 
-        /* Project Highlight - Functional WATCH VIDEO Hover */
+        /* Project Highlight */
         .section-title { font-size: 2.5rem; margin: 100px 0 60px; border-bottom: 3px solid var(--gold); display: inline-block; padding-bottom: 15px; }
         .featured-project { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.06); margin-bottom: 140px; }
-        
         .main-thumb { position: relative; width: 100%; aspect-ratio: 21/9; background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center; cursor: pointer; text-decoration: none; }
         .main-thumb img { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.6s ease; }
-        
         .watch-video-overlay { 
-            position: relative; z-index: 5; color: var(--gold); 
-            font-weight: 700; text-transform: uppercase; font-size: 1.2rem; 
-            letter-spacing: 4px; transition: 0.4s ease;
-            opacity: 0; transform: translateY(10px);
-            padding: 10px 20px;
-            background: rgba(15, 23, 42, 0.4);
-            backdrop-filter: blur(4px);
-            border-radius: 4px;
+            position: relative; z-index: 5; color: var(--gold); font-weight: 700; text-transform: uppercase; font-size: 1.2rem; letter-spacing: 4px; 
+            opacity: 0; transform: translateY(10px); transition: 0.4s ease; padding: 10px 20px; background: rgba(15, 23, 42, 0.4); backdrop-filter: blur(4px); border-radius: 4px;
         }
-
-        .main-thumb:hover img { opacity: 0.4; transform: scale(1.03); }
+        .main-thumb:hover img { opacity: 0.4; }
         .main-thumb:hover .watch-video-overlay { opacity: 1; transform: translateY(0); }
-
         .project-body { padding: 80px; }
         .project-body h3 { font-size: 2.8rem; color: var(--navy); margin-bottom: 25px; }
         .stat-badge { display: inline-block; padding: 8px 18px; background: rgba(181, 148, 16, 0.08); border: 1px solid var(--gold); color: var(--gold); font-weight: 700; font-size: 0.85rem; margin: 0 12px 15px 0; border-radius: 4px; text-transform: uppercase; }
         .description-box { border-left: 6px solid var(--gold); padding: 40px; background: rgba(181, 148, 16, 0.03); margin: 40px 0; font-size: 1.3rem; }
 
-        /* Contact Section - Standardized Flow */
+        /* Homepage Style Contact Section */
         .contact-section { padding: 140px 0; background: var(--navy); color: white; text-align: center; }
         .availability-box { 
             display: inline-block; padding: 12px 30px; border: 1px solid var(--gold); 
@@ -125,7 +113,6 @@
             .nav-links { display: none; }
             .img-float-left, .img-float-right { float: none; width: 100%; margin: 20px 0; }
             .project-body { padding: 40px 20px; }
-            .main-thumb { aspect-ratio: 16/9; }
         }
     </style>
 </head>
@@ -169,8 +156,9 @@
             <div class="slide"><img src="cover3.jpg" alt="3"></div>
         </div>
         <div class="hero-overlay">
-            <p>Narratives that Resonate</p>
+            <div class="showcase-badge">Professional Showcase</div>
             <h1>Marketing & Storytelling</h1>
+            <p class="sub-text">Crafting narratives for digital and commercial growth.</p>
         </div>
     </header>
 
