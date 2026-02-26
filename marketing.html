@@ -13,7 +13,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; transition: background 0.3s ease; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
         html { scroll-behavior: smooth; }
 
@@ -36,7 +36,7 @@
         /* Music Experience Controller */
         #music-control { position: fixed; bottom: 30px; left: 30px; z-index: 2000; background: rgba(15, 23, 42, 0.85); border: 1px solid var(--gold); padding: 10px 18px; border-radius: 40px; color: var(--gold); cursor: pointer; display: flex; align-items: center; gap: 10px; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; backdrop-filter: blur(10px); }
 
-        /* 1:1 MATCH TO PR HEADER */
+        /* Hero matched to PR */
         .page-header { padding: 160px 0 80px; background: var(--navy); color: white; text-align: center; }
         .header-tag { background: var(--gold); color: white; padding: 6px 15px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; display: inline-block; margin-bottom: 20px; border-radius: 2px; }
         .page-header h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--gold); margin-bottom: 20px; }
@@ -45,11 +45,11 @@
         .story-section { padding: 100px 0; background: var(--white); }
         .editorial-layout { position: relative; max-width: 950px; margin: 0 auto; }
         .story-header { text-align: center; margin-bottom: 50px; }
-        .story-header h2 { font-size: 3rem; color: var(--navy); border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 8px; }
-        .content-wrapper { position: relative; overflow: hidden; }
+        .story-header h2 { font-size: 2.8rem; color: var(--navy); border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 8px; }
+        .content-wrapper { position: relative; overflow: hidden; margin-top: 40px; }
         .img-float-left { float: left; width: 38%; margin: 0 40px 20px 0; border-radius: 4px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
         .img-float-right { float: right; width: 35%; margin: 20px 0 20px 40px; border-radius: 4px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-        .story-text-wrap { font-size: 1.2rem; color: var(--slate); line-height: 2.1; font-style: italic; font-family: 'Playfair Display', serif; text-align: justify; }
+        .story-text-wrap { font-size: 1.1rem; color: var(--slate); line-height: 2; font-style: italic; font-family: 'Playfair Display', serif; text-align: justify; }
 
         /* Project Section Styling */
         .section-title { font-size: 2.2rem; margin: 80px 0 40px; border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 10px; }
@@ -63,16 +63,18 @@
         .project-body { padding: 40px 50px; }
         .project-body h3 { font-size: 1.8rem; color: var(--navy); margin-bottom: 15px; }
         .client-info { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(0,0,0,0.05); }
-        .client-logo { width: 40px; height: 40px; border-radius: 50%; object-fit: contain; background: #f1f5f9; }
+        .client-logo { width: 45px; height: 45px; border-radius: 50%; object-fit: contain; background: #f1f5f9; border: 1px solid rgba(0,0,0,0.05); }
         .client-meta { font-size: 0.85rem; }
         .client-meta a { color: var(--gold); text-decoration: none; font-weight: 600; }
         .stat-badge { display: inline-block; padding: 4px 12px; background: rgba(181, 148, 16, 0.08); border: 1px solid var(--gold); color: var(--gold); font-weight: 700; font-size: 0.7rem; margin: 0 8px 8px 0; border-radius: 4px; text-transform: uppercase; }
-        .description-box { border-left: 4px solid var(--gold); padding: 15px 25px; background: rgba(181, 148, 16, 0.03); margin: 20px 0; font-size: 1rem; color: var(--slate); }
+        .description-box { border-left: 4px solid var(--gold); padding: 15px 25px; background: rgba(181, 148, 16, 0.03); margin: 20px 0; font-size: 0.95rem; color: var(--slate); }
 
-        /* 1:1 MATCH TO PR CONTACT SECTION */
+        /* Contact Section matched to PR IDENTICAL */
         .contact-section { padding: 120px 0; background: var(--navy); color: white; text-align: center; }
-        .availability-tag { display: inline-block; padding: 8px 20px; border: 1px solid var(--gold); color: var(--gold); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
-        .email-link { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 5vw, 3rem); color: white; text-decoration: none; display: block; margin-bottom: 20px; }
+        .availability-box { display: inline-block; padding: 10px 25px; border: 1px solid var(--gold); margin-bottom: 40px; }
+        .availability-tag { color: var(--gold); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; }
+        .email-link { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 5vw, 3.5rem); color: white; text-decoration: none; display: block; margin-bottom: 20px; }
+        .social-link { color: var(--gold); text-decoration: none; text-transform: uppercase; font-weight: 700; font-size: 0.85rem; letter-spacing: 2px; }
 
         @media (max-width: 900px) {
             .nav-links { display: none; }
@@ -109,7 +111,7 @@
                 <li><a href="index.html#expertise">Expertise</a></li>
                 <li><a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank">LinkedIn</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="YOUR_DRIVE_LINK" target="_blank" class="resume-btn">My Resume</a></li>
+                <li><a href="#" class="resume-btn">My Resume</a></li>
             </ul>
         </div>
     </nav>
@@ -118,7 +120,7 @@
         <div class="container">
             <div class="header-tag">Professional Showcase</div>
             <h1>Marketing & Storytelling</h1>
-            <p style="max-width: 800px; margin: 0 auto; opacity: 0.9;">Crafting narratives for digital and commercial growth.</p>
+            <p style="max-width: 800px; margin: 0 auto; opacity: 0.9; font-size: 0.95rem;">Crafting narratives for digital and commercial growth.</p>
         </div>
     </header>
 
@@ -150,7 +152,7 @@
             </a>
             <div class="project-body">
                 <div class="client-info">
-                    <img src="client-logo.png" alt="Client Logo" class="client-logo">
+                    <img src="uiu-logo.png" alt="UIU Logo" class="client-logo">
                     <div class="client-meta">
                         <div style="font-weight: 700; color: var(--navy);">United International University (UIU)</div>
                         <a href="https://facebook.com/uiuinfo" target="_blank">facebook.com/uiuinfo</a>
@@ -164,7 +166,7 @@
                     <span class="stat-badge">Brand Evolution</span>
                 </div>
 
-                <p style="font-weight: 700; font-size: 0.9rem; color: var(--navy); margin-bottom: 5px;">Project Goal:</p>
+                <p style="font-weight: 700; font-size: 0.85rem; color: var(--navy); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px;">Project Goal:</p>
                 <div class="description-box" style="margin-top: 5px;">
                     To humanize the institutional brand by transitioning from corporate updates to resilience-focused storytelling that resonates with students and stakeholders.
                 </div>
@@ -174,10 +176,12 @@
 
     <section id="contact" class="contact-section">
         <div class="container">
-            <div class="availability-tag">Available for Part-time roles, Internships, and Freelance projects.</div>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 20px;">Let's Connect</h2>
+            <div class="availability-box">
+                <div class="availability-tag">Available for Part-time roles, Internships, and Freelance projects.</div>
+            </div>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 10px; font-style: italic;">Let's Connect</h2>
             <a href="mailto:rejawana.mithila@gmail.com" class="email-link">rejawana.mithila@gmail.com</a>
-            <a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank" style="color: var(--gold); text-decoration: none; text-transform: uppercase; font-weight: 700; letter-spacing: 2px;">LinkedIn Profile</a>
+            <a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank" class="social-link">LinkedIn Profile</a>
         </div>
     </section>
 
