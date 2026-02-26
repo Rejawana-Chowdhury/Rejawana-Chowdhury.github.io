@@ -22,49 +22,52 @@
         /* Navigation */
         nav { position: fixed; top: 0; width: 100%; padding: 15px 0; z-index: 1000; background: var(--nav-bg); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        
         .logo-wrap { display: flex; align-items: center; gap: 8px; position: relative; }
         .back-symbol { font-size: 1.2rem; color: var(--gold); cursor: pointer; transition: 0.3s; padding-right: 5px; font-weight: bold; }
         .logo { font-family: 'Playfair Display'; font-size: 1.4rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1px; }
-        
         .dropdown-trigger { cursor: pointer; font-size: 0.8rem; transition: 0.4s; color: var(--gold); display: inline-block; margin-left: 5px; vertical-align: middle; }
-        .nav-dropdown { 
-            position: absolute; top: 100%; left: 35px; background: white; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); list-style: none; 
-            padding: 10px 0; min-width: 220px; display: none; 
-            border-radius: 4px; z-index: 1001; margin-top: 10px; border: 1px solid rgba(0,0,0,0.05);
-        }
+        .nav-dropdown { position: absolute; top: 100%; left: 35px; background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.1); list-style: none; padding: 10px 0; min-width: 220px; display: none; border-radius: 4px; z-index: 1001; margin-top: 10px; border: 1px solid rgba(0,0,0,0.05); }
         .nav-dropdown.show { display: block; }
         .nav-dropdown li a { display: block; padding: 12px 20px; text-decoration: none; color: var(--navy); font-size: 0.75rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
-
         .nav-links { display: flex; list-style: none; gap: 25px; align-items: center; }
         .nav-links a { text-decoration: none; color: var(--navy); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s; }
         .resume-btn { border: 1.5px solid var(--gold); padding: 10px 20px; border-radius: 4px; color: var(--gold) !important; }
+
+        /* Music Experience Controller */
+        #music-control { position: fixed; bottom: 30px; left: 30px; z-index: 2000; background: rgba(15, 23, 42, 0.85); border: 1px solid var(--gold); padding: 10px 18px; border-radius: 40px; color: var(--gold); cursor: pointer; display: flex; align-items: center; gap: 10px; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; backdrop-filter: blur(10px); }
 
         /* 1:1 MATCH TO PR HEADER */
         .page-header { padding: 160px 0 80px; background: var(--navy); color: white; text-align: center; }
         .header-tag { background: var(--gold); color: white; padding: 6px 15px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; display: inline-block; margin-bottom: 20px; border-radius: 2px; }
         .page-header h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--gold); margin-bottom: 20px; }
 
-        /* The Narrative Layout (Internal Content) */
-        .story-section { padding: 120px 0; background: var(--white); }
+        /* The Narrative Layout */
+        .story-section { padding: 100px 0; background: var(--white); }
         .editorial-layout { position: relative; max-width: 950px; margin: 0 auto; }
-        .story-header { text-align: center; margin-bottom: 60px; }
-        .story-header h2 { font-size: 3.5rem; color: var(--navy); }
+        .story-header { text-align: center; margin-bottom: 50px; }
+        .story-header h2 { font-size: 3rem; color: var(--navy); border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 8px; }
         .content-wrapper { position: relative; overflow: hidden; }
         .img-float-left { float: left; width: 38%; margin: 0 40px 20px 0; border-radius: 4px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
         .img-float-right { float: right; width: 35%; margin: 20px 0 20px 40px; border-radius: 4px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-        .story-text-wrap { font-size: 1.25rem; color: var(--slate); line-height: 2.2; font-style: italic; font-family: 'Playfair Display', serif; text-align: justify; }
+        .story-text-wrap { font-size: 1.2rem; color: var(--slate); line-height: 2.1; font-style: italic; font-family: 'Playfair Display', serif; text-align: justify; }
 
         /* Project Section Styling */
-        .section-title { font-size: 2.5rem; margin: 100px 0 60px; border-bottom: 3px solid var(--gold); display: inline-block; padding-bottom: 15px; }
-        .featured-project { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.06); margin-bottom: 140px; }
-        .main-thumb { position: relative; width: 100%; aspect-ratio: 21/9; background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center; cursor: pointer; text-decoration: none; }
+        .section-title { font-size: 2.2rem; margin: 80px 0 40px; border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 10px; }
+        .featured-project { background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.06); margin-bottom: 100px; max-width: 1000px; margin-left: auto; margin-right: auto; }
+        .main-thumb { position: relative; width: 100%; aspect-ratio: 16/9; background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center; cursor: pointer; text-decoration: none; }
         .main-thumb img { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.6s ease; }
-        .project-body { padding: 50px 80px; }
-        .project-body h3 { font-size: 2.2rem; color: var(--navy); margin-bottom: 20px; }
-        .stat-badge { display: inline-block; padding: 6px 14px; background: rgba(181, 148, 16, 0.08); border: 1px solid var(--gold); color: var(--gold); font-weight: 700; font-size: 0.75rem; margin: 0 10px 10px 0; border-radius: 4px; text-transform: uppercase; }
-        .description-box { border-left: 4px solid var(--gold); padding: 25px 40px; background: rgba(181, 148, 16, 0.03); margin: 30px 0; font-size: 1.1rem; color: var(--slate); }
+        .watch-video-overlay { position: relative; z-index: 5; color: var(--gold); font-weight: 700; text-transform: uppercase; font-size: 1rem; letter-spacing: 3px; opacity: 0; transform: translateY(10px); transition: 0.4s ease; padding: 10px 20px; background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); border-radius: 4px; }
+        .main-thumb:hover img { opacity: 0.4; transform: scale(1.05); }
+        .main-thumb:hover .watch-video-overlay { opacity: 1; transform: translateY(0); }
+        
+        .project-body { padding: 40px 50px; }
+        .project-body h3 { font-size: 1.8rem; color: var(--navy); margin-bottom: 15px; }
+        .client-info { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .client-logo { width: 40px; height: 40px; border-radius: 50%; object-fit: contain; background: #f1f5f9; }
+        .client-meta { font-size: 0.85rem; }
+        .client-meta a { color: var(--gold); text-decoration: none; font-weight: 600; }
+        .stat-badge { display: inline-block; padding: 4px 12px; background: rgba(181, 148, 16, 0.08); border: 1px solid var(--gold); color: var(--gold); font-weight: 700; font-size: 0.7rem; margin: 0 8px 8px 0; border-radius: 4px; text-transform: uppercase; }
+        .description-box { border-left: 4px solid var(--gold); padding: 15px 25px; background: rgba(181, 148, 16, 0.03); margin: 20px 0; font-size: 1rem; color: var(--slate); }
 
         /* 1:1 MATCH TO PR CONTACT SECTION */
         .contact-section { padding: 120px 0; background: var(--navy); color: white; text-align: center; }
@@ -74,11 +77,18 @@
         @media (max-width: 900px) {
             .nav-links { display: none; }
             .img-float-left, .img-float-right { float: none; width: 100%; margin: 20px 0; }
-            .project-body { padding: 40px 20px; }
+            .project-body { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
+
+    <audio id="bgMusic" loop><source src="soothing-track.mp3" type="audio/mpeg"></audio>
+
+    <div id="music-control" onclick="toggleMusic()">
+        <span id="music-icon">♫</span>
+        <span id="music-text">Begin Experience</span>
+    </div>
 
     <nav>
         <div class="container nav-container">
@@ -132,18 +142,31 @@
         </section>
 
         <h2 class="section-title">Project Highlight</h2>
+        
         <div class="featured-project">
-            <div class="main-thumb">
+            <a href="https://your-video-link.com" target="_blank" class="main-thumb">
                 <img src="marketing-project-main.png" alt="Project Thumbnail">
-            </div>
+                <div class="watch-video-overlay">Watch Video</div>
+            </a>
             <div class="project-body">
+                <div class="client-info">
+                    <img src="client-logo.png" alt="Client Logo" class="client-logo">
+                    <div class="client-meta">
+                        <div style="font-weight: 700; color: var(--navy);">United International University (UIU)</div>
+                        <a href="https://facebook.com/uiuinfo" target="_blank">facebook.com/uiuinfo</a>
+                    </div>
+                </div>
+                
                 <h3>Crafting a Movement</h3>
+                
                 <div class="tag-group">
                     <span class="stat-badge">Lead Strategist</span>
                     <span class="stat-badge">Brand Evolution</span>
                 </div>
-                <div class="description-box">
-                    This project was a deep dive into story-driven identity, transitioning a traditional corporate tone into a human-centric narrative.
+
+                <p style="font-weight: 700; font-size: 0.9rem; color: var(--navy); margin-bottom: 5px;">Project Goal:</p>
+                <div class="description-box" style="margin-top: 5px;">
+                    To humanize the institutional brand by transitioning from corporate updates to resilience-focused storytelling that resonates with students and stakeholders.
                 </div>
             </div>
         </div>
@@ -152,7 +175,7 @@
     <section id="contact" class="contact-section">
         <div class="container">
             <div class="availability-tag">Available for Part-time roles, Internships, and Freelance projects.</div>
-            <h2>Let's Connect</h2>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 20px;">Let's Connect</h2>
             <a href="mailto:rejawana.mithila@gmail.com" class="email-link">rejawana.mithila@gmail.com</a>
             <a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank" style="color: var(--gold); text-decoration: none; text-transform: uppercase; font-weight: 700; letter-spacing: 2px;">LinkedIn Profile</a>
         </div>
@@ -163,6 +186,14 @@
             const drop = document.getElementById('navDropdown');
             drop.classList.toggle('show');
         }
+        
+        const music = document.getElementById('bgMusic');
+        const mBtn = document.getElementById('music-text');
+        function toggleMusic() {
+            if (music.paused) { music.play(); mBtn.innerText = "Experience Active"; }
+            else { music.pause(); mBtn.innerText = "Experience Paused"; }
+        }
+
         window.onclick = function(e) {
             if (!e.target.matches('.dropdown-trigger')) {
                 document.getElementById('navDropdown').classList.remove('show');
