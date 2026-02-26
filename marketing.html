@@ -9,156 +9,124 @@
         :root {
             --navy: #0f172a; --gold: #b59410; --slate: #475569; --offwhite: #f8fafc;
             --white: #ffffff; --bg: var(--offwhite); --text: #1e293b;
-            --nav-bg: rgba(255, 255, 255, 0.98);
+            --card-bg: var(--white); --nav-bg: rgba(255, 255, 255, 0.98);
+        }
+        [data-theme="dark"] {
+            --bg: #0f172a; --text: #f1f5f9; --card-bg: #1e293b;
+            --nav-bg: rgba(15, 23, 42, 0.98);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.8; overflow-x: hidden; }
-        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
         html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; transition: background 0.3s ease; overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
 
         .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 25px; }
 
-        /* Navigation */
+        /* Navigation - Aligned with index/pr */
         nav { position: fixed; top: 0; width: 100%; padding: 15px 0; z-index: 1000; background: var(--nav-bg); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         
-        .logo-wrap { display: flex; align-items: center; gap: 8px; position: relative; }
-        .back-symbol { font-size: 1.2rem; color: var(--navy); cursor: pointer; transition: 0.3s; padding-right: 5px; font-weight: bold; }
-        .back-symbol:hover { color: var(--gold); }
+        .logo-wrap { display: flex; align-items: center; gap: 10px; }
+        .back-btn { text-decoration: none; color: var(--gold); font-weight: bold; font-size: 1.2rem; transition: 0.3s; }
         .logo { font-family: 'Playfair Display'; font-size: 1.4rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1px; }
+        [data-theme="dark"] .logo { color: var(--white); }
         
-        .dropdown-trigger { cursor: pointer; font-size: 0.8rem; transition: 0.4s; color: var(--navy); display: inline-block; margin-left: 5px; vertical-align: middle; }
-        .dropdown-trigger.active { transform: rotate(180deg); color: var(--gold); }
-        
-        .nav-dropdown { 
-            position: absolute; top: 100%; left: 35px; background: white; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1); list-style: none; 
-            padding: 10px 0; min-width: 220px; display: none; 
-            border-radius: 4px; z-index: 1001; margin-top: 10px; border: 1px solid rgba(0,0,0,0.05);
-        }
-        .nav-dropdown.show { display: block; }
-        .nav-dropdown li a { 
-            display: block; padding: 12px 20px; text-decoration: none; 
-            color: var(--navy); font-size: 0.75rem; text-transform: uppercase; 
-            font-weight: 600; letter-spacing: 1px;
-        }
-        .nav-dropdown li a:hover { background: var(--offwhite); color: var(--gold); }
-
         .nav-links { display: flex; list-style: none; gap: 25px; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--navy); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s; }
+        .nav-links a { text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s; }
         .nav-links a:hover { color: var(--gold); }
-        .resume-btn { border: 1.5px solid var(--gold); padding: 10px 20px; border-radius: 4px; color: var(--gold) !important; }
+        
+        .resume-btn { border: 1.5px solid var(--gold) !important; padding: 8px 18px !important; border-radius: 4px; color: var(--gold) !important; }
         .resume-btn:hover { background: var(--gold); color: white !important; }
+        .hamburger { display: none; font-size: 1.8rem; cursor: pointer; color: var(--text); }
 
-        /* Floating Music Experience Controller */
-        #music-control {
-            position: fixed; bottom: 30px; left: 30px; z-index: 2000;
-            background: rgba(15, 23, 42, 0.85); border: 1px solid var(--gold);
-            padding: 12px 20px; border-radius: 40px; color: var(--gold);
-            cursor: pointer; display: flex; align-items: center; gap: 12px;
-            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px;
-            backdrop-filter: blur(10px); transition: 0.4s;
-        }
-        #music-control:hover { background: var(--gold); color: white; transform: translateY(-5px); }
+        /* Theme Toggle */
+        .theme-toggle { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; border: none; width: 55px; height: 55px; border-radius: 50%; cursor: pointer; z-index: 3000; box-shadow: 0 5px 15px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
 
-        /* Automatic Photo Slider */
-        .hero-slider { position: relative; width: 100%; height: 85vh; overflow: hidden; background: #000; }
+        /* Hero Slider */
+        .hero-slider { position: relative; width: 100%; height: 70vh; overflow: hidden; background: var(--navy); margin-top: 60px; }
         .slides { display: flex; width: 300%; height: 100%; transition: transform 1.5s cubic-bezier(0.645, 0.045, 0.355, 1); }
         .slide { width: 33.333%; height: 100%; }
-        .slide img { width: 100%; height: 100%; object-fit: cover; opacity: 0.65; }
-        .hero-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; z-index: 10; }
-        .hero-overlay h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); color: var(--gold); margin-bottom: 10px; }
-        .hero-overlay p { font-size: 1.1rem; font-weight: 300; letter-spacing: 5px; text-transform: uppercase; }
+        .slide img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; }
+        .hero-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; z-index: 10; padding: 20px; }
+        .hero-overlay p { font-size: 0.9rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+        .hero-overlay h1 { font-size: clamp(2.2rem, 7vw, 4rem); line-height: 1.1; }
 
-        /* The Narrative - Editorial Wrap Layout */
-        .story-section { padding: 120px 0; background: var(--white); }
-        .editorial-layout { position: relative; max-width: 950px; margin: 0 auto; }
-        .story-header { text-align: center; margin-bottom: 60px; }
-        .story-header h2 { font-size: 3.5rem; color: var(--navy); }
-        .content-wrapper { position: relative; overflow: hidden; }
-        .img-float-left { float: left; width: 38%; margin: 0 40px 20px 0; border-radius: 4px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-        .img-float-right { float: right; width: 35%; margin: 20px 0 20px 40px; border-radius: 4px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-        .story-text-wrap { font-size: 1.25rem; color: var(--slate); line-height: 2.2; font-style: italic; font-family: 'Playfair Display', serif; text-align: justify; }
-
-        /* Project Highlight - Watch Video Style */
-        .section-title { font-size: 2.5rem; margin: 100px 0 60px; border-bottom: 3px solid var(--gold); display: inline-block; padding-bottom: 15px; }
-        .featured-project { background: var(--white); border-radius: 15px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.06); margin-bottom: 140px; }
+        /* Editorial Narrative Section */
+        .story-section { padding: 100px 0; background: var(--card-bg); transition: 0.3s; }
+        .editorial-layout { max-width: 950px; margin: 0 auto; }
+        .story-header h2 { font-size: 3rem; margin-bottom: 50px; text-align: center; position: relative; }
+        .story-header h2::after { content: ''; display: block; width: 80px; height: 4px; background: var(--gold); margin: 15px auto; }
         
-        .main-thumb { position: relative; width: 100%; aspect-ratio: 21/9; background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-        .main-thumb img { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.5; transition: 1.2s; }
-        .main-thumb:hover img { opacity: 0.3; transform: scale(1.05); }
+        .content-wrapper { overflow: hidden; }
+        .img-float-left { float: left; width: 40%; margin: 0 40px 20px 0; border-radius: 4px; border-left: 8px solid var(--gold); }
+        .img-float-right { float: right; width: 35%; margin: 20px 0 20px 40px; border-radius: 4px; }
+        .story-text-wrap { font-size: 1.15rem; color: var(--text); line-height: 2; text-align: justify; }
+
+        /* Project Cards */
+        .section-title { font-size: 2.2rem; margin: 80px 0 40px; border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 10px; }
+        .featured-project { background: var(--card-bg); border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.05); margin-bottom: 80px; border: 1px solid rgba(181, 148, 16, 0.1); }
+        
+        .main-thumb { position: relative; width: 100%; aspect-ratio: 21/9; background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .main-thumb img { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 0.8s; }
+        .main-thumb:hover img { transform: scale(1.05); opacity: 0.4; }
         
         .watch-video-overlay { 
-            position: relative; z-index: 5; color: var(--gold); 
-            font-weight: 700; text-transform: uppercase; font-size: 1.2rem; 
-            letter-spacing: 4px; transition: 0.3s;
+            position: relative; z-index: 5; color: white; border: 2px solid var(--gold); padding: 10px 25px;
+            font-weight: 700; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; background: rgba(0,0,0,0.3); text-decoration: none;
         }
 
-        .project-body { padding: 80px; }
-        .project-body h3 { font-size: 2.8rem; color: var(--navy); margin-bottom: 25px; }
-        .stat-badge { display: inline-block; padding: 8px 18px; background: rgba(181, 148, 16, 0.08); border: 1px solid var(--gold); color: var(--gold); font-weight: 700; font-size: 0.85rem; margin: 0 12px 15px 0; border-radius: 4px; text-transform: uppercase; }
-        .description-box { border-left: 6px solid var(--gold); padding: 40px; background: rgba(181, 148, 16, 0.03); margin: 40px 0; font-size: 1.3rem; }
+        .project-body { padding: 50px; }
+        .project-body h3 { font-size: 2.2rem; color: var(--gold); margin-bottom: 20px; }
+        .stat-badge { display: inline-block; padding: 6px 15px; background: rgba(181, 148, 16, 0.1); border: 1px solid var(--gold); color: var(--gold); font-weight: 700; font-size: 0.75rem; margin-right: 10px; border-radius: 4px; text-transform: uppercase; }
+        .description-box { border-left: 4px solid var(--gold); padding: 25px 30px; background: rgba(181, 148, 16, 0.05); margin-top: 30px; font-size: 1.1rem; font-style: italic; }
 
-        /* Contact Section */
-        .contact-section { padding: 140px 0; background: var(--navy); color: white; text-align: center; }
-        .availability-box { 
-            display: inline-block; padding: 12px 30px; border: 1px solid var(--gold); 
-            color: var(--gold); font-weight: 600; font-size: 0.75rem; 
-            text-transform: uppercase; letter-spacing: 2px; margin-bottom: 50px;
-        }
-        .contact-label { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-style: italic; margin-bottom: 20px; color: var(--white); }
-        .email-link { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 4.5rem); color: white; text-decoration: none; display: block; margin-bottom: 40px; transition: 0.4s; }
+        /* Contact Aligned with other pages */
+        .contact-section { padding: 100px 0; background: var(--navy); color: white; text-align: center; }
+        .availability-tag { display: inline-block; padding: 8px 20px; border: 1px solid var(--gold); color: var(--gold); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
+        .email-link { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 5vw, 3.5rem); color: white; text-decoration: none; display: block; margin-bottom: 20px; transition: 0.3s; word-break: break-all; }
         .email-link:hover { color: var(--gold); }
-        .linkedin-footer { color: var(--gold); text-decoration: none; text-transform: uppercase; font-weight: 700; letter-spacing: 3px; font-size: 0.9rem; transition: 0.3s; }
-        .linkedin-footer:hover { color: white; }
 
-        @media (max-width: 900px) {
-            .nav-links { display: none; }
-            .img-float-left, .img-float-right { float: none; width: 100%; margin: 20px 0; }
-            .project-body { padding: 40px 20px; }
+        @media (max-width: 850px) {
+            .hamburger { display: block; }
+            .nav-links { 
+                display: none; flex-direction: column; position: absolute; top: 100%; left: 0; 
+                width: 100%; background: var(--nav-bg); padding: 40px 20px; border-bottom: 2px solid var(--gold); gap: 20px;
+            }
+            .nav-links.active { display: flex; }
+            .img-float-left, .img-float-right { float: none; width: 100%; margin: 20px 0; border-left: none; border-bottom: 5px solid var(--gold); }
+            .project-body { padding: 30px 20px; }
             .main-thumb { aspect-ratio: 16/9; }
+            .hero-slider { height: 50vh; }
         }
     </style>
 </head>
-<body>
+<body id="body">
 
-    <audio id="bgMusic" loop><source src="soothing-track.mp3" type="audio/mpeg"></audio>
-
-    <div id="music-control" onclick="toggleMusic()">
-        <span id="music-icon">♫</span>
-        <span id="music-text">Begin Experience</span>
-    </div>
+    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
 
     <nav>
         <div class="container nav-container">
             <div class="logo-wrap">
-                <span class="back-symbol" onclick="history.back()">&#10094;</span>
+                <a href="index.html" class="back-btn">&#10094;</a>
                 <a href="index.html" class="logo">MITHILA</a>
-                <span class="dropdown-trigger" id="dropTrigger" onclick="toggleDropdown()">▼</span>
-                <ul class="nav-dropdown" id="navDropdown">
-                    <li><a href="pr.html">PR & Communications</a></li>
-                    <li><a href="marketing.html">Marketing & Storytelling</a></li>
-                    <li><a href="strategy.html">Creative Strategy</a></li>
-                    <li><a href="digital.html">Digital Presence</a></li>
-                    <li><a href="branding.html">Brand Evolution</a></li>
-                </ul>
             </div>
-            <ul class="nav-links">
+            <div class="hamburger" onclick="toggleMenu()">☰</div>
+            <ul class="nav-links" id="navMenu">
                 <li><a href="index.html">Home</a></li>
+                <li><a href="pr.html">PR & Comms</a></li>
                 <li><a href="index.html#expertise">Expertise</a></li>
-                <li><a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank">LinkedIn</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="#" class="resume-btn">My Resume</a></li>
+                <li><a href="YOUR_DRIVE_LINK" target="_blank" class="resume-btn">My Resume</a></li>
             </ul>
         </div>
     </nav>
 
     <header class="hero-slider">
         <div class="slides" id="slider">
-            <div class="slide"><img src="cover1.jpg" alt="1"></div>
-            <div class="slide"><img src="cover2.jpg" alt="2"></div>
-            <div class="slide"><img src="cover3.jpg" alt="3"></div>
+            <div class="slide"><img src="cover1.jpg" alt="Marketing 1"></div>
+            <div class="slide"><img src="cover2.jpg" alt="Marketing 2"></div>
+            <div class="slide"><img src="cover3.jpg" alt="Marketing 3"></div>
         </div>
         <div class="hero-overlay">
             <p>Narratives that Resonate</p>
@@ -170,35 +138,37 @@
         <section class="story-section">
             <div class="editorial-layout">
                 <div class="story-header">
-                    <h2 id="story-title">The Narrative</h2>
+                    <h2>The Narrative</h2>
                 </div>
                 <div class="content-wrapper">
-                    <img src="story-left.jpg" alt="Behind the scenes" class="img-float-left">
-                    <div class="story-text-wrap" id="story-para">
+                    <img src="story-left.jpg" alt="Creative process" class="img-float-left">
+                    <div class="story-text-wrap">
                         Marketing, to me, has never been about selling a product—it is about sharing a heartbeat. My journey into storytelling began with the belief that every brand has a soul, and every project is a chapter waiting to be written.
                         <br><br>
                         I specialize in finding the "why" behind the "what." In a world full of noise, I focus on the whisper that actually connects. By blending strategic marketing with human-centric storytelling, I create experiences that don't just reach audiences, they stay with them.
-                        <img src="story-right.jpg" alt="Creativity in action" class="img-float-right">
+                        <img src="story-right.jpg" alt="Digital Storytelling" class="img-float-right">
+                        <br><br>
                         Whether I am crafting digital landscapes or refining a brand's voice, I lead with empathy. Because at the end of the day, people don't follow companies—they follow stories they see themselves in.
                     </div>
                 </div>
             </div>
         </section>
 
-        <h2 class="section-title">Project Highlight</h2>
+        <h2 class="section-title">Featured Project</h2>
         <div class="featured-project">
-            <div class="main-thumb" onclick="window.location.href='#'">
-                <img src="marketing-project-main.png" alt="Project">
-                <div class="watch-video-overlay">WATCH VIDEO</div>
+            <div class="main-thumb">
+                <img src="marketing-project-main.png" alt="Project Thumbnail">
+                <a href="YOUR_VIDEO_LINK" target="_blank" class="watch-video-overlay">Watch Video</a>
             </div>
             <div class="project-body">
                 <h3>Crafting a Movement</h3>
                 <div class="tag-group">
                     <span class="stat-badge">Lead Strategist</span>
                     <span class="stat-badge">Brand Evolution</span>
+                    <span class="stat-badge">100k+ Reach</span>
                 </div>
                 <div class="description-box">
-                    This project was a deep dive into story-driven identity, transitioning a traditional corporate tone into a human-centric narrative.
+                    This project was a deep dive into story-driven identity, transitioning a traditional corporate tone into a human-centric narrative that increased digital engagement by 40% within the first quarter.
                 </div>
             </div>
         </div>
@@ -206,41 +176,33 @@
 
     <section id="contact" class="contact-section">
         <div class="container">
-            <div class="availability-box">Available for part-time roles, internships, and freelance projects.</div>
-            <div class="contact-label">Let's Connect</div>
+            <div class="availability-tag">Available for Part-time • Internships • Freelance</div>
             <a href="mailto:rejawana.mithila@gmail.com" class="email-link">rejawana.mithila@gmail.com</a>
-            <a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank" class="linkedin-footer">LinkedIn Profile</a>
+            <a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank" style="color: var(--gold); text-decoration: none; text-transform: uppercase; font-weight: 700; letter-spacing: 2px; font-size: 0.8rem;">LinkedIn Profile</a>
         </div>
     </section>
 
     <script>
-        function toggleDropdown() {
-            const drop = document.getElementById('navDropdown');
-            const trigger = document.getElementById('dropTrigger');
-            drop.classList.toggle('show');
-            trigger.classList.toggle('active');
+        // Theme Toggle Logic
+        function toggleTheme() {
+            const body = document.getElementById('body');
+            body.hasAttribute('data-theme') ? body.removeAttribute('data-theme') : body.setAttribute('data-theme', 'dark');
         }
 
+        // Mobile Menu Logic
+        function toggleMenu() {
+            if(window.innerWidth <= 850) {
+                document.getElementById('navMenu').classList.toggle('active');
+            }
+        }
+
+        // Auto Slider Logic
         let currentIdx = 0;
         const slider = document.getElementById('slider');
         setInterval(() => {
             currentIdx = (currentIdx + 1) % 3;
             slider.style.transform = `translateX(-${currentIdx * 33.333}%)`;
         }, 5000);
-
-        const music = document.getElementById('bgMusic');
-        const mBtn = document.getElementById('music-text');
-        function toggleMusic() {
-            if (music.paused) { music.play(); mBtn.innerText = "Experience Active"; }
-            else { music.pause(); mBtn.innerText = "Experience Paused"; }
-        }
-
-        window.onclick = function(e) {
-            if (!e.target.matches('.dropdown-trigger')) {
-                document.getElementById('navDropdown').classList.remove('show');
-                document.getElementById('dropTrigger').classList.remove('active');
-            }
-        }
     </script>
 </body>
 </html>
