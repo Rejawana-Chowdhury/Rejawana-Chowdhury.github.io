@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Strategic Planning | Rejawana Chowdhury Mithila</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0f172a; --gold: #b59410; --slate: #94a3b8; --white: #ffffff;
+            --dark-bg: #020617; --card-bg: #0f172a; --nav-bg: rgba(2, 6, 23, 0.98);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        /* Matching Marketing Font Sizes & Justification */
+        body { font-family: 'Inter', sans-serif; background: var(--dark-bg); color: #cbd5e1; line-height: 1.6; overflow-x: hidden; font-size: 0.85rem; text-align: justify; }
+        
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; text-align: left; color: var(--white); }
+        html { scroll-behavior: smooth; }
+
+        .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 25px; }
+
+        /* Navigation - Identical to Marketing */
+        nav { position: fixed; top: 0; width: 100%; padding: 15px 0; z-index: 1000; background: var(--nav-bg); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo-wrap { display: flex; align-items: center; gap: 8px; position: relative; }
+        .back-symbol { font-size: 1.2rem; color: var(--gold); cursor: pointer; transition: 0.3s; padding-right: 5px; font-weight: bold; }
+        .logo { font-family: 'Playfair Display'; font-size: 1.4rem; font-weight: 700; color: var(--white); text-decoration: none; letter-spacing: 1px; }
+        .dropdown-trigger { cursor: pointer; font-size: 0.8rem; transition: 0.4s; color: var(--gold); display: inline-block; margin-left: 5px; vertical-align: middle; }
+        .nav-dropdown { position: absolute; top: 100%; left: 35px; background: #1e293b; box-shadow: 0 10px 30px rgba(0,0,0,0.5); list-style: none; padding: 10px 0; min-width: 220px; display: none; border-radius: 4px; z-index: 1001; margin-top: 10px; border: 1px solid rgba(255,255,255,0.05); }
+        .nav-dropdown.show { display: block; }
+        .nav-dropdown li a { display: block; padding: 12px 20px; text-decoration: none; color: var(--white); font-size: 0.75rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
+        .nav-links { display: flex; list-style: none; gap: 25px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--white); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s; }
+        .resume-btn { border: 1.5px solid var(--gold); padding: 10px 20px; border-radius: 4px; color: var(--gold) !important; }
+
+        /* Page Header - Identical Gap/Measurements as Marketing */
+        .page-header { padding: 160px 0 80px; background: var(--navy); color: white; text-align: center; }
+        .header-tag { background: var(--gold); color: white; padding: 6px 15px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; display: inline-block; margin-bottom: 20px; border-radius: 2px; }
+        .page-header h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--gold); margin-bottom: 20px; text-align: center; }
+        .page-header p { text-align: center; max-width: 800px; margin: 0 auto; opacity: 0.9; }
+
+        /* Section Title - Identical alignment to Marketing */
+        .section-title { font-size: 2.2rem; margin: 80px 0 40px; border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 10px; text-align: left; }
+
+        /* Event Layout */
+        .event-block { margin-bottom: 100px; }
+        .event-description { font-style: italic; font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--slate); margin-bottom: 20px; line-height: 1.8; }
+        .strategy-tasks { border-left: 3px solid var(--gold); padding: 5px 25px; background: rgba(181, 148, 16, 0.05); margin-bottom: 35px; font-size: 0.9rem; }
+        
+        /* Newspaper Photocard Style */
+        .photo-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+        .photo-card { background: transparent; }
+        .photo-card img { width: 100%; height: auto; border-radius: 2px; border: 1px solid rgba(255,255,255,0.1); }
+        .photo-title { font-family: 'Playfair Display', serif; font-size: 0.85rem; font-style: italic; color: var(--slate); margin-top: 12px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 8px; text-align: left; }
+
+        /* Acknowledgements with Lightbox effect */
+        .ack-item { display: grid; grid-template-columns: 1fr 1.5fr; gap: 50px; margin-bottom: 100px; align-items: start; }
+        .ack-media { cursor: pointer; border: 1px solid rgba(255,255,255,0.1); padding: 10px; background: var(--card-bg); transition: 0.4s; position: relative; }
+        .ack-media:hover { border-color: var(--gold); }
+        .ack-media img { width: 100%; display: block; }
+        
+        /* 4.4k style Badges */
+        .stat-badge { display: inline-block; padding: 4px 12px; background: rgba(181, 148, 16, 0.1); border: 1px solid var(--gold); color: var(--gold); font-weight: 700; font-size: 0.7rem; margin: 15px 8px 15px 0; border-radius: 4px; text-transform: uppercase; }
+
+        /* Key Strategies Title and Points */
+        .strategy-list h4 { font-size: 0.95rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-top: 15px; margin-bottom: 15px; }
+        .strategy-list ol { padding-left: 18px; color: #94a3b8; }
+        .strategy-list li { margin-bottom: 8px; font-size: 0.85rem; }
+
+        /* Lightbox Overlay */
+        #lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(2, 6, 23, 0.98); z-index: 5000; display: none; align-items: center; justify-content: center; cursor: zoom-out; }
+        #lightbox img { max-width: 90%; max-height: 85%; border: 2px solid var(--gold); }
+
+        /* Contact Section - 1:1 Identical to Marketing & PR */
+        .contact-section { padding: 120px 0; background: var(--navy); color: white; text-align: center; }
+        .availability-box { display: inline-block; padding: 10px 20px; border: 1px solid var(--gold); margin-bottom: 40px; }
+        .availability-tag { color: var(--gold); font-weight: 700; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; }
+        .contact-heading { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; font-weight: 400; margin-bottom: 10px; color: #ffffff; text-align: center; }
+        .email-link { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 4rem); color: #ffffff; text-decoration: none; display: block; margin-bottom: 20px; font-weight: 400; text-align: center; }
+        .social-link { color: var(--gold); text-decoration: none; text-transform: uppercase; font-weight: 700; font-size: 0.75rem; letter-spacing: 2px; text-align: center; display: inline-block; }
+
+        @media (max-width: 900px) {
+            .nav-links { display: none; }
+            .photo-grid, .ack-item { grid-template-columns: 1fr; gap: 30px; }
+            .ack-media { order: -1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="lightbox" onclick="this.style.display='none'">
+        <img src="" id="lightbox-img">
+    </div>
+
+    <nav>
+        <div class="container nav-container">
+            <div class="logo-wrap">
+                <span class="back-symbol" onclick="history.back()">&#10094;</span>
+                <a href="index.html" class="logo">MITHILA</a>
+                <span class="dropdown-trigger" onclick="document.getElementById('navDropdown').classList.toggle('show')">▼</span>
+                <ul class="nav-dropdown" id="navDropdown">
+                    <li><a href="pr.html">PR & Communications</a></li>
+                    <li><a href="marketing.html">Marketing & Storytelling</a></li>
+                    <li><a href="strategy.html">Strategic Planning</a></li>
+                    <li><a href="digital.html">Voiceover</a></li>
+                    <li><a href="branding.html">Anchoring & Public Speaking</a></li>
+                </ul>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#acks">Honors</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#" class="resume-btn">My Resume</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <div class="header-tag">Tactical Excellence</div>
+            <h1>Strategic Planning</h1>
+            <p>Bridging the gap between conceptual vision and flawless execution through data-driven frameworks and operational precision.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section id="events">
+            <h2 class="section-title">Successful Events</h2>
+
+            <div class="event-block">
+                <p class="event-description">Event Description: A brief, high-level narrative about the event's purpose, scale, and the specific impact it achieved within the target community.</p>
+                <div class="strategy-tasks">
+                    <p><strong>Strategies & Tasks:</strong> My involvement spanned from logistical architecture to stakeholder synchronization, ensuring every tactical move aligned with the overarching brand strategy.</p>
+                </div>
+                <div class="photo-grid">
+                    <div class="photo-card">
+                        <img src="event1-photo1.jpg" alt="Strategic Planning Image">
+                        <p class="photo-title">Figure 1.1: Coordination and tactical briefing during the pre-event phase.</p>
+                    </div>
+                    <div class="photo-card">
+                        <img src="event1-photo2.jpg" alt="Event Execution">
+                        <p class="photo-title">Figure 1.2: On-site management and real-time operational oversight.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-block">
+                <p class="event-description">Event Description: Details on a secondary milestone event, highlighting the strategic shifts required to handle its unique challenges.</p>
+                <div class="strategy-tasks">
+                    <p><strong>Strategies & Tasks:</strong> Designing modular contingency plans and managing vendor relations to maintain execution standards under tight constraints.</p>
+                </div>
+                <div class="photo-grid">
+                    <div class="photo-card">
+                        <img src="event2-photo1.jpg" alt="Execution Stage">
+                        <p class="photo-title">Figure 2.1: Strategic layout and visual direction of the main event floor.</p>
+                    </div>
+                    <div class="photo-card">
+                        <img src="event2-photo2.jpg" alt="Final Delivery">
+                        <p class="photo-title">Figure 2.2: Post-event verification and successful stakeholder handover.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="acks">
+            <h2 class="section-title">Acknowledgements</h2>
+
+            <div class="ack-item">
+                <div class="ack-media" onclick="openLightbox(this)">
+                    <img src="cert-thumb.jpg" alt="Academic/Professional Certificate">
+                </div>
+                <div class="ack-details">
+                    <h3>Title of Certification</h3>
+                    <p>A description of the rigor involved in obtaining this recognition and the specific competencies it validates in the field of strategy.</p>
+                    <div class="stat-badge">Validated Skillset</div>
+                    <div class="stat-badge">Strategic Honors</div>
+                    
+                    <div class="strategy-list">
+                        <h4>Key Strategies to Win</h4>
+                        <ol>
+                            <li>Point one: Strategic analysis of the competition/requirement.</li>
+                            <li>Point two: Implementation of standardized frameworks.</li>
+                            <li>Point three: Maintaining precision in high-pressure delivery.</li>
+                            <li>Point four: Iterative refinement based on feedback loops.</li>
+                            <li>Point five: Achieving the final goal with measurable KPIs.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ack-item">
+                <div class="ack-media" onclick="openLightbox(this)">
+                    <img src="crest1-thumb.jpg" alt="Award Crest">
+                </div>
+                <div class="ack-details">
+                    <h3>Excellence in Strategic Planning</h3>
+                    <p>Awarded for exceptional leadership in project management and the design of institutional communication protocols.</p>
+                    <div class="stat-badge">Top Tier Award</div>
+                    
+                    <div class="strategy-list">
+                        <h4>Key Strategies to Win</h4>
+                        <ol>
+                            <li>Point one: Defining clear strategic objectives early.</li>
+                            <li>Point two: Aligning diverse teams toward a singular goal.</li>
+                            <li>Point three: Dynamic problem solving during project phases.</li>
+                            <li>Point four: Ensuring sustainable execution beyond the event.</li>
+                            <li>Point five: Comprehensive documentation of success metrics.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ack-item">
+                <div class="ack-media" onclick="openLightbox(this)">
+                    <img src="crest2-thumb.jpg" alt="Achievement Crest">
+                </div>
+                <div class="ack-details">
+                    <h3>Meritorious Recognition</h3>
+                    <p>Recognized for contribution toward brand evolution and the strategic restructuring of community engagement programs.</p>
+                    <div class="stat-badge">Impact Leadership</div>
+                    
+                    <div class="strategy-list">
+                        <h4>Key Strategies to Win</h4>
+                        <ol>
+                            <li>Point one: Analyzing target audience behavior patterns.</li>
+                            <li>Point two: Creating a unique value proposition for the brand.</li>
+                            <li>Point three: Scaling operations without losing quality.</li>
+                            <li>Point four: Strategic budget and resource allocation.</li>
+                            <li>Point five: Final outcome that resulted in this honor.</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="availability-box">
+                <div class="availability-tag">AVAILABLE FOR PART-TIME ROLES, INTERNSHIPS, AND FREELANCE PROJECTS.</div>
+            </div>
+            <h2 class="contact-heading">Let's Connect</h2>
+            <a href="mailto:rejawana.mithila@gmail.com" class="email-link">rejawana.mithila@gmail.com</a>
+            <a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank" class="social-link">LINKEDIN PROFILE</a>
+        </div>
+    </section>
+
+    <script>
+        function openLightbox(element) {
+            const imgUrl = element.querySelector('img').src;
+            document.getElementById('lightbox-img').src = imgUrl;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+
+        window.onclick = function(e) {
+            if (!e.target.matches('.dropdown-trigger')) {
+                document.getElementById('navDropdown').classList.remove('show');
+            }
+        }
+    </script>
+</body>
+</html>
