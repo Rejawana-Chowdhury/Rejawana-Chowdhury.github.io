@@ -22,7 +22,7 @@
         html { scroll-behavior: smooth; }
         .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 25px; }
 
-        /* --- HEADER (STRICT ALIGNMENT) --- */
+        /* Navigation & Custom Toggle */
         nav { position: fixed; top: 0; width: 100%; padding: 15px 0; z-index: 1000; background: var(--nav-bg); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         .logo-wrap { display: flex; align-items: center; gap: 8px; position: relative; }
@@ -38,51 +38,55 @@
         .nav-links a { text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
         .resume-btn { border: 1.5px solid var(--gold); padding: 8px 16px; border-radius: 4px; color: var(--gold) !important; }
 
-        /* Theme Toggle SVG */
-        .theme-switch { cursor: pointer; display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--gold); transition: 0.3s; margin-left: 10px;}
+        /* Theme Toggle Styling */
+        .theme-switch { cursor: pointer; display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--gold); transition: 0.3s; }
         .theme-switch svg { width: 18px; height: 18px; fill: var(--gold); }
+        .theme-switch:hover { background: rgba(181, 148, 16, 0.1); }
 
-        /* --- HERO SECTION --- */
-        .page-header { padding: 160px 0 80px; background: var(--navy); color: white; text-align: center; }
-        .header-tag { background: var(--gold); color: white; padding: 6px 15px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; display: inline-block; margin-bottom: 20px; border-radius: 2px; }
-        .page-header h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--gold); margin-bottom: 20px; }
-
-        /* --- CONTENT STYLING --- */
+        /* Section Styling */
         .section-title { font-size: 2.2rem; margin: 60px 0 40px; border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 10px; }
-        .role-title { font-size: 1.8rem; color: var(--navy); margin-bottom: 5px; font-weight: 700; }
+        .role-title { font-size: 1.8rem; color: var(--navy); margin-bottom: 15px; font-weight: 700; border-left: 5px solid var(--gold); padding-left: 15px; }
         [data-theme="dark"] .role-title { color: var(--gold); }
-        .sub-role { font-size: 1.1rem; color: var(--slate); margin-bottom: 20px; font-weight: 600; }
 
-        /* Leadership Grid & PPT Effect */
+        /* Multi-Image Grid */
         .leadership-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 30px; }
-        .leadership-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 4px; cursor: zoom-in; transition: 0.3s; }
-        
-        /* The PPT Container you requested */
-        .ppt-container { position: relative; width: 100%; aspect-ratio: 1/1; border-radius: 4px; overflow: hidden; cursor: pointer; background: #000; }
-        .ppt-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.7); display: flex; align-items: center; justify-content: center; opacity: 0; transition: 0.4s ease; backdrop-filter: blur(2px); }
+        .leadership-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s; cursor: zoom-in; }
+        .leadership-img:hover { transform: scale(1.03); }
+
+        /* PPT HOVER EFFECT INSERTION */
+        .ppt-container { position: relative; width: 100%; aspect-ratio: 1/1; border-radius: 4px; overflow: hidden; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .ppt-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.7); display: flex; align-items: center; justify-content: center; opacity: 0; transition: 0.3s ease; backdrop-filter: blur(2px); }
         .ppt-container:hover .ppt-overlay { opacity: 1; }
-        .ppt-text { color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.75rem; border: 1px solid var(--gold); padding: 8px 12px; }
+        .ppt-text { color: var(--gold); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.75rem; border: 1px solid var(--gold); padding: 5px 10px; }
 
         .description-box { border-left: 4px solid var(--gold); padding: 20px 30px; background: rgba(181, 148, 16, 0.05); margin: 25px 0; }
-        .stat-badge { display: inline-block; padding: 4px 12px; background: rgba(181, 148, 16, 0.1); border: 1px solid var(--gold); color: var(--gold); font-weight: 700; font-size: 0.7rem; margin: 0 8px 8px 0; border-radius: 4px; text-transform: uppercase; }
         
+        /* Strategy Task List */
         .strategy-list { list-style: none; margin-top: 15px; }
         .strategy-list li { position: relative; padding-left: 25px; margin-bottom: 10px; color: var(--slate); font-weight: 500; }
         .strategy-list li::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-weight: bold; }
 
-        /* Acknowledgements Grid */
-        .ack-card { display: grid; grid-template-columns: 350px 1fr; gap: 40px; background: var(--card-bg); padding: 40px; border-radius: 12px; margin-bottom: 50px; border-left: 5px solid var(--gold); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .ack-img { width: 100%; border-radius: 6px; cursor: zoom-in; transition: 0.3s; }
-        .ack-img:hover { transform: scale(1.02); }
+        .stat-badge { display: inline-block; padding: 4px 12px; background: rgba(181, 148, 16, 0.1); border: 1px solid var(--gold); color: var(--gold); font-weight: 700; font-size: 0.7rem; margin-right: 8px; border-radius: 4px; text-transform: uppercase; }
 
-        /* --- BOTTOM CONTACT (STRICT ALIGNMENT) --- */
+        /* Acknowledgements */
+        .ack-card { display: grid; grid-template-columns: 350px 1fr; gap: 40px; background: var(--card-bg); padding: 40px; border-radius: 12px; margin-bottom: 50px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); border-left: 5px solid var(--gold); }
+        .ack-img { width: 100%; border-radius: 6px; cursor: zoom-in; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+        /* Page Header */
+        .page-header { padding: 160px 0 80px; background: var(--navy); color: white; text-align: center; }
+        .header-tag { background: var(--gold); color: white; padding: 6px 15px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; display: inline-block; margin-bottom: 20px; border-radius: 2px; }
+        .page-header h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--gold); margin-bottom: 20px; }
+
+        /* Contact Section */
         .contact-section { padding: 120px 0; background: var(--navy); color: white; text-align: center; }
         .availability-tag { display: inline-block; padding: 8px 20px; border: 1px solid var(--gold); color: var(--gold); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
         .email-link { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 5vw, 3rem); color: white; text-decoration: none; display: block; margin-bottom: 20px; }
 
-        /* Modal */
+        /* Modal Updates */
         .modal { display: none; position: fixed; z-index: 3000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; padding: 20px; }
         #modalContent { width: 90%; height: 90%; display: flex; justify-content: center; align-items: center; }
+        .modal img { max-width: 100%; max-height: 100%; border-radius: 4px; display: none; }
+        .modal iframe { width: 100%; height: 100%; border: none; display: none; background: white; }
 
         @media (max-width: 850px) {
             .nav-links { display: none; }
@@ -102,18 +106,14 @@
                     <li><a href="pr.html">PR & Communications</a></li>
                     <li><a href="marketing.html">Marketing & Storytelling</a></li>
                     <li><a href="strategy.html">Strategic Planning</a></li>
-                    <li><a href="voiceover.html">Voiceover</a></li>
-                    <li><a href="speaking.html">Anchoring</a></li>
                 </ul>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#expertise" onclick="toggleMenu()">Expertise</a></li>
-                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
                 <li><a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank">LinkedIn</a></li>
-                <li><a href="YOUR_RESUME_LINK" target="_blank" class="resume-btn">My Resume</a></li>
+                <li><a href="YOUR_DRIVE_LINK" target="_blank" class="resume-btn">My Resume</a></li>
                 <li class="theme-switch" onclick="toggleTheme()" id="themeBtn">
-                    <svg id="themeIcon" viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1z"/></svg>
+                    <svg id="themeIcon" viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/></svg>
                 </li>
             </ul>
         </div>
@@ -132,10 +132,9 @@
         <h2 class="section-title">Strategic Leadership & Execution</h2>
 
         <section class="event-case">
-            <h3 class="role-title">Strategic Leadership & Execution</h3>
-            <p class="sub-role">UIU CSE FEST 2025, UIU</p>
+            <h3 class="role-title">UIU CSE FEST 2025, UIU</h3>
             
-            <div style="margin-bottom: 25px;">
+            <div style="margin: 15px 0;">
                 <span class="stat-badge">National Event</span>
                 <span class="stat-badge">1500+ Participants</span>
                 <span class="stat-badge">2-Day Fest</span>
@@ -144,21 +143,21 @@
             </div>
 
             <div class="leadership-grid">
-                <img src="fest1.jpg" alt="Execution" class="leadership-img" onclick="openModal(this)">
-                <img src="fest2.jpg" alt="Planning" class="leadership-img" onclick="openModal(this)">
-                <img src="fest3.jpg" alt="Team" class="leadership-img" onclick="openModal(this)">
-                <img src="fest4.jpg" alt="Stage" class="leadership-img" onclick="openModal(this)">
+                <img src="fest1.jpg" alt="Event Planning" class="leadership-img" onclick="openModal(this)">
+                <img src="fest2.jpg" alt="Main Stage" class="leadership-img" onclick="openModal(this)">
+                <img src="fest3.jpg" alt="Crowd Management" class="leadership-img" onclick="openModal(this)">
+                <img src="fest4.jpg" alt="VIP Handling" class="leadership-img" onclick="openModal(this)">
                 
-                <div class="ppt-container" onclick="openPdfModal('presentation.pdf')">
-                    <img src="ppt-thumbnail.jpg" alt="PPT" style="width:100%; height:100%; object-fit:cover;">
+                <div class="ppt-container" onclick="openPdfModal('YOUR_FILE_NAME.pdf')">
+                    <img src="fest5.jpg" alt="Presentation Thumbnail" style="width:100%; height:100%; object-fit:cover;">
                     <div class="ppt-overlay">
-                        <span class="ppt-text">See PPT</span>
+                        <span class="ppt-text">see ppt</span>
                     </div>
                 </div>
             </div>
 
             <div class="description-box">
-                <h4 style="color: var(--navy); font-size: 0.9rem; text-transform: uppercase; margin-bottom: 15px;">My Tasks & Responsibilities</h4>
+                <h4 style="color: var(--navy); font-family: 'Inter', sans-serif; margin-bottom: 15px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Core Responsibilities</h4>
                 <ul class="strategy-list">
                     <li>Schedule Architecture</li>
                     <li>PR & Press Release</li>
@@ -167,6 +166,9 @@
                     <li>Event Anchoring</li>
                     <li>Crisis Management</li>
                 </ul>
+                <p style="margin-top: 15px; color: var(--slate); font-size: 0.85rem; line-height: 1.6;">
+                    Orchestrated the operational blueprint for UIU's flagship technical festival, ensuring seamless coordination between logistics, media, and high-profile performers.
+                </p>
             </div>
         </section>
 
@@ -175,27 +177,30 @@
         <div class="ack-card">
             <img src="certificate.jpg" alt="Certificate" class="ack-img" onclick="openModal(this)">
             <div>
-                <h3 style="color: var(--navy);">Certification of Excellence</h3>
-                <p style="color: var(--gold); font-weight: 600;">Organization Name • 2024</p>
+                <h3 style="color: var(--navy);">Certification Title</h3>
+                <p style="color: var(--gold); font-weight: 600;">Issuing Organization • Date</p>
+                <div class="stat-badge">Recognized Performance</div>
                 <div class="stat-badge">4.4K Views</div>
-                <h4 style="margin-top: 20px;">Key Strategies:</h4>
+                
+                <h4 style="margin-top: 25px; color: var(--navy);">Key Strategies for Success:</h4>
                 <ul class="strategy-list">
-                    <li>Strategy One: Optimizing attendee flow through digital registration.</li>
-                    <li>Strategy Two: Implementing 360-degree feedback loops.</li>
-                    <li>Strategy Three: Real-time logistics tracking.</li>
-                    <li>Strategy Four: High-impact social media blitz.</li>
-                    <li>Strategy Five: Stakeholder transparency reports.</li>
+                    <li>Integrated cross-channel promotion to boost registration by 40%.</li>
+                    <li>Developed a 3-tier risk management framework for live logistics.</li>
+                    <li>Automated feedback loops to gather real-time attendee insights.</li>
+                    <li>Optimized budget allocation, reducing overhead by 15%.</li>
+                    <li>Leveraged storytelling in event PR to drive emotional brand connection.</li>
                 </ul>
             </div>
         </div>
 
         <div class="ack-card">
-            <img src="crest1.jpg" alt="Crest" class="ack-img" onclick="openModal(this)">
+            <img src="crest1.jpg" alt="Crest 1" class="ack-img" onclick="openModal(this)">
             <div>
-                <h3 style="color: var(--navy);">Leadership Crest</h3>
-                <p style="color: var(--gold); font-weight: 600;">UIU Computer Club (UIU CCL)</p>
-                <div class="stat-badge">Executive Member</div>
-                <h4 style="margin-top: 20px;">Key Strategies:</h4>
+                <h3 style="color: var(--navy);">Leadership Excellence Crest</h3>
+                <p style="color: var(--gold); font-weight: 600;">UIU CCL • 2024</p>
+                <div class="stat-badge">Top Management</div>
+                
+                <h4 style="margin-top: 25px; color: var(--navy);">Key Strategies:</h4>
                 <ul class="strategy-list">
                     <li>Strategy One Detail</li>
                     <li>Strategy Two Detail</li>
@@ -206,12 +211,29 @@
             </div>
         </div>
 
+        <div class="ack-card">
+            <img src="crest2.jpg" alt="Crest 2" class="ack-img" onclick="openModal(this)">
+            <div>
+                <h3 style="color: var(--navy);">Strategic Planner Award</h3>
+                <p style="color: var(--gold); font-weight: 600;">Organization Name</p>
+                <div class="stat-badge">Award Distinction</div>
+                
+                <h4 style="margin-top: 25px; color: var(--navy);">Key Strategies:</h4>
+                <ul class="strategy-list">
+                    <li>Strategy One Detail</li>
+                    <li>Strategy Two Detail</li>
+                    <li>Strategy Three Detail</li>
+                    <li>Strategy Four Detail</li>
+                    <li>Strategy Five Detail</li>
+                </ul>
+            </div>
+        </div>
     </main>
 
     <section id="contact" class="contact-section">
         <div class="container">
             <div class="availability-tag">Available for Part-time roles, Internships, and Freelance projects.</div>
-            <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 20px;">Let's Connect</h2>
+            <h2>Let's Connect</h2>
             <a href="mailto:rejawana.mithila@gmail.com" class="email-link">rejawana.mithila@gmail.com</a>
             <a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank" style="color: var(--gold); text-decoration: none; text-transform: uppercase; font-weight: 700; letter-spacing: 2px;">LinkedIn Profile</a>
         </div>
@@ -219,18 +241,23 @@
 
     <div id="imageModal" class="modal" onclick="closeModal()">
         <div id="modalContent" onclick="event.stopPropagation()">
-            <img id="modalImg" src="" style="max-width: 100%; max-height: 100%; display: none;">
-            <iframe id="modalPdf" src="" style="width: 100%; height: 100%; border: none; display: none;"></iframe>
+            <img id="modalImg" src="">
+            <iframe id="modalPdf" src=""></iframe>
         </div>
     </div>
 
     <script>
-        function toggleDropdown() { document.getElementById('navDropdown').classList.toggle('show'); }
+        function toggleDropdown() {
+            document.getElementById('navDropdown').classList.toggle('show');
+        }
 
+        // Theme Toggle Logic
         function toggleTheme() {
             const body = document.getElementById('body');
             const icon = document.getElementById('themeIcon');
-            if (body.hasAttribute('data-theme')) {
+            const isDark = body.hasAttribute('data-theme');
+            
+            if (isDark) {
                 body.removeAttribute('data-theme');
                 icon.innerHTML = '<path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>';
             } else {
@@ -239,27 +266,33 @@
             }
         }
 
+        /* LOGIC INSERTIONS */
         function openModal(img) {
             const modal = document.getElementById('imageModal');
-            document.getElementById('modalPdf').style.display = 'none';
-            const mImg = document.getElementById('modalImg');
-            mImg.style.display = 'block';
-            mImg.src = img.src;
+            const modalImg = document.getElementById('modalImg');
+            const modalPdf = document.getElementById('modalPdf');
+            
+            modalImg.src = img.src;
+            modalImg.style.display = 'block';
+            modalPdf.style.display = 'none';
             modal.style.display = 'flex';
         }
 
         function openPdfModal(pdfPath) {
             const modal = document.getElementById('imageModal');
-            document.getElementById('modalImg').style.display = 'none';
-            const mPdf = document.getElementById('modalPdf');
-            mPdf.style.display = 'block';
-            mPdf.src = pdfPath;
+            const modalImg = document.getElementById('modalImg');
+            const modalPdf = document.getElementById('modalPdf');
+            
+            modalPdf.src = pdfPath;
+            modalPdf.style.display = 'block';
+            modalImg.style.display = 'none';
             modal.style.display = 'flex';
         }
 
         function closeModal() {
-            document.getElementById('imageModal').style.display = 'none';
-            document.getElementById('modalPdf').src = '';
+            const modal = document.getElementById('imageModal');
+            document.getElementById('modalPdf').src = ""; // Stop PDF loading
+            modal.style.display = 'none';
         }
 
         window.onclick = function(e) {
