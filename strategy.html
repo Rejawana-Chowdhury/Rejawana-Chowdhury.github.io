@@ -48,8 +48,8 @@
         .role-title { font-size: 1.8rem; color: var(--navy); margin-bottom: 15px; font-weight: 700; border-left: 5px solid var(--gold); padding-left: 15px; }
         [data-theme="dark"] .role-title { color: var(--gold); }
 
-        /* Multi-Image Grid - FIXED ALIGNMENT */
-        .leadership-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 30px; }
+        /* Multi-Image Grid - FIXED ALIGNMENT LOCK */
+        .leadership-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 30px; }
         .leadership-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s; cursor: zoom-in; }
         .leadership-img:hover { transform: scale(1.03); }
 
@@ -93,6 +93,10 @@
             .ack-card { grid-template-columns: 1fr; padding: 25px; }
             .leadership-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
         }
+        /* Mobile adjustment to keep alignment clean */
+        @media (max-width: 500px) {
+            .leadership-grid { grid-template-columns: repeat(2, 1fr); }
+        }
     </style>
 </head>
 <body id="body">
@@ -111,8 +115,6 @@
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#expertise" onclick="toggleMenu()">Expertise</a></li>
-                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
                 <li><a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank">LinkedIn</a></li>
                 <li><a href="YOUR_DRIVE_LINK" target="_blank" class="resume-btn">My Resume</a></li>
                 <li class="theme-switch" onclick="toggleTheme()" id="themeBtn">
