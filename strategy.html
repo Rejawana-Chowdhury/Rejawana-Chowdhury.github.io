@@ -77,19 +77,11 @@
         #lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(2, 6, 23, 0.98); z-index: 5000; display: none; align-items: center; justify-content: center; cursor: zoom-out; }
         #lightbox img { max-width: 90%; max-height: 85%; border: 2px solid var(--gold); }
 
-        /* Contact Section */
+          /* Contact Section */
         .contact-section { padding: 120px 0; background: var(--navy); color: white; text-align: center; }
-        .availability-box { display: inline-block; padding: 10px 20px; border: 1px solid var(--gold); margin-bottom: 40px; }
-        .availability-tag { color: var(--gold); font-weight: 700; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; }
-        .contact-heading { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; font-weight: 400; margin-bottom: 10px; color: #ffffff; text-align: center; }
-        .email-link { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 4rem); color: #ffffff; text-decoration: none; display: block; margin-bottom: 20px; font-weight: 400; text-align: center; }
-        .social-link { color: var(--gold); text-decoration: none; text-transform: uppercase; font-weight: 700; font-size: 0.75rem; letter-spacing: 2px; text-align: center; display: inline-block; }
-
-        @media (max-width: 900px) {
-            .nav-links { display: none; }
-            .photo-grid, .ack-item { grid-template-columns: 1fr; gap: 30px; }
-            .ack-media { order: -1; }
-        }
+        .availability-tag { display: inline-block; padding: 8px 20px; border: 1px solid var(--gold); color: var(--gold); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
+        .email-link { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 5vw, 3rem); color: white; text-decoration: none; display: block; margin-bottom: 20px; }
+        
     </style>
 </head>
 <body data-theme="dark">
@@ -179,12 +171,10 @@
 
     <section id="contact" class="contact-section">
         <div class="container">
-            <div class="availability-box">
-                <div class="availability-tag">AVAILABLE FOR PART-TIME ROLES, INTERNSHIPS, AND FREELANCE PROJECTS.</div>
-            </div>
-            <h2 class="contact-heading">Let's Connect</h2>
+            <div class="availability-tag">Available for Part-time roles, Internships, and Freelance projects.</div>
+            <h2>Let's Connect</h2>
             <a href="mailto:rejawana.mithila@gmail.com" class="email-link">rejawana.mithila@gmail.com</a>
-            <a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank" class="social-link">LINKEDIN PROFILE</a>
+            <a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank" style="color: var(--gold); text-decoration: none; text-transform: uppercase; font-weight: 700; letter-spacing: 2px;">LinkedIn Profile</a>
         </div>
     </section>
 
