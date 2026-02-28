@@ -68,9 +68,10 @@
 
         .stat-badge { display: inline-block; padding: 4px 12px; background: rgba(181, 148, 16, 0.1); border: 1px solid var(--gold); color: var(--gold); font-weight: 700; font-size: 0.7rem; margin-right: 8px; border-radius: 4px; text-transform: uppercase; }
 
-        /* Acknowledgements */
-        .ack-card { display: grid; grid-template-columns: 350px 1fr; gap: 40px; background: var(--card-bg); padding: 40px; border-radius: 12px; margin-bottom: 50px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); border-left: 5px solid var(--gold); }
+        /* Acknowledgements - FIXED COLOR & ALIGNMENT */
+        .ack-card { display: grid; grid-template-columns: 350px 1fr; gap: 40px; background: var(--card-bg); padding: 40px; border-radius: 12px; margin-bottom: 50px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); border-left: 5px solid var(--gold); align-items: start; }
         .ack-img { width: 100%; border-radius: 6px; cursor: zoom-in; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .ack-card h3 { color: var(--text); }
 
         /* Page Header */
         .page-header { padding: 160px 0 80px; background: var(--navy); color: white; text-align: center; }
@@ -180,7 +181,7 @@
         <div class="ack-card">
             <img src="skino_cert.jpg" alt="Certificate" class="ack-img" onclick="openModal(this)">
             <div>
-                <h3 style="color: var(--navy);">Semifinalist:skin’O Business Intelligence Case</h3>
+                <h3>Semifinalist:skin’O Business Intelligence Case</h3>
                 <p style="color: var(--gold); font-weight: 600;">UIU HR Forum • 2025</p>
                 <div class="stat-badge">Team of three</div>
                 
@@ -199,7 +200,7 @@
         <div class="ack-card">
             <img src="crest1.jpg" alt="Crest 1" class="ack-img" onclick="openModal(this)">
             <div>
-                <h3 style="color: var(--navy);">Best Entrepreneur Award 2025</h3>
+                <h3>Best Entrepreneur Award 2025</h3>
                 <p style="color: var(--gold); font-weight: 600;">Women's Entrepreneurship Networking Session • 2025</p>
                 <div class="stat-badge">Co-founder</div>
                 <div class="stat-badge">Family Business</div>
@@ -218,13 +219,13 @@
         <div class="ack-card">
             <img src="crest2.png" alt="Crest 2" class="ack-img" onclick="openModal(this)">
             <div>
-                <h3 style="color: var(--navy);">Special Pitch Award: Snack Ninja (Rogina's Cuisine)</h3>
+                <h3>Special Pitch Award: Snack Ninja by Rogina's Cuisine</h3>
                 <p style="color: var(--gold); font-weight: 600;">Smart Bangladesh Accelerator • WLD-cohort 2 • 2024</p>
                 <div class="stat-badge">Special Pitch</div>
                 
                 <h4 style="margin-top: 25px; color: var(--navy);">Key Strategies for Success:</h4>
                 <ul class="strategy-list">
-                    <li>resented a new SME business plan to venture capitalists and investors.</li>
+                    <li>Presented a new SME business plan to venture capitalists and investors.</li>
                     <li>Secured high interest from investors by proving the business’s growth potential.</li>
                     <li>Successfully completed a residential bootcamp focused on advanced business pitching.</li>
                     <li>Gained recognition for a unique business idea in the food and snack industry.</li>
