@@ -150,7 +150,7 @@
     <main class="container">
         <section class="intro-master">
             <div class="intro-video-wrap">
-                <video autoplay muted loop playsinline>
+                <video id="introVideo" autoplay muted loop playsinline controls>
                     <source src="intro_anchoring.mp4" type="video/mp4">
                 </video>
             </div>
@@ -166,9 +166,9 @@ I see every event as a chance to grow, to connect, and to narrate moments that m
             <img src="profile_circle.jpg" class="profile-mini" alt="Mithila Profile">
             <div class="recitation-info">
                 <span>"Hear my passion for recitation…"</span>
-                <h4>মেঘবালিকা- জয় গোস্বামী</h4>
+                <h4>মেঘবালিকা- জয় গোস্বামী</h4>
             </div>
-            <audio controls>
+            <audio id="recitationAudio" controls>
                 <source src="recitation.mp3" type="audio/mpeg">
             </audio>
         </div>
@@ -268,11 +268,11 @@ I see every event as a chance to grow, to connect, and to narrate moments that m
 
         // Lightbox Gallery Logic
         const galleryImgs = [
-            {src: 'event1.jpg', cap: 'Anchoring in the National Youth Summit 2024'},
-            {src: 'event2.jpg', cap: 'Hosting the Annual Gala Night at UIU'},
-            {src: 'event3.jpg', cap: 'Public Speaking at World Environment Day'},
-            {src: 'event4.jpg', cap: 'International Seminar on Global PR'},
-            {src: 'event5.jpg', cap: 'Cultural Presence at the Heritage Fest'}
+            {src: 'event1.jpg', cap: 'Anchoring in the UIU CSE FEST 2025'},
+            {src: 'event2.jpg', cap: 'Anchoring in the Orientation Ceremony of Dept of CSE, UIU'},
+            {src: 'event3.jpg', cap: 'SME business pitch delivery at the Residential Bootcamp of SBA WLD-cohort 2'},
+            {src: 'event4.jpg', cap: 'Anchoring in the National NLP Competition, UIU'},
+            {src: 'event5.jpg', cap: 'Anchoring in the National NLP Competition, UIU'}
         ];
         let currentIdx = 0;
 
@@ -292,6 +292,38 @@ I see every event as a chance to grow, to connect, and to narrate moments that m
         window.onclick = function(event) {
             if (event.target == document.getElementById('lightbox')) { closeLightbox(); }
         }
+
+        // NEW: Scroll-based Auto-play/Pause Logic
+        const introVideo = document.getElementById('introVideo');
+        const recitationAudio = document.getElementById('recitationAudio');
+
+        const observerOptions = {
+            threshold: 0.1 // Trigger when at least 10% of the element is visible
+        };
+
+        const mediaObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.target.id === 'introVideo') {
+                    if (entry.isIntersecting) {
+                        // Play when scrolled into view
+                        introVideo.play().catch(error => console.log("Autoplay blocked until user interaction"));
+                    } else {
+                        // Pause when scrolled out of view
+                        introVideo.pause();
+                    }
+                }
+                
+                // Also pause audio if it's playing and user scrolls away
+                if (entry.target.id === 'recitationAudio') {
+                    if (!entry.isIntersecting) {
+                        recitationAudio.pause();
+                    }
+                }
+            });
+        }, observerOptions);
+
+        mediaObserver.observe(introVideo);
+        mediaObserver.observe(recitationAudio);
     </script>
 </body>
 </html>
