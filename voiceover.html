@@ -2,128 +2,231 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voiceover Portfolio | Rejawana Chowdhury Mithila</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Voiceover | Rejawana Chowdhury Mithila</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --accent: #3b82f6;
+            --navy: #0f172a; --gold: #b59410; --slate: #475569; --offwhite: #f8fafc;
+            --white: #ffffff; --bg: var(--offwhite); --text: #1e293b;
+            --card-bg: var(--white); --nav-bg: rgba(255, 255, 255, 0.98);
         }
-        .video-container:hover .overlay {
-            opacity: 1;
+        [data-theme="dark"] {
+            --bg: #0f172a; --text: #f1f5f9; --card-bg: #1e293b;
+            --nav-bg: rgba(15, 23, 42, 0.98); --white: #1e293b; --slate: #94a3b8;
         }
-        .badge {
-            padding: 4px 12px;
-            border-radius: 99px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        .featured-video {
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-        }
-        .featured-video:hover {
-            transform: translateY(-5px);
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; font-size: 0.85rem; transition: background 0.3s ease; overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+        html { scroll-behavior: smooth; }
+        .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 25px; }
+
+        /* Navigation - Identical to Strategy */
+        nav { position: fixed; top: 0; width: 100%; padding: 15px 0; z-index: 1000; background: var(--nav-bg); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; }
+        .logo-wrap { display: flex; align-items: center; gap: 8px; position: relative; }
+        .back-symbol { font-size: 1.2rem; color: var(--gold); cursor: pointer; padding-right: 5px; font-weight: bold; }
+        .logo { font-family: 'Playfair Display'; font-size: 1.4rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1px; }
+        [data-theme="dark"] .logo { color: white; }
+        .dropdown-trigger { cursor: pointer; font-size: 0.8rem; color: var(--gold); margin-left: 5px; }
+        .nav-dropdown { position: absolute; top: 100%; left: 35px; background: var(--card-bg); box-shadow: 0 10px 30px rgba(0,0,0,0.1); list-style: none; padding: 10px 0; min-width: 220px; display: none; border-radius: 4px; border: 1px solid rgba(0,0,0,0.05); }
+        .nav-dropdown.show { display: block; }
+        .nav-dropdown li a { display: block; padding: 12px 20px; text-decoration: none; color: var(--text); font-size: 0.75rem; text-transform: uppercase; font-weight: 600; }
+        
+        .nav-links { display: flex; list-style: none; gap: 20px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        .resume-btn { border: 1.5px solid var(--gold); padding: 8px 16px; border-radius: 4px; color: var(--gold) !important; }
+
+        /* Theme Toggle */
+        .theme-switch { cursor: pointer; display: flex; align-items: center; justify-content: center; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--gold); transition: 0.3s; }
+        .theme-switch svg { width: 18px; height: 18px; fill: var(--gold); }
+
+        /* Header & Sections - Identical Style */
+        .page-header { padding: 160px 0 80px; background: var(--navy); color: white; text-align: center; }
+        .header-tag { background: var(--gold); color: white; padding: 6px 15px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; display: inline-block; margin-bottom: 20px; border-radius: 2px; }
+        .page-header h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--gold); margin-bottom: 20px; }
+        .section-title { font-size: 2.2rem; margin: 60px 0 40px; border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 10px; }
+        
+        /* Video Container Styles */
+        .video-highlight-container { position: relative; width: 100%; max-width: 800px; margin: 0 auto 30px; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.1); cursor: pointer; }
+        .video-thumbnail { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; background: #000; }
+        .video-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); display: flex; align-items: center; justify-content: center; opacity: 0; transition: 0.4s; }
+        .video-highlight-container:hover .video-overlay { opacity: 1; }
+        .overlay-text { color: white; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border: 2px solid white; padding: 10px 25px; pointer-events: none; }
+
+        .project-info { text-align: center; margin-bottom: 60px; }
+        .project-info h2 { font-size: 2.2rem; margin-bottom: 5px; }
+        .client-name { color: var(--gold); font-weight: 600; font-size: 1rem; margin-bottom: 15px; }
+        .stat-badge { display: inline-block; padding: 4px 12px; background: rgba(181, 148, 16, 0.1); border: 1px solid var(--gold); color: var(--gold); font-weight: 700; font-size: 0.7rem; margin: 5px; border-radius: 4px; text-transform: uppercase; }
+        
+        .description-box { border-left: 4px solid var(--gold); padding: 20px 30px; background: rgba(181, 148, 16, 0.05); margin: 25px auto; max-width: 800px; text-align: left; }
+        [data-theme="dark"] .description-box h4 { color: white; }
+
+        /* Other Projects Grid */
+        .other-projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 80px; }
+        .other-project-card { position: relative; border-radius: 8px; overflow: hidden; cursor: pointer; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .other-project-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; transition: 0.5s; }
+        .other-project-card:hover img { transform: scale(1.05); }
+
+        /* Modal - Updated for Video */
+        .modal { display: none; position: fixed; z-index: 3000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); justify-content: center; align-items: center; padding: 20px; }
+        .modal-inner { width: 100%; max-width: 1000px; position: relative; }
+        .modal video { width: 100%; border-radius: 8px; box-shadow: 0 0 50px rgba(0,0,0,0.5); }
+        .close-modal { position: absolute; top: -50px; right: 0; color: white; font-size: 2rem; cursor: pointer; font-weight: bold; }
+
+        /* Contact Section - Identical */
+        .contact-section { padding: 120px 0; background: var(--navy); color: white; text-align: center; }
+        .availability-tag { display: inline-block; padding: 8px 20px; border: 1px solid var(--gold); color: var(--gold); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
+        .email-link { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 5vw, 3rem); color: white; text-decoration: none; display: block; margin-bottom: 20px; }
+
+        @media (max-width: 850px) {
+            .nav-links { display: none; }
+            .other-projects-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
-<body class="bg-white dark:bg-slate-900 text-slate-900 dark:text-white transition-colors duration-300">
+<body id="body">
 
-    <header class="fixed w-full z-50 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
-        <nav class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold tracking-tighter">MITHILA</div>
-            <div class="flex items-center gap-8">
-                <a href="strategy.html" class="hover:text-blue-500 transition">Strategy</a>
-                <a href="voiceover.html" class="text-blue-500">Voiceover</a>
-                <button id="theme-toggle" class="p-2 rounded-full bg-slate-100 dark:bg-slate-800">
-                    🌙
-                </button>
+    <nav>
+        <div class="container nav-container">
+            <div class="logo-wrap">
+                <span class="back-symbol" onclick="history.back()">&#10094;</span>
+                <a href="index.html" class="logo">MITHILA</a>
+                <span class="dropdown-trigger" onclick="toggleDropdown()">▼</span>
+                <ul class="nav-dropdown" id="navDropdown">
+                    <li><a href="pr.html">PR & Communications</a></li>
+                    <li><a href="marketing.html">Marketing & Storytelling</a></li>
+                    <li><a href="strategy.html">Strategic Planning</a></li>
+                    <li><a href="voiceover.html">Voiceover</a></li>
+                    <li><a href="anchoring.html">Anchoring & Public Speaking</a></li>
+                </ul>
             </div>
-        </nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank">LinkedIn</a></li>
+                <li><a href="YOUR_DRIVE_LINK" target="_blank" class="resume-btn">My Resume</a></li>
+                <li class="theme-switch" onclick="toggleTheme()" id="themeBtn">
+                    <svg id="themeIcon" viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/></svg>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <div class="container">
+            <div class="header-tag">Voice & Narrative</div>
+            <h1>Voiceover</h1>
+            <p style="max-width: 800px; margin: 0 auto; opacity: 0.9;">Professional English and Bengali narration for documentaries, commercials, and government projects.</p>
+        </div>
     </header>
 
-    <section class="pt-32 pb-16 px-6">
-        <div class="max-w-7xl mx-auto">
-            <h1 class="text-5xl md:text-7xl font-bold mb-6">Voiceover & <span class="text-blue-500">Narration.</span></h1>
-            <p class="text-xl text-slate-600 dark:text-slate-400 max-w-2xl">Bringing narratives to life through tone, texture, and professional clarity for high-impact visual storytelling.</p>
-        </div>
-    </section>
+    <main class="container">
+        <h2 class="section-title">Featured Project</h2>
 
-    <section class="py-12 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="featured-video bg-slate-100 dark:bg-slate-800 rounded-3xl overflow-hidden">
-                <video controls class="w-full aspect-video object-cover">
-                    <source src="ministry-disaster-management.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <div class="p-8 md:p-12">
-                    <h2 class="text-3xl font-bold mb-4">Ministry of Disaster Management, Bangladesh</h2>
-                    <div class="flex gap-3">
-                        <span class="badge bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400">Government Project</span>
-                        <span class="badge bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400">Rohingya Crisis</span>
-                    </div>
-                </div>
+        <div class="video-highlight-container" onclick="openVideo('rohingya_crisis.mp4')">
+            <img src="rohingya_thumb.jpg" alt="Rohingya Crisis Document" class="video-thumbnail">
+            <div class="video-overlay">
+                <span class="overlay-text">Play Video</span>
             </div>
         </div>
-    </section>
 
-    <section class="py-20 px-6">
-        <div class="max-w-7xl mx-auto">
-            <h3 class="text-2xl font-bold mb-10 opacity-70">Other Projects</h3>
+        <div class="project-info">
+            <h2>Rohingya Crisis Narrative</h2>
+            <p class="client-name">Ministry of Disaster Management, Bangladesh</p>
+            <div class="badges">
+                <span class="stat-badge">Government Project</span>
+                <span class="stat-badge">Rohingya Crisis</span>
+                <span class="stat-badge">English Voiceover</span>
+            </div>
             
-            <div class="grid md:grid-cols-2 gap-10">
-                <div class="group">
-                    <a href="https://vimeo.com/example1" target="_blank" class="block relative video-container rounded-2xl overflow-hidden aspect-video bg-slate-200 dark:bg-slate-700">
-                        <img src="thumb1.jpg" alt="Project Thumbnail" class="w-full h-full object-cover">
-                        <div class="overlay absolute inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center opacity-0 transition-opacity duration-300">
-                            <span class="bg-white text-black px-6 py-2 rounded-full font-bold">Watch Video</span>
-                        </div>
-                    </a>
-                    <div class="mt-6">
-                        <h4 class="text-xl font-bold mb-2">Corporate Brand Story</h4>
-                        <div class="flex gap-2">
-                            <span class="badge bg-slate-100 dark:bg-slate-800">Commercial</span>
-                            <span class="badge bg-slate-100 dark:bg-slate-800">Deep Tone</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="description-box">
+                <h4>Narrative Objective</h4>
+                <p style="color: var(--slate); font-size: 0.85rem; line-height: 1.6;">
+                    Provided the primary English narration for an official state documentary outlining the humanitarian efforts and logistical challenges of the Rohingya refugee crisis. The tone required a balance of solemnity, professional clarity, and global urgency.
+                </p>
+            </div>
+        </div>
 
-                <div class="group">
-                    <a href="https://vimeo.com/example2" target="_blank" class="block relative video-container rounded-2xl overflow-hidden aspect-video bg-slate-200 dark:bg-slate-700">
-                        <img src="thumb2.jpg" alt="Project Thumbnail" class="w-full h-full object-cover">
-                        <div class="overlay absolute inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center opacity-0 transition-opacity duration-300">
-                            <span class="bg-white text-black px-6 py-2 rounded-full font-bold">Watch Video</span>
-                        </div>
-                    </a>
-                    <div class="mt-6">
-                        <h4 class="text-xl font-bold mb-2">Educational Documentary</h4>
-                        <div class="flex gap-2">
-                            <span class="badge bg-slate-100 dark:bg-slate-800">Narrative</span>
-                            <span class="badge bg-slate-100 dark:bg-slate-800">English</span>
-                        </div>
-                    </div>
+        <h2 class="section-title">Other Projects</h2>
+        
+        <div class="other-projects-grid">
+            <div class="other-project-card" onclick="window.open('https://youtube.com/your-link-1', '_blank')">
+                <img src="other_thumb1.jpg" alt="Commercial Project">
+                <div class="video-overlay">
+                    <span class="overlay-text">Watch Video</span>
+                </div>
+            </div>
+
+            <div class="other-project-card" onclick="window.open('https://youtube.com/your-link-2', '_blank')">
+                <img src="other_thumb2.jpg" alt="Corporate Narration">
+                <div class="video-overlay">
+                    <span class="overlay-text">Watch Video</span>
                 </div>
             </div>
         </div>
+    </main>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="availability-tag">Available for Voiceover & Narration projects.</div>
+            <h2>Let's Connect</h2>
+            <a href="mailto:rejawana.mithila@gmail.com" class="email-link">rejawana.mithila@gmail.com</a>
+        </div>
     </section>
 
-    <footer class="py-20 px-6 border-t border-slate-200 dark:border-slate-800">
-        <div class="max-w-7xl mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-4">Let's record something great.</h2>
-            <p class="mb-8 opacity-60">Available for freelance and contract bookings.</p>
-            <a href="mailto:hello@example.com" class="inline-block bg-blue-500 text-white px-10 py-4 rounded-full font-bold hover:bg-blue-600 transition">Get in touch</a>
+    <div id="videoModal" class="modal">
+        <div class="modal-inner">
+            <span class="close-modal" onclick="closeVideo()">&times;</span>
+            <video id="mainVideo" controls>
+                <source id="videoSource" src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
-    </footer>
+    </div>
 
     <script>
-        // Theme Toggle Logic
-        const btn = document.getElementById('theme-toggle');
-        btn.addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-        });
+        function toggleDropdown() { document.getElementById('navDropdown').classList.toggle('show'); }
+        
+        function toggleTheme() {
+            const body = document.getElementById('body');
+            const themeIcon = document.getElementById('themeIcon');
+            const isDark = body.hasAttribute('data-theme');
+            if (isDark) {
+                body.removeAttribute('data-theme');
+                themeIcon.innerHTML = '<path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41l-1.06-1.06zm1.06-10.96a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/>';
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.innerHTML = '<path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.92-.1-1.36-.98 1.37-2.58 2.26-4.4 2.26-2.98 0-5.4-2.42-5.4-5.4 0-1.81.89-3.42 2.26-4.4-.44-.06-.9-.1-1.36-.1z"/>';
+            }
+        }
+
+        // Video Modal Controls
+        function openVideo(videoSrc) {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('mainVideo');
+            const source = document.getElementById('videoSource');
+            
+            source.src = videoSrc;
+            video.load();
+            modal.style.display = 'flex';
+            video.play();
+        }
+
+        function closeVideo() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('mainVideo');
+            modal.style.display = 'none';
+            video.pause();
+        }
+
+        // Close modal when clicking background
+        window.onclick = function(event) {
+            const modal = document.getElementById('videoModal');
+            if (event.target == modal) {
+                closeVideo();
+            }
+        }
     </script>
 </body>
 </html>
