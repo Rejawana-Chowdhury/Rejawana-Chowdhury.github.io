@@ -86,22 +86,21 @@
         .gallery-item img { width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: 2px; display: block; }
         .gallery-caption { font-family: 'Playfair Display', serif; font-style: italic; margin-top: 10px; font-size: 0.75rem; color: var(--slate); text-align: center; border-top: 1px solid #eee; padding-top: 5px; }
 
-        /* Recognitions - Golden Container */
+        /* Recognitions - Separate Golden Containers */
         .recognition-card {
             background: var(--card-bg);
             border: 1px solid var(--gold);
             border-radius: 12px;
-            padding: 40px;
+            padding: 30px;
             box-shadow: 0 15px 35px rgba(181, 148, 16, 0.15);
             transition: all 0.4s ease;
-            margin-bottom: 80px;
+            margin-bottom: 30px; /* Space between the two boxes */
         }
         .recognition-card:hover {
             box-shadow: 0 20px 45px rgba(181, 148, 16, 0.25);
             transform: translateY(-5px);
         }
-        .zigzag-row { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 40px; }
-        .zigzag-row:last-child { margin-bottom: 0; }
+        .zigzag-row { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
         .zigzag-row.reverse { direction: rtl; }
         .zigzag-row.reverse .cert-text { direction: ltr; }
         .cert-img { width: 100%; border-radius: 6px; border: 1px solid rgba(0,0,0,0.05); cursor: pointer; transition: 0.3s; }
@@ -185,7 +184,7 @@ At UIU, that passion turned into practice. I honed my skills across events, from
         </section>
 
         <div class="recitation-bar">
-            <img src="profile_circle.jpg" class="profile-mini" alt="Mithila Profile">
+            <img src="image_be375e.jpg" class="profile-mini" alt="Mithila Profile">
             <div class="recitation-info">
                 <span>"A Moment of Poetry"</span>
                 <h4>মেঘবালিকা- জয় গোস্বামী</h4>
@@ -227,11 +226,14 @@ At UIU, that passion turned into practice. I honed my skills across events, from
                     <p>Awarded for outstanding performance in the anchoring segment at UIU Megahunt V11.</p>
                 </div>
             </div>
+        </div>
+
+        <div class="recognition-card">
             <div class="zigzag-row reverse">
                 <img src="cert2.jpg" class="cert-img" alt="Certificate 2" onclick="openCertLightbox(1)">
                 <div class="cert-text">
                     <span class="stat-badge">1st Runner-up</span>
-                    <h3>Excellence in Recitation</h3>
+                    <h3>Excellene in Recitation</h3>
                     <p>Awarded for excellent performance and delivery in the recitation segment at UIU Megahunt V11.</p>
                 </div>
             </div>
