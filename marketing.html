@@ -5,18 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Marketing & Storytelling | Rejawana Chowdhury Mithila</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <script>
+        (function() {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            }
+        })();
+    </script>
+
     <style>
         :root {
             --navy: #0f172a; --gold: #b59410; --slate: #475569; --offwhite: #f8fafc;
             --white: #ffffff; --bg: var(--offwhite); --text: #1e293b;
-            --nav-bg: rgba(255, 255, 255, 0.98);
+            --card-bg: var(--white); --nav-bg: rgba(255, 255, 255, 0.98);
+        }
+        [data-theme="dark"] {
+            --bg: #0f172a; --text: #f1f5f9; --card-bg: #1e293b;
+            --nav-bg: rgba(15, 23, 42, 0.98);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        /* Body text font size reduced */
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; font-size: 0.85rem; }
-        
+        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; font-size: 0.85rem; transition: background 0.3s ease; }
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
         html { scroll-behavior: smooth; }
 
@@ -25,16 +36,36 @@
         /* Navigation */
         nav { position: fixed; top: 0; width: 100%; padding: 15px 0; z-index: 1000; background: var(--nav-bg); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        .logo-wrap { display: flex; align-items: center; gap: 8px; position: relative; }
-        .back-symbol { font-size: 1.2rem; color: var(--gold); cursor: pointer; transition: 0.3s; padding-right: 5px; font-weight: bold; }
+        
+        .logo-area { display: flex; align-items: center; gap: 15px; }
+        .back-btn { color: var(--gold); text-decoration: none; font-size: 1.2rem; transition: 0.3s; }
+        .back-btn:hover { transform: translateX(-5px); }
+        
         .logo { font-family: 'Playfair Display'; font-size: 1.4rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1px; }
-        .dropdown-trigger { cursor: pointer; font-size: 0.8rem; transition: 0.4s; color: var(--gold); display: inline-block; margin-left: 5px; vertical-align: middle; }
-        .nav-dropdown { position: absolute; top: 100%; left: 35px; background: white; box-shadow: 0 10px 30px rgba(0,0,0,0.1); list-style: none; padding: 10px 0; min-width: 220px; display: none; border-radius: 4px; z-index: 1001; margin-top: 10px; border: 1px solid rgba(0,0,0,0.05); }
-        .nav-dropdown.show { display: block; }
-        .nav-dropdown li a { display: block; padding: 12px 20px; text-decoration: none; color: var(--navy); font-size: 0.75rem; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; }
+        [data-theme="dark"] .logo { color: var(--white); }
+
         .nav-links { display: flex; list-style: none; gap: 25px; align-items: center; }
         .nav-links a { text-decoration: none; color: var(--navy); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s; }
+        [data-theme="dark"] .nav-links a { color: var(--white); }
+        .nav-links a:hover { color: var(--gold); }
+
+        /* Dropdown Styling */
+        .dropdown { position: relative; }
+        .dropdown-menu { 
+            position: absolute; top: 100%; left: 0; background: var(--card-bg); 
+            min-width: 220px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            border-top: 3px solid var(--gold); display: none; list-style: none; 
+            padding: 10px 0; z-index: 1001; 
+        }
+        .dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-menu li a { 
+            padding: 10px 20px; display: block; font-size: 0.75rem; 
+            color: var(--text) !important; text-transform: none; letter-spacing: 0.5px; 
+        }
+        .dropdown-menu li a:hover { background: rgba(181, 148, 16, 0.1); color: var(--gold) !important; }
+
         .resume-btn { border: 1.5px solid var(--gold); padding: 10px 20px; border-radius: 4px; color: var(--gold) !important; }
+        .resume-btn:hover { background: var(--gold); color: white !important; }
 
         /* Music Controller */
         #music-control { position: fixed; bottom: 30px; left: 30px; z-index: 2000; background: rgba(15, 23, 42, 0.85); border: 1px solid var(--gold); padding: 10px 18px; border-radius: 40px; color: var(--gold); cursor: pointer; display: flex; align-items: center; gap: 10px; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; backdrop-filter: blur(10px); }
@@ -44,19 +75,18 @@
         .header-tag { background: var(--gold); color: white; padding: 6px 15px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; display: inline-block; margin-bottom: 20px; border-radius: 2px; }
         .page-header h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--gold); margin-bottom: 20px; }
 
-        /* The Narrative */
-        .story-section { padding: 100px 0; background: var(--white); }
+        /* Story Section */
+        .story-section { padding: 80px 0; }
         .editorial-layout { position: relative; max-width: 950px; margin: 0 auto; }
         .story-header { text-align: center; margin-bottom: 50px; }
-        .story-header h2 { font-size: 2.8rem; color: var(--navy); border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 8px; }
+        .story-header h2 { font-size: 2.8rem; color: var(--text); border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 8px; }
         .content-wrapper { position: relative; overflow: hidden; margin-top: 40px; }
-        .img-float-left { float: left; width: 38%; margin: 0 40px 20px 0; border-radius: 4px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
         .img-float-right { float: right; width: 35%; margin: 20px 0 20px 40px; border-radius: 4px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
-        .story-text-wrap { font-size: 1.05rem; color: var(--slate); line-height: 2; font-style: italic; font-family: 'Playfair Display', serif; text-align: justify; }
+        .story-text-wrap { font-size: 1.05rem; color: var(--text); line-height: 2; font-style: italic; font-family: 'Playfair Display', serif; text-align: justify; opacity: 0.9; }
 
-         /* Project Section Alignment and Gap Fix */
-        .section-title { font-size: 2.2rem; margin: 0 0 30px 0; border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 10px; text-align: left; }
-        .featured-project { background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.06); margin-bottom: 50px; max-width: 1000px; }
+        /* Project Section */
+        .section-title { font-size: 2.2rem; margin: 40px 0 30px 0; border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 10px; color: var(--text); }
+        .featured-project { background: var(--card-bg); border-radius: 8px; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.06); margin-bottom: 50px; max-width: 1000px; border: 1px solid rgba(0,0,0,0.05); }
         
         .main-thumb { position: relative; width: 100%; aspect-ratio: 16/9; background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center; cursor: pointer; text-decoration: none; }
         .main-thumb img { position: absolute; width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.6s ease; }
@@ -65,34 +95,33 @@
         .main-thumb:hover .watch-video-overlay { opacity: 1; transform: translateY(0); }
         
         .project-body { padding: 40px 50px; }
-        .project-body h3 { font-size: 1.8rem; color: var(--navy); margin-bottom: 15px; }
+        .project-body h3 { font-size: 1.8rem; color: var(--text); margin-bottom: 15px; }
         .client-info { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(0,0,0,0.05); }
         .client-logo { width: 45px; height: 45px; border-radius: 50%; object-fit: contain; background: #f1f5f9; border: 1px solid rgba(0,0,0,0.05); }
-        .client-meta { font-size: 0.85rem; text-align: left; }
+        .client-meta { font-size: 0.85rem; color: var(--text); }
         .client-meta a { color: var(--gold); text-decoration: none; font-weight: 600; }
         .stat-badge { display: inline-block; padding: 4px 12px; background: rgba(181, 148, 16, 0.08); border: 1px solid var(--gold); color: var(--gold); font-weight: 700; font-size: 0.7rem; margin: 0 8px 8px 0; border-radius: 4px; text-transform: uppercase; }
         
-        .description-box { border-left: 4px solid var(--gold); padding: 20px 30px; background: rgba(181, 148, 16, 0.03); margin: 20px 0; font-size: 0.9rem; color: var(--slate); line-height: 1.7; }
-        
-        .project-body { padding: 40px 50px; }
-        .project-body h3 { font-size: 1.8rem; color: var(--navy); margin-bottom: 15px; }
-        .client-info { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid rgba(0,0,0,0.05); }
-        .client-logo { width: 45px; height: 45px; border-radius: 50%; object-fit: contain; background: #f1f5f9; border: 1px solid rgba(0,0,0,0.05); }
-        .client-meta { font-size: 0.85rem; }
-        .client-meta a { color: var(--gold); text-decoration: none; font-weight: 600; }
-        .stat-badge { display: inline-block; padding: 4px 12px; background: rgba(181, 148, 16, 0.08); border: 1px solid var(--gold); color: var(--gold); font-weight: 700; font-size: 0.7rem; margin: 0 8px 8px 0; border-radius: 4px; text-transform: uppercase; }
-        
-        /* Box width and styling matched to screenshot */
-        .description-box { border-left: 4px solid var(--gold); padding: 20px 30px; background: rgba(181, 148, 16, 0.03); margin: 20px 0; font-size: 0.9rem; color: var(--slate); line-height: 1.7; }
+        .description-box { border-left: 4px solid var(--gold); padding: 20px 30px; background: rgba(181, 148, 16, 0.03); margin: 20px 0; font-size: 0.9rem; color: var(--text); line-height: 1.7; opacity: 0.85; }
 
-        /* IDENTICAL CONTACT SECTION - 1:1 REPLICA OF PR SCREENSHOT */
         /* Contact Section */
-        .contact-section { padding: 120px 0; background: var(--navy); color: white; text-align: center; }
+        .contact-section { padding: 100px 0; background: var(--navy); color: white; text-align: center; }
         .availability-tag { display: inline-block; padding: 8px 20px; border: 1px solid var(--gold); color: var(--gold); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
-        .email-link { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 5vw, 3rem); color: white; text-decoration: none; display: block; margin-bottom: 20px; }
+        .email-link { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 5vw, 3.5rem); color: white; text-decoration: none; display: block; margin-bottom: 20px; transition: 0.3s; word-break: break-all; }
+        .email-link:hover { color: var(--gold); }
+        .social-links { display: flex; justify-content: center; gap: 25px; margin-top: 20px; }
+        .social-links a { color: white; font-size: 1.8rem; transition: 0.3s ease; }
+        .social-links a:hover { color: var(--gold); transform: translateY(-5px); }
+
+        @media (max-width: 850px) {
+            .nav-links { display: none; }
+            .img-float-right { float: none; width: 100%; margin: 20px 0; }
+            .project-body { padding: 20px; }
+            .section-title { font-size: 1.8rem; }
+        }
     </style>
 </head>
-<body>
+<body id="body">
 
     <audio id="bgMusic" loop><source src="soothing-track.mp3" type="audio/mpeg"></audio>
 
@@ -103,24 +132,25 @@
 
     <nav>
         <div class="container nav-container">
-            <div class="logo-wrap">
-                <span class="back-symbol" onclick="history.back()">&#10094;</span>
-                <a href="index.html" class="logo">MITHILA</a>
-                <span class="dropdown-trigger" id="dropTrigger" onclick="toggleDropdown()">▼</span>
-                <ul class="nav-dropdown" id="navDropdown">
-                    <li><a href="pr.html">PR & Communications</a></li>
-                    <li><a href="marketing.html">Marketing & Storytelling</a></li>
-                    <li><a href="strategy.html">Strategic Planning</a></li>
-                    <li><a href="digital.html">Voiceover</a></li>
-                    <li><a href="branding.html">Anchoring & Public Speaking</a></li>
-                </ul>
+            <div class="logo-area">
+                <a href="javascript:history.back()" class="back-btn" title="Go Back"><i class="fas fa-arrow-left"></i></a>
+                <a href="index.html" class="logo">M.</a>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#expertise">Expertise</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li class="dropdown">
+                    <a href="#">Expertise <i class="fas fa-chevron-down" style="font-size: 0.6rem;"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="pr.html">PR & Communications</a></li>
+                        <li><a href="marketing.html">Marketing & Storytelling</a></li>
+                        <li><a href="strategy.html">Operations & Planning</a></li>
+                        <li><a href="voiceover.html">Voiceover</a></li>
+                        <li><a href="speaking.html">Anchoring & Public Speaking</a></li>
+                    </ul>
+                </li>
                 <li><a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank">LinkedIn</a></li>
-                <li><a href="#" class="resume-btn">My Resume</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="YOUR_DRIVE_LINK" target="_blank" class="resume-btn">My Resume</a></li>
             </ul>
         </div>
     </nav>
@@ -141,20 +171,22 @@
                 </div>
                 <div class="content-wrapper">
                     <div class="story-text-wrap" id="story-para">
-                       There resides a tree skeleton in the palms of our hands- that’s what I grew up believing. When I pressed my palms together, I saw branches in those scattered lines. An old tree. Leafless. Waiting. I used to wonder if winter was the only season in human life.
+                        <img src="story-left.jpg" alt="Creativity in action" class="img-float-right">
+                        There resides a tree skeleton in the palms of our hands- that’s what I grew up believing. When I pressed my palms together, I saw branches in those scattered lines. An old tree. Leafless. Waiting. I used to wonder if winter was the only season in human life.
                         <br><br>
-                         <img src="story-left.jpg" alt="Creativity in action" class="img-float-right">
-                       I drew suns in blue, flowers in impossible shapes, and forests inspired by 'রুশদেশের উপকথা'. A single word could unfold an entire universe in my mind. I would spend hours narrating those imaginary worlds to my mother- much to her exhaustion. Creation, for me, was never an activity. It was instinct.
-                       Painting taught me flow. Music taught me rhythm. Even leaving pickles to dry on the rooftop taught me patience, and gratitude for air, for time, for process.
+                        I drew suns in blue, flowers in impossible shapes, and forests inspired by 'রুশদেশের উপকথা'. A single word could unfold an entire universe in my mind. I would spend hours narrating those imaginary worlds to my mother- much to her exhaustion. Creation, for me, was never an activity. It was instinct.
+                        Painting taught me flow. Music taught me rhythm. Even leaving pickles to dry on the rooftop taught me patience, and gratitude for air, for time, for process.
                         <br><br>
                         That is how I understand brands.
                         <br><br>
                         I don’t see products. I see seasons. I see roots. I see the silent winters before a spring. Marketing, to me, is not persuasion- it is interpretation. It is finding the story already living beneath the surface and giving it language.
                         <br><br>
                         And here I am, translating heartbeats into narratives people recognize as their own.
+                    </div>
                 </div>
             </div>
         </section>
+
         <h2 class="section-title">Project Highlights</h2>
     
         <div class="featured-project">
@@ -166,7 +198,7 @@
                 <div class="client-info">
                     <img src="homely-logo.png" alt="Homely Interior Logo" class="client-logo">
                     <div class="client-meta">
-                        <div style="font-weight: 700; color: var(--navy);">Promotional Content for Homely Interior Limited</div>
+                        <div style="font-weight: 700;">Promotional Content for Homely Interior Limited</div>
                         <a href="https://web.facebook.com/HomelyInterior.Ltd" target="_blank">facebook.com/HomelyInterior.Ltd</a>
                     </div>
                 </div>
@@ -178,7 +210,7 @@
                     <span class="stat-badge">4.4K Reactions</span>
                 </div>
 
-                <p style="font-weight: 700; font-size: 0.90rem; color: var(--navy); margin-bottom: 5px;">Project Goal:</p>
+                <p style="font-weight: 700; font-size: 0.90rem; margin-bottom: 5px;">Project Goal:</p>
                 <div class="description-box">
                     Led the ideation, script, and screenplay for a narrative driven sponsorship campaign at the BracU Premier League, where BracU Monon Spartan represented the BRAC University MONON Club in intra-university league cricket. Centered the story on the team captain’s past setbacks, reframing failure as resilience. Strategically positioned Homely Interior as the brand that believed in the team before victory — fueling their comeback both on and off the field.
                 </div>
@@ -186,33 +218,38 @@
         </div>
     </main>
 
-   <section id="contact" class="contact-section">
+    <section id="contact" class="contact-section">
         <div class="container">
-            <div class="availability-tag">Available for Part-time roles, Internships, and Freelance projects.</div>
-            <h2>Let's Connect</h2>
+            <div class="availability-tag">Available for Part-time Roles • Internships • Freelance Projects</div>
             <a href="mailto:rejawana.mithila@gmail.com" class="email-link">rejawana.mithila@gmail.com</a>
-            <a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank" style="color: var(--gold); text-decoration: none; text-transform: uppercase; font-weight: 700; letter-spacing: 2px;">LinkedIn Profile</a>
+            
+            <div class="social-links">
+                <a href="https://facebook.com/yourlink" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://wa.me/01601956511" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
         </div>
     </section>
 
     <script>
-        function toggleDropdown() {
-            const drop = document.getElementById('navDropdown');
-            drop.classList.toggle('show');
-        }
-        
         const music = document.getElementById('bgMusic');
         const mBtn = document.getElementById('music-text');
         function toggleMusic() {
-            if (music.paused) { music.play(); mBtn.innerText = "Experience Active"; }
-            else { music.pause(); mBtn.innerText = "Experience Paused"; }
-        }
-
-        window.onclick = function(e) {
-            if (!e.target.matches('.dropdown-trigger')) {
-                document.getElementById('navDropdown').classList.remove('show');
+            if (music.paused) { 
+                music.play(); 
+                mBtn.innerText = "Experience Active"; 
+            } else { 
+                music.pause(); 
+                mBtn.innerText = "Experience Paused"; 
             }
         }
+
+        // Apply theme persistence
+        (function() {
+            if (localStorage.getItem('theme') === 'dark') {
+                document.body.setAttribute('data-theme', 'dark');
+            }
+        })();
     </script>
 </body>
 </html>
