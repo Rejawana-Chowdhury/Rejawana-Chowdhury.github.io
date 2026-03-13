@@ -80,8 +80,23 @@
         .page-header h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--gold); margin-bottom: 20px; }
 
         /* Section Styling */
-        .section-title { font-size: 2.2rem; margin: 60px 0 40px; border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 10px; }
+        .section-title { font-size: 2.2rem; margin: 60px 0 30px; border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 10px; }
         
+        /* NEW: Container Card Styling */
+        .content-card {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin-bottom: 40px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
         .role-title { font-size: 1.8rem; color: var(--navy); margin-bottom: 15px; font-weight: 700; border-left: 5px solid var(--gold); padding-left: 15px; }
         [data-theme="dark"] .role-title { color: var(--gold); }
 
@@ -89,7 +104,6 @@
         .leadership-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s; cursor: zoom-in; }
         .leadership-img:hover { transform: scale(1.03); }
 
-        /* FIX: Justified text */
         .description-box { 
             border-left: 4px solid var(--gold); 
             padding: 20px 30px; 
@@ -104,8 +118,7 @@
         [data-theme="dark"] .club-links a { color: var(--offwhite); }
         .club-links a:hover { color: var(--gold); border-bottom-color: transparent; }
 
-        /* FIX: Center alignment for images and text container */
-        .project-row { display: grid; grid-template-columns: 350px 1fr; gap: 40px; margin-bottom: 60px; align-items: center; }
+        .project-row { display: grid; grid-template-columns: 350px 1fr; gap: 40px; align-items: center; }
         .thumb-box { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: 6px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         .thumb-box img { width: 100%; height: 100%; object-fit: cover; display: block; opacity: 0.85; transition: 0.4s; }
         .see-more { position: absolute; inset: 0; background: rgba(15, 23, 42, 0.7); color: var(--gold); display: flex; align-items: center; justify-content: center; text-decoration: none; font-weight: 700; opacity: 0; transition: 0.3s; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; }
@@ -114,7 +127,7 @@
 
         .stat-badge { display: inline-block; padding: 4px 12px; background: rgba(181, 148, 16, 0.1); border: 1px solid var(--gold); color: var(--gold); font-weight: 700; font-size: 0.7rem; margin-right: 8px; border-radius: 4px; text-transform: uppercase; }
 
-        .cert-container { display: grid; grid-template-columns: 300px 1fr; gap: 40px; align-items: center; background: var(--card-bg); padding: 30px; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+        .cert-container { display: grid; grid-template-columns: 300px 1fr; gap: 40px; align-items: center; }
         .cert-img { width: 100%; border-radius: 4px; cursor: zoom-in; }
 
         .modal { display: none; position: fixed; z-index: 2000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; padding: 20px; }
@@ -134,10 +147,10 @@
             .leadership-grid { grid-template-columns: 1fr; }
             .project-row, .cert-container { grid-template-columns: 1fr; text-align: center; }
             .thumb-box { max-width: 400px; margin: 0 auto; }
-            /* Keep text justified on mobile but centered in the block */
             .description-box { text-align: justify; }
             .role-title { border-left: none; border-bottom: 3px solid var(--gold); padding-left: 0; display: inline-block; }
             .dropdown-menu { position: static; box-shadow: none; border: none; padding-left: 20px; }
+            .content-card { padding: 20px; }
         }
     </style>
 </head>
@@ -179,139 +192,154 @@
     <main class="container">
         
         <h2 class="section-title">Leadership Excellence</h2>
-        <h3 class="role-title">Head of Public Relations — UIU Computer Club (UIU CCL)</h3>
         
-        <div class="leadership-grid">
-            <img src="leadership1.jpg" alt="PR Leadership" class="leadership-img" onclick="openModal(this)">
-            <img src="leadership2.jpg" alt="PR Events" class="leadership-img" onclick="openModal(this)">
-            <img src="leadership3.jpg" alt="Team Coordination" class="leadership-img" onclick="openModal(this)">
-        </div>
-
-        <div class="description-box">
-            UIU Computer Club is the largest and most oldest student organization under the Department of CSE at United International University. I began my journey as a general member, eventually becoming a Junior Executive in the Public Relations department. Through consistent performance and mastery of strategic communication, I was promoted to Deputy Head and then to the <strong>Head of Public Relations.</strong>
-            <br><br>
-            Leading a dedicated team of five, I managed a wide spectrum of responsibilities including institutional social media strategy, press handling, public management, crisis communication, and large-scale event organization. My work is guided by our moderator, <a href="https://cse.uiu.ac.bd/faculty/tarek/" target="_blank" style="color:var(--gold); text-decoration:none; font-weight:600;">Md. Tarek Hasan</a>, Associate Professor and Undergraduate Program Coordinator at UIU.
-            <div class="club-links">
-                <a href="https://www.facebook.com/uiuccl" target="_blank">Facebook Page</a>
-                <a href="https://computerclub.uiu.ac.bd" target="_blank">Official Website</a>
+        <div class="content-card">
+            <h3 class="role-title">Head of Public Relations — UIU Computer Club (UIU CCL)</h3>
+            <div class="leadership-grid">
+                <img src="leadership1.jpg" alt="PR Leadership" class="leadership-img" onclick="openModal(this)">
+                <img src="leadership2.jpg" alt="PR Events" class="leadership-img" onclick="openModal(this)">
+                <img src="leadership3.jpg" alt="Team Coordination" class="leadership-img" onclick="openModal(this)">
             </div>
-        </div>
-
-        <h3 class="role-title" style="font-size: 1.4rem; margin-top: 40px;">Key Initiative</h3>
-        <div class="project-row" style="margin-top: 20px;">
-            <div class="thumb-box">
-                <img src="blog_thumbnail.png" alt="UIUCCL Blog Platform">
-                <a href="https://naeemsadik.github.io/UIUCCL_BlogSite/index.html" class="see-more" target="_blank">Visit Site</a>
-            </div>
-            <div>
-                <h3>UIU CCL Blogs</h3>
-                <div style="margin: 10px 0;">
-                    <span class="stat-badge">Live: Static Site</span>
-                    <span class="stat-badge">In Progress: Responsive Version</span>
-                    <span class="stat-badge">Member Exclusive</span>
+            <div class="description-box">
+                UIU Computer Club is the largest and most oldest student organization under the Department of CSE at United International University. I began my journey as a general member, eventually becoming a Junior Executive in the Public Relations department. Through consistent performance and mastery of strategic communication, I was promoted to Deputy Head and then to the <strong>Head of Public Relations.</strong>
+                <br><br>
+                Leading a dedicated team of five, I managed a wide spectrum of responsibilities including institutional social media strategy, press handling, public management, crisis communication, and large-scale event organization. My work is guided by our moderator, <a href="https://cse.uiu.ac.bd/faculty/tarek/" target="_blank" style="color:var(--gold); text-decoration:none; font-weight:600;">Md. Tarek Hasan</a>, Associate Professor and Undergraduate Program Coordinator at UIU.
+                <div class="club-links">
+                    <a href="https://www.facebook.com/uiuccl" target="_blank">Facebook Page</a>
+                    <a href="https://computerclub.uiu.ac.bd" target="_blank">Official Website</a>
                 </div>
-                <div class="description-box">
-                 Leading the development of UIU’s first-ever blogging platform under UIU Computer Club- 
-                             a member-exclusive space where registered members can create personal profiles, 
-                             publish blogs across various niches, and build digital portfolios for higher studies, research, 
-                             and career opportunities. The initiative is designed not only to support student visibility 
-                             but also to strengthen community engagement, grow club membership, and expand digital presence, demonstrating leadership, 
-                             strategic thinking, and project management with real organizational impact.
+            </div>
+
+            <hr style="opacity: 0.1; margin: 40px 0;">
+
+            <h3 class="role-title" style="font-size: 1.4rem;">Key Initiative</h3>
+            <div class="project-row" style="margin-top: 20px;">
+                <div class="thumb-box">
+                    <img src="blog_thumbnail.png" alt="UIUCCL Blog Platform">
+                    <a href="https://naeemsadik.github.io/UIUCCL_BlogSite/index.html" class="see-more" target="_blank">Visit Site</a>
+                </div>
+                <div>
+                    <h3>UIU CCL Blogs</h3>
+                    <div style="margin: 10px 0;">
+                        <span class="stat-badge">Live: Static Site</span>
+                        <span class="stat-badge">In Progress: Responsive Version</span>
+                        <span class="stat-badge">Member Exclusive</span>
+                    </div>
+                    <div class="description-box">
+                     Leading the development of UIU’s first-ever blogging platform under UIU Computer Club- 
+                                 a member-exclusive space where registered members can create personal profiles, 
+                                 publish blogs across various niches, and build digital portfolios for higher studies, research, 
+                                 and career opportunities. The initiative is designed not only to support student visibility 
+                                 but also to strengthen community engagement, grow club membership, and expand digital presence, demonstrating leadership, 
+                                 strategic thinking, and project management with real organizational impact.
+                    </div>
                 </div>
             </div>
         </div>
 
         <h2 class="section-title">Certification</h2>
-        <div class="cert-container">
-            <img src="cert.jpg" alt="Communications Apprentice Certificate" class="cert-img" onclick="openModal(this)">
-            <div>
-                <h3 style="color: var(--navy);">Communication Apprentice</h3>
-                <p style="color: var(--gold); font-weight: 600; margin-bottom: 10px;">UIU PRO & Comms | United International University</p>
-                <div class="description-box">
-                     I had the opportunity to work as a communications apprentice in a program mentored by 
-                    the Head of Communications at UIU, <a href="https://mutiatur.com/" target="_blank" style="color:var(--gold); text-decoration:none;">Sumaiya Mutiatur Rahman</a>.
-                    <br><br>
-                    During this apprenticeship, I spearheaded multiple content initiatives that significantly expanded UIU's reach to both internal and external audiences.
+        <div class="content-card">
+            <div class="cert-container">
+                <img src="cert.jpg" alt="Communications Apprentice Certificate" class="cert-img" onclick="openModal(this)">
+                <div>
+                    <h3 style="color: var(--navy);">Communication Apprentice</h3>
+                    <p style="color: var(--gold); font-weight: 600; margin-bottom: 10px;">UIU PRO & Comms | United International University</p>
+                    <div class="description-box">
+                         I had the opportunity to work as a communications apprentice in a program mentored by 
+                        the Head of Communications at UIU, <a href="https://mutiatur.com/" target="_blank" style="color:var(--gold); text-decoration:none;">Sumaiya Mutiatur Rahman</a>.
+                        <br><br>
+                        During this apprenticeship, I spearheaded multiple content initiatives that significantly expanded UIU's reach to both internal and external audiences.
+                    </div>
                 </div>
             </div>
         </div>
 
         <h2 class="section-title">Project Highlights</h2>
 
-        <div class="project-row">
-            <div class="thumb-box">
-                <img src="victory_thumb.png" alt="Victory Day Tribute">
-                <a href="https://www.facebook.com/uiuinfo/videos/1105234857817150/?rdid=SMDyeqdABwWhJ9Sn#" class="see-more" target="_blank">Watch Video</a>
-            </div>
-            <div>
-                <h3>Victory Day Tribute</h3>
-                <div style="margin: 15px 0;">
-                    <span class="stat-badge">51k Views</span>
-                    <span class="stat-badge">1.4k Reactions</span>
+        <div class="content-card">
+            <div class="project-row">
+                <div class="thumb-box">
+                    <img src="victory_thumb.png" alt="Victory Day Tribute">
+                    <a href="https://www.facebook.com/uiuinfo/videos/1105234857817150/?rdid=SMDyeqdABwWhJ9Sn#" class="see-more" target="_blank">Watch Video</a>
                 </div>
-                <div class="description-box">Served as the On-screen Communication Lead and Voice Artist.</div>
+                <div>
+                    <h3>Victory Day Tribute</h3>
+                    <div style="margin: 15px 0;">
+                        <span class="stat-badge">51k Views</span>
+                        <span class="stat-badge">1.4k Reactions</span>
+                    </div>
+                    <div class="description-box">Served as the On-screen Communication Lead and Voice Artist.</div>
+                </div>
             </div>
         </div>
 
-        <div class="project-row">
-            <div class="thumb-box">
-                <img src="mother_language_thumb.png" alt="Mother Language Day Thumbnail">
-                <a href="https://www.facebook.com/uiuinfo/videos/1026092639345625/?mibextid=rS40aB7S9Ucbxw6v" class="see-more" target="_blank">Watch Video</a>
-            </div>
-            <div>
-                <h3>Dignity of Mother Tongue | International Mother Language Day</h3>
-                <div style="margin: 15px 0;">
-                    <span class="stat-badge">174k Views</span>
-                    <span class="stat-badge">4.5k Reactions</span>
+        <div class="content-card">
+            <div class="project-row">
+                <div class="thumb-box">
+                    <img src="mother_language_thumb.png" alt="Mother Language Day Thumbnail">
+                    <a href="https://www.facebook.com/uiuinfo/videos/1026092639345625/?mibextid=rS40aB7S9Ucbxw6v" class="see-more" target="_blank">Watch Video</a>
                 </div>
-                <div class="description-box">Achieved peak organic engagement within 48 hours of launch. Developed the idea, wrote the script, and performed the voiceover.</div>
+                <div>
+                    <h3>Dignity of Mother Tongue | International Mother Language Day</h3>
+                    <div style="margin: 15px 0;">
+                        <span class="stat-badge">174k Views</span>
+                        <span class="stat-badge">4.5k Reactions</span>
+                    </div>
+                    <div class="description-box">Achieved peak organic engagement within 48 hours of launch. Developed the idea, wrote the script, and performed the voiceover.</div>
+                </div>
             </div>
         </div>
 
         <h2 class="section-title">Digital Campaign</h2>
         <p style="margin-bottom: 40px; font-style: italic;">"Breaking the Barrier" — A 3-Part Cinematic Series highlighting female excellence.</p>
 
-        <div class="project-row">
-            <div class="thumb-box">
-                <img src="womens_day_thumb.png" alt="Story 1 Thumbnail">
-                <a href="https://www.linkedin.com/feed/update/urn:li:activity:7304373738345504769/" class="see-more" target="_blank">See Story 1</a>
-            </div>
-            <div>
-                <h3>Story 01 | Khushnur Binte Jahangir (Lecturer, UIU)</h3>
-                <div style="margin: 15px 0;"><span class="stat-badge">29k Views</span></div>
-                <div class="description-box">
-                    Khushnur Binte Jahangir, Associate Professor (Recently Promoted) at United International University, and an Erasmus Mundus Scholar, shows how resilience and consistency lead to success. 
-                        I developed the concept, wrote the script, and delivered the voiceover. By sharing her story, 
-                        the video supports the university’s PR and communication goals by showing its global success, inspiring students, and building a strong and positive image.
+        <div class="content-card">
+            <div class="project-row">
+                <div class="thumb-box">
+                    <img src="womens_day_thumb.png" alt="Story 1 Thumbnail">
+                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7304373738345504769/" class="see-more" target="_blank">See Story 1</a>
+                </div>
+                <div>
+                    <h3>Story 01 | Khushnur Binte Jahangir (Lecturer, UIU)</h3>
+                    <div style="margin: 15px 0;"><span class="stat-badge">29k Views</span></div>
+                    <div class="description-box">
+                        Khushnur Binte Jahangir, Associate Professor (Recently Promoted) at United International University, and an Erasmus Mundus Scholar, shows how resilience and consistency lead to success. 
+                            I developed the concept, wrote the script, and delivered the voiceover. By sharing her story, 
+                            the video supports the university’s PR and communication goals by showing its global success, inspiring students, and building a strong and positive image.
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="project-row">
-            <div class="thumb-box">
-                <img src="womens_day_2.png" alt="Story 2 Thumbnail">
-                <a href="https://www.facebook.com/uiuinfo/videos/3939268242995359/?rdid=b3DYiva0QXkaVH1W#" class="see-more" target="_blank">See Story 2</a>
-            </div>
-            <div>
-                <h3>Story 02 | Sadia Ahmmed (Gold Medalist, IBCOL 2023)</h3>
-                <div style="margin: 15px 0;"><span class="stat-badge">1M Views</span></div>
-                <div class="description-box">Featuring Sadia Ahmmed, IBCOL 2023 Gold Medalist, the video shared her journey in a simple and powerful way. 
-                        I developed the concept, wrote the script, and delivered the voiceover.
-                        It boosted the university’s image, built pride among students, and supported PR and communication goals—reaching over 1 million views.</div>
+        <div class="content-card">
+            <div class="project-row">
+                <div class="thumb-box">
+                    <img src="womens_day_2.png" alt="Story 2 Thumbnail">
+                    <a href="https://www.facebook.com/uiuinfo/videos/3939268242995359/?rdid=b3DYiva0QXkaVH1W#" class="see-more" target="_blank">See Story 2</a>
+                </div>
+                <div>
+                    <h3>Story 02 | Sadia Ahmmed (Gold Medalist, IBCOL 2023)</h3>
+                    <div style="margin: 15px 0;"><span class="stat-badge">1M Views</span></div>
+                    <div class="description-box">Featuring Sadia Ahmmed, IBCOL 2023 Gold Medalist, the video shared her journey in a simple and powerful way. 
+                            I developed the concept, wrote the script, and delivered the voiceover.
+                            It boosted the university’s image, built pride among students, and supported PR and communication goals—reaching over 1 million views.</div>
+                </div>
             </div>
         </div>
 
-        <div class="project-row">
-            <div class="thumb-box">
-                <img src="womens_day_3.png" alt="Story 3 Thumbnail">
-                <a href="https://www.facebook.com/uiuinfo/videos/1523232558863076/" class="see-more" target="_blank">See Story 3</a>
-            </div>
-            <div>
-                <h3>Story 03 | Antara Raisa Sohana (Student & Entrepreneur)</h3>
-                <div style="margin: 15px 0;"><span class="stat-badge">34k Views</span></div>
-                <div class="description-box">Featuring Antara Raisa Sohana, the video concluded the series by showing how student entrepreneurship 
-                        grow stronger with the right support from the institution. I developed the concept, wrote the script, and delivered the voiceover
-                        It highlighted how guidance, resources, and encouragement from the university help young innovators turn ideas into reality.</div>
+        <div class="content-card">
+            <div class="project-row">
+                <div class="thumb-box">
+                    <img src="womens_day_3.png" alt="Story 3 Thumbnail">
+                    <a href="https://www.facebook.com/uiuinfo/videos/1523232558863076/" class="see-more" target="_blank">See Story 3</a>
+                </div>
+                <div>
+                    <h3>Story 03 | Antara Raisa Sohana (Student & Entrepreneur)</h3>
+                    <div style="margin: 15px 0;"><span class="stat-badge">34k Views</span></div>
+                    <div class="description-box">Featuring Antara Raisa Sohana, the video concluded the series by showing how student entrepreneurship 
+                            grow stronger with the right support from the institution. I developed the concept, wrote the script, and delivered the voiceover
+                            It highlighted how guidance, resources, and encouragement from the university help young innovators turn ideas into reality.</div>
+                </div>
             </div>
         </div>
 
