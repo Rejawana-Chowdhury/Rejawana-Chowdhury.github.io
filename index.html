@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Rejawana Chowdhury Mithila | Communications • Strategy • Presence</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         :root {
             --navy: #0f172a; --gold: #b59410; --slate: #475569; --offwhite: #f8fafc;
@@ -80,6 +81,11 @@
         .email-link { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 5vw, 3.5rem); color: white; text-decoration: none; display: block; margin-bottom: 20px; transition: 0.3s; word-break: break-all; }
         .email-link:hover { color: var(--gold); }
 
+        /* Social Icons Styling */
+        .social-links { display: flex; justify-content: center; gap: 25px; margin-top: 20px; }
+        .social-links a { color: white; font-size: 1.8rem; transition: 0.3s ease; }
+        .social-links a:hover { color: var(--gold); transform: translateY(-5px); }
+
         /* Theme Toggle Control */
         .theme-toggle { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; border: none; width: 55px; height: 55px; border-radius: 50%; cursor: pointer; z-index: 3000; box-shadow: 0 5px 15px rgba(0,0,0,0.2); font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
 
@@ -109,18 +115,19 @@
 </head>
 <body id="body">
 
-    <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+    <button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">
+        <i id="themeIcon" class="fas fa-moon"></i>
+    </button>
 
     <nav>
         <div class="container nav-container">
-            <a href="index.html" class="logo">MITHILA</a>
+            <a href="index.html" class="logo">M.</a>
             <div class="hamburger" onclick="toggleMenu()">☰</div>
             <ul class="nav-links" id="navMenu">
                 <li><a href="#expertise" onclick="toggleMenu()">Expertise</a></li>
                 <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
                 <li><a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank">LinkedIn</a></li>
                  <li><a href="YOUR_DRIVE_LINK" target="_blank" class="resume-btn">My Resume</a></li>
-                 
             </ul>
         </div>
     </nav>
@@ -145,18 +152,18 @@
                 <a href="pr.html" class="exp-link">
                     <div class="exp-card">
                         <h3>PR & Communications</h3>
-                        <p>Leadership, branding, public relations and stakeholder management.</p>
+                        <p>Building bridges between brands and the press through strategic outreach.</p>
                     </div>
                 </a>
                 <a href="marketing.html" class="exp-link">
                     <div class="exp-card">
                         <h3>Marketing & Storytelling</h3>
-                        <p>Crafting narratives for digital and commercial growth.</p>
+                        <p>Translating heartbeats into narratives people recognize as their own.</p>
                     </div>
                 </a>
                 <a href="strategy.html" class="exp-link">
                     <div class="exp-card">
-                        <h3>Strategic Planning</h3>
+                        <h3>Operations & Planning</h3>
                         <p>End-to-end event and campaign management along with problem solving.</p>
                     </div>
                 </a>
@@ -178,17 +185,44 @@
 
     <section id="contact" class="contact-section">
         <div class="container">
-            <div class="availability-tag">Available for Part-time • Internships • Freelance</div>
+            <div class="availability-tag">Available for Part-time roles • Internships • Freelance Projects</div>
             <a href="mailto:rejawana.mithila@gmail.com" class="email-link">rejawana.mithila@gmail.com</a>
-            <a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank" style="color: var(--gold); text-decoration: none; text-transform: uppercase; font-weight: 700; letter-spacing: 2px; font-size: 0.8rem;">LinkedIn Profile</a>
+            
+            <div class="social-links">
+                <a href="https://www.facebook.com/rejawanaOmithila/" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.linkedin.com/in/rejawanachowdhurymithila/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://wa.me/01601956511" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
         </div>
     </section>
-
     <script>
+        // Check local storage and apply theme on page load
+        (function initTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const body = document.getElementById('body');
+            const icon = document.getElementById('themeIcon');
+            
+            if (savedTheme === 'dark') {
+                body.setAttribute('data-theme', 'dark');
+                if(icon) icon.className = 'fas fa-sun';
+            }
+        })();
+
         function toggleTheme() {
             const body = document.getElementById('body');
-            body.hasAttribute('data-theme') ? body.removeAttribute('data-theme') : body.setAttribute('data-theme', 'dark');
+            const icon = document.getElementById('themeIcon');
+            
+            if (body.hasAttribute('data-theme')) {
+                body.removeAttribute('data-theme');
+                icon.className = 'fas fa-moon';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                icon.className = 'fas fa-sun';
+                localStorage.setItem('theme', 'dark');
+            }
         }
+
         function toggleMenu() {
             if(window.innerWidth <= 850) {
                 document.getElementById('navMenu').classList.toggle('active');
