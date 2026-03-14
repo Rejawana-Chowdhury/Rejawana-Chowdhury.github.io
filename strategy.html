@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Strategic Planning | Rejawana Chowdhury Mithila</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
     <script>
         (function() {
@@ -32,31 +32,54 @@
         html { scroll-behavior: smooth; }
         .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 25px; }
 
-        /* Navigation */
+        /* Navigation - PR Page Style */
         nav { position: fixed; top: 0; width: 100%; padding: 15px 0; z-index: 1000; background: var(--nav-bg); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        .logo-wrap { display: flex; align-items: center; gap: 8px; position: relative; }
-        .back-symbol { font-size: 1.2rem; color: var(--gold); cursor: pointer; padding-right: 5px; font-weight: bold; }
+        
+        .logo-area { display: flex; align-items: center; gap: 15px; }
+        .back-btn { color: var(--gold); text-decoration: none; font-size: 1.2rem; transition: 0.3s; cursor: pointer; }
+        .back-btn:hover { transform: translateX(-5px); }
+        
         .logo { font-family: 'Playfair Display'; font-size: 1.4rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1px; }
         [data-theme="dark"] .logo { color: white; }
-        .dropdown-trigger { cursor: pointer; font-size: 0.8rem; color: var(--gold); margin-left: 5px; }
-        .nav-dropdown { position: absolute; top: 100%; left: 35px; background: var(--card-bg); box-shadow: 0 10px 30px rgba(0,0,0,0.1); list-style: none; padding: 10px 0; min-width: 220px; display: none; border-radius: 4px; border: 1px solid rgba(0,0,0,0.05); }
-        .nav-dropdown.show { display: block; }
-        .nav-dropdown li a { display: block; padding: 12px 20px; text-decoration: none; color: var(--text); font-size: 0.75rem; text-transform: uppercase; font-weight: 600; }
-        
-        .nav-links { display: flex; list-style: none; gap: 20px; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        .nav-links { display: flex; list-style: none; gap: 25px; align-items: center; }
+        .nav-links a { text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .nav-links a:hover { color: var(--gold); }
+
+        /* Expertise Dropdown */
+        .dropdown { position: relative; }
+        .dropdown-menu { 
+            position: absolute; top: 100%; left: 0; background: var(--card-bg); 
+            min-width: 220px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); 
+            border-top: 3px solid var(--gold); display: none; list-style: none; 
+            padding: 10px 0; z-index: 1001; 
+        }
+        .dropdown:hover .dropdown-menu { display: block; }
+        .dropdown-menu li a { 
+            padding: 10px 20px; display: block; font-size: 0.75rem; 
+            color: var(--text) !important; text-transform: none; letter-spacing: 0.5px; 
+        }
+        .dropdown-menu li a:hover { background: rgba(181, 148, 16, 0.1); color: var(--gold) !important; }
+
         .resume-btn { border: 1.5px solid var(--gold); padding: 8px 16px; border-radius: 4px; color: var(--gold) !important; }
 
-        /* Typography & Layout Fixes */
+        /* Header with Dark Mode Shadow */
+        .page-header { padding: 160px 0 80px; background: var(--navy); color: white; text-align: center; position: relative; }
+        [data-theme="dark"] .page-header { box-shadow: 0 10px 30px rgba(181, 148, 16, 0.2); }
+        .header-tag { background: var(--gold); color: white; padding: 6px 15px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; display: inline-block; margin-bottom: 20px; border-radius: 2px; }
+        .page-header h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--gold); margin-bottom: 20px; }
+
+        /* Grids & Content */
         .section-title { font-size: 2.2rem; margin: 60px 0 40px; border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 10px; }
         .role-title { font-size: 1.8rem; color: var(--navy); margin-bottom: 15px; font-weight: 700; border-left: 5px solid var(--gold); padding-left: 15px; }
         [data-theme="dark"] .role-title { color: var(--gold); }
         [data-theme="dark"] .ack-card h3, [data-theme="dark"] .ack-card h4, [data-theme="dark"] .description-box h4, [data-theme="dark"] .event-case h3 { color: white; }
 
-        .leadership-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 30px; }
+        .leadership-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin: 20px 0; }
         .leadership-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s; cursor: zoom-in; }
-        
+        .leadership-img:hover { transform: scale(1.02); }
+
         .description-box { border-left: 4px solid var(--gold); padding: 20px 30px; background: rgba(181, 148, 16, 0.05); margin: 25px 0; }
         .strategy-list { list-style: none; margin-top: 15px; }
         .strategy-list li { position: relative; padding-left: 25px; margin-bottom: 10px; color: var(--slate); font-weight: 500; }
@@ -67,16 +90,13 @@
 
         .event-case { background: var(--card-bg); padding: 40px; border-radius: 12px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
 
-        .ack-card { display: grid; grid-template-columns: 350px 1fr; gap: 40px; background: var(--card-bg); padding: 40px; border-radius: 12px; margin-bottom: 50px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); border-left: 5px solid var(--gold); align-items: center; }
+        /* Acknowledgements Alignment Fix */
+        .ack-card { display: grid; grid-template-columns: 350px 1fr; gap: 40px; background: var(--card-bg); padding: 40px; border-radius: 12px; margin-bottom: 50px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); border-left: 5px solid var(--gold); align-items: start; }
         .ack-img { width: 100%; border-radius: 6px; cursor: zoom-in; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
-        /* Header */
-        .page-header { padding: 160px 0 80px; background: var(--navy); color: white; text-align: center; }
-        .header-tag { background: var(--gold); color: white; padding: 6px 15px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; display: inline-block; margin-bottom: 20px; border-radius: 2px; }
-        .page-header h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--gold); margin-bottom: 20px; }
-        
-        /* Contact Section Identical to Index */
-        .contact-section { padding: 120px 0; background: var(--navy); color: white; text-align: center; }
+        /* Contact Section with Dark Mode Shadow */
+        .contact-section { padding: 120px 0; background: var(--navy); color: white; text-align: center; position: relative; }
+        [data-theme="dark"] .contact-section { box-shadow: 0 -10px 30px rgba(181, 148, 16, 0.2); }
         .availability-tag { display: inline-block; padding: 8px 20px; border: 1px solid var(--gold); color: var(--gold); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
         .email-link { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 5vw, 3rem); color: white; text-decoration: none; display: block; margin-bottom: 30px; }
         .social-contact { display: flex; justify-content: center; gap: 30px; margin-top: 20px; }
@@ -89,8 +109,8 @@
 
         @media (max-width: 850px) {
             .nav-links { display: none; }
-            .ack-card { grid-template-columns: 1fr; padding: 25px; text-align: center; }
-            .leadership-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+            .ack-card { grid-template-columns: 1fr; padding: 25px; }
+            .leadership-grid { grid-template-columns: repeat(3, 1fr); }
         }
     </style>
 </head>
@@ -98,20 +118,22 @@
 
     <nav>
         <div class="container nav-container">
-            <div class="logo-wrap">
-                <span class="back-symbol" onclick="history.back()">&#10094;</span>
-                <a href="index.html" class="logo">MITHILA</a>
-                <span class="dropdown-trigger" onclick="toggleDropdown()">▼</span>
-                <ul class="nav-dropdown" id="navDropdown">
-                    <li><a href="pr.html">PR & Communications</a></li>
-                    <li><a href="marketing.html">Marketing & Storytelling</a></li>
-                    <li><a href="strategy.html">Strategic Planning</a></li>
-                    <li><a href="strategy.html">Voiceover</a></li>
-                    <li><a href="strategy.html">Anchoring & Public Speaking</a></li>
-                </ul>
+            <div class="logo-area">
+                <a href="javascript:history.back()" class="back-btn" title="Go Back"><i class="fas fa-arrow-left"></i></a>
+                <a href="index.html" class="logo">M.</a>
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">Expertise <i class="fas fa-chevron-down" style="font-size: 0.6rem;"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="pr.html">PR & Communications</a></li>
+                        <li><a href="marketing.html">Marketing & Storytelling</a></li>
+                        <li><a href="strategy.html">Operations & Planning</a></li>
+                        <li><a href="voiceover.html">Voiceover</a></li>
+                        <li><a href="speaking.html">Anchoring & Public Speaking</a></li>
+                    </ul>
+                </li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank">LinkedIn</a></li>
                 <li><a href="YOUR_DRIVE_LINK" target="_blank" class="resume-btn">My Resume</a></li>
@@ -122,7 +144,7 @@
     <header class="page-header">
         <div class="container">
             <div class="header-tag">The Architecture of Impact</div>
-            <h1>Strategic Planning</h1>
+            <h1>Operations & Planning</h1>
             <p style="max-width: 800px; margin: 0 auto; opacity: 0.9;">End-to-end event management, workflow optimization, and creative problem-solving.</p>
         </div>
     </header>
@@ -131,6 +153,15 @@
         <h2 class="section-title">Leadership Excellence</h2>
         <section class="event-case">
             <h3 class="role-title">Head of Operations, UIU Computer Club (UIU CCL)</h3>
+            
+            <div class="leadership-grid">
+                <img src="ops1.jpg" class="leadership-img" onclick="openModal(this)">
+                <img src="ops2.jpg" class="leadership-img" onclick="openModal(this)">
+                <img src="ops3.jpg" class="leadership-img" onclick="openModal(this)">
+                <img src="ops4.jpg" class="leadership-img" onclick="openModal(this)">
+                <img src="ops5.jpg" class="leadership-img" onclick="openModal(this)">
+            </div>
+
             <div class="description-box">
                 <h4>Core Responsibilities</h4>
                 <ul class="strategy-list">
@@ -152,6 +183,15 @@
                 <span class="stat-badge">Resource Management</span>
                 <span class="stat-badge">Operational Excellence</span>
             </div>
+
+            <div class="leadership-grid">
+                <img src="hack1.jpg" class="leadership-img" onclick="openModal(this)">
+                <img src="hack2.jpg" class="leadership-img" onclick="openModal(this)">
+                <img src="hack3.jpg" class="leadership-img" onclick="openModal(this)">
+                <img src="hack4.jpg" class="leadership-img" onclick="openModal(this)">
+                <img src="hack5.jpg" class="leadership-img" onclick="openModal(this)">
+            </div>
+
             <div class="description-box">
                 <h4>Core Strategy</h4>
                 <p style="color: var(--slate); font-size: 0.85rem;">Designed the logistical framework for rapid prototyping and mentor-led technical sessions, ensuring a seamless flow for competing internal teams.</p>
@@ -234,7 +274,7 @@
 
     <section id="contact" class="contact-section">
         <div class="container">
-            <div class="availability-tag">Available for Part-time roles, Internships, and Freelance projects.</div>
+            <div class="availability-tag">Available for Part-time Roles • Internships • Freelance Projects.</div>
             <h2>Let's Connect</h2>
             <a href="mailto:rejawana.mithila@gmail.com" class="email-link">rejawana.mithila@gmail.com</a>
             
@@ -251,22 +291,8 @@
     </div>
 
     <script>
-        function toggleDropdown() { document.getElementById('navDropdown').classList.toggle('show'); }
         function openModal(img) { document.getElementById('imageModal').style.display = 'flex'; document.getElementById('modalImg').src = img.src; }
         function closeModal() { document.getElementById('imageModal').style.display = 'none'; }
-        
-        // Close dropdown when clicking outside
-        window.onclick = function(event) {
-            if (!event.target.matches('.dropdown-trigger')) {
-                var dropdowns = document.getElementsByClassName("nav-dropdown");
-                for (var i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                }
-            }
-        }
     </script>
 </body>
 </html>
