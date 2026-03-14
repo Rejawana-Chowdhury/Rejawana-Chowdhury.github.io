@@ -10,7 +10,7 @@
     <script>
         (function() {
             if (localStorage.getItem('theme') === 'dark') {
-                document.body.setAttribute('data-theme', 'dark');
+                document.documentElement.setAttribute('data-theme', 'dark');
             }
         })();
     </script>
@@ -64,21 +64,24 @@
 
         .resume-btn { border: 1.5px solid var(--gold); padding: 8px 16px; border-radius: 4px; color: var(--gold) !important; }
 
-        /* Header with Dark Mode Shadow */
-        .page-header { padding: 160px 0 80px; background: var(--navy); color: white; text-align: center; position: relative; }
+        /* Header Fix for Overlay */
+        .page-header { padding: 160px 0 160px; background: var(--navy); color: white; text-align: center; position: relative; }
         [data-theme="dark"] .page-header { box-shadow: 0 10px 30px rgba(181, 148, 16, 0.2); }
         .header-tag { background: var(--gold); color: white; padding: 6px 15px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; display: inline-block; margin-bottom: 20px; border-radius: 2px; }
         .page-header h1 { font-size: clamp(2.5rem, 6vw, 4rem); color: var(--gold); margin-bottom: 20px; }
 
-        /* Intro Section */
+        /* Intro Section Positioned to Hero */
         .intro-master { 
             display: flex; gap: 40px; 
             background: var(--card-bg); padding: 30px; border-radius: 12px;
             border: 1px solid var(--gold);
             box-shadow: 0 15px 35px rgba(181, 148, 16, 0.15);
             transition: all 0.4s ease;
-            margin: -40px auto 60px; align-items: flex-start;
+            margin: -80px auto 60px; /* Increased negative margin to pull it higher into the navy header */
+            align-items: flex-start;
             max-width: 1000px;
+            position: relative;
+            z-index: 10;
         }
         .intro-master:hover {
             box-shadow: 0 20px 45px rgba(181, 148, 16, 0.25);
@@ -144,7 +147,7 @@
         .close-lightbox { position: absolute; top: 20px; right: 30px; color: white; font-size: 3.5rem; cursor: pointer; z-index: 5000; line-height: 1; transition: 0.3s; }
         .close-lightbox:hover { color: var(--gold); transform: rotate(90deg); }
 
-        /* Contact Section with Dark Mode Shadow */
+        /* Contact Section */
         .contact-section { padding: 120px 0; background: var(--navy); color: white; text-align: center; position: relative; }
         [data-theme="dark"] .contact-section { box-shadow: 0 -10px 30px rgba(181, 148, 16, 0.2); }
         .availability-tag { display: inline-block; padding: 8px 20px; border: 1px solid var(--gold); color: var(--gold); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
@@ -155,7 +158,7 @@
 
         @media (max-width: 850px) {
             .nav-links { display: none; }
-            .intro-master { flex-direction: column; padding: 20px; }
+            .intro-master { flex-direction: column; padding: 20px; margin-top: -40px; }
             .gallery-grid { grid-template-columns: 1fr; }
             .zigzag-row { grid-template-columns: 1fr; gap: 20px; }
             .zigzag-row.reverse { direction: ltr; }
@@ -207,7 +210,7 @@
             <div class="intro-text">
                 <h2>Behind the Mic</h2>
                 <p>I have always loved the stage. The energy, the rhythm of words, and the connection with an audience excite me. What began as a love for storytelling slowly grew into a passion for public speaking and anchoring.<br><br>
-At UIU, that passion turned into real experience. From cultural programs to academic events, I stepped up to host, engage, and lead — earning recognition as one of the university’s trusted anchors.</p>
+At UIU, that passion turned into real experience. From cultural programs to academic events, I stepped up to host, engage, and lead, earning recognition as one of the university’s trusted anchors.</p>
             </div>
         </section>
 
