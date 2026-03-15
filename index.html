@@ -17,9 +17,9 @@
             --nav-bg: rgba(15, 23, 42, 0.98);
         }
 
-        /* Essential Reset to prevent "Scattering" */
+        /* Essential Reset */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        html, body { overflow-x: hidden; width: 100%; }
+        html, body { overflow-x: hidden; width: 100%; scroll-behavior: smooth; }
         body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; transition: background 0.3s ease; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; line-height: 1.2; }
 
@@ -35,11 +35,13 @@
         .nav-links a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
         .resume-btn { border: 1.5px solid var(--gold) !important; padding: 8px 18px !important; border-radius: 4px; color: var(--gold) !important; transition: 0.3s; }
         .resume-btn:hover { background: var(--gold); color: white !important; }
-        .hamburger { display: none; font-size: 1.8rem; cursor: pointer; }
+        .hamburger { display: none; font-size: 1.8rem; cursor: pointer; color: var(--gold); }
 
-        /* Hero - Flex Logic for Stability */
-        .hero { min-height: 100vh; display: flex; align-items: center; background: var(--navy); color: white; padding: 120px 0 80px; }
-        .hero-flex { display: flex; flex-wrap: wrap; align-items: center; gap: 40px; }
+        /* Hero Section with Dark Theme Glow */
+        .hero { min-height: 100vh; display: flex; align-items: center; background: var(--navy); color: white; padding: 120px 0 80px; position: relative; z-index: 1; }
+        [data-theme="dark"] .hero { box-shadow: 0 20px 50px -10px rgba(181, 148, 16, 0.3); }
+
+        .hero-flex { display: flex; flex-wrap: wrap; align-items: center; gap: 40px; width: 100%; }
         .hero-text { flex: 1; min-width: 300px; }
         .hero-text span { color: var(--gold); text-transform: uppercase; letter-spacing: 3px; font-weight: 700; font-size: 0.8rem; display: block; margin-bottom: 15px; }
         .hero-text h1 { font-size: clamp(2.2rem, 5vw, 4rem); color: var(--gold); margin-bottom: 20px; }
@@ -48,8 +50,8 @@
         .hero-image-area { flex: 0.8; min-width: 300px; display: flex; justify-content: center; }
         .hero-img { width: 100%; max-width: 400px; height: auto; border: 10px solid rgba(255,255,255,0.05); box-shadow: 20px 20px 0px var(--gold); }
 
-        /* Expertise Grid - Fixed Alignment */
-        .expertise { padding: 100px 0; }
+        /* Expertise Grid */
+        .expertise { padding: 100px 0; position: relative; z-index: 2; }
         .expertise h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 50px; position: relative; display: inline-block; }
         .expertise h2::after { content: ''; display: block; width: 60%; height: 4px; background: var(--gold); margin-top: 10px; }
         
@@ -75,21 +77,21 @@
         .exp-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
         .exp-card p { line-height: 1.4; color: var(--gold); font-size: 0.9rem; text-align: left; }
 
-        /* Contact Section */
-        .contact-section { padding: 100px 0; background: var(--navy); color: white; text-align: center; }
+        /* Contact Section with Dark Theme Glow */
+        .contact-section { padding: 100px 0; background: var(--navy); color: white; text-align: center; position: relative; z-index: 1; }
+        [data-theme="dark"] .contact-section { box-shadow: 0 -20px 50px -10px rgba(181, 148, 16, 0.3); }
+
         .availability-tag { display: inline-block; padding: 8px 20px; border: 1px solid var(--gold); color: var(--gold); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
         .email-link { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 5vw, 3.5rem); color: white; text-decoration: none; display: block; margin-bottom: 20px; transition: 0.3s; word-break: break-all; }
         .email-link:hover { color: var(--gold); }
 
-        /* Social Icons Styling */
         .social-links { display: flex; justify-content: center; gap: 25px; margin-top: 20px; }
         .social-links a { color: white; font-size: 1.8rem; transition: 0.3s ease; }
         .social-links a:hover { color: var(--gold); transform: translateY(-5px); }
 
-        /* Theme Toggle Control */
         .theme-toggle { position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: white; border: none; width: 55px; height: 55px; border-radius: 50%; cursor: pointer; z-index: 3000; box-shadow: 0 5px 15px rgba(0,0,0,0.2); font-size: 1.2rem; display: flex; align-items: center; justify-content: center; }
 
-        /* THE FIX FOR MOBILE & SCATTERED VIEW */
+        /* Mobile Optimization */
         @media (max-width: 850px) {
             .hamburger { display: block; }
             .nav-links { 
@@ -99,17 +101,21 @@
             }
             .nav-links.active { display: flex; }
             
-            .hero { padding-top: 100px; text-align: center; }
+            .hero { padding-top: 120px; padding-bottom: 60px; text-align: center; height: auto; min-height: unset; }
+            .hero-flex { gap: 50px; }
             .hero-text { order: 1; width: 100%; }
             .hero-text p { margin: 0 auto; text-align: center; }
             .hero-image-area { order: 2; width: 100%; }
             .hero-img { max-width: 280px; box-shadow: 12px 12px 0px var(--gold); }
             
             .expertise { padding: 80px 0; }
-            .expertise h2 { width: 100%; text-align: center; }
+            .expertise h2 { width: 100%; text-align: center; margin-bottom: 40px; }
+            .expertise h2::after { margin: 10px auto 0; }
             .expertise-grid { grid-template-columns: 1fr; gap: 20px; }
             .exp-card { padding: 30px; text-align: center; }
             .exp-card p { text-align: center; }
+
+            .contact-section { padding: 80px 0; }
         }
     </style>
 </head>
@@ -137,7 +143,7 @@
             <div class="hero-text">
                 <span>Communications • Strategy • Presence</span>
                 <h1>Rejawana Chowdhury Mithila</h1>
-                <p>Techie with a creative and strategic mind!</p>
+                <p>Brand Marketing Enthusiast | Strategic Communicator</p>
             </div>
             <div class="hero-image-area">
                 <img src="profile.jpg" alt="Mithila Profile" class="hero-img">
@@ -152,7 +158,7 @@
                 <a href="pr.html" class="exp-link">
                     <div class="exp-card">
                         <h3>PR & Communications</h3>
-                        <p>Building bridges between brands and the press through strategic outreach.</p>
+                        <p>Building bridges between brands and the people through strategic outreach.</p>
                     </div>
                 </a>
                 <a href="marketing.html" class="exp-link">
@@ -164,7 +170,7 @@
                 <a href="strategy.html" class="exp-link">
                     <div class="exp-card">
                         <h3>Operations & Planning</h3>
-                        <p>End-to-end event and campaign management along with problem solving.</p>
+                        <p>Operations and strategic planning with strong coordination and problem-solving abilities, ensuring smooth execution.</p>
                     </div>
                 </a>
                 <a href="voiceover.html" class="exp-link">
@@ -195,8 +201,8 @@
             </div>
         </div>
     </section>
+
     <script>
-        // Check local storage and apply theme on page load
         (function initTheme() {
             const savedTheme = localStorage.getItem('theme');
             const body = document.getElementById('body');
