@@ -23,7 +23,7 @@
         }
         [data-theme="dark"] {
             --bg: #0f172a; --text: #f1f5f9; --card-bg: #1e293b;
-            --nav-bg: rgba(15, 23, 42, 0.98); --white: #1e293b; --slate: #94a3b8;
+            --nav-bg: rgba(15, 23, 42, 0.98); --slate: #94a3b8;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -32,22 +32,23 @@
         html { scroll-behavior: smooth; }
         .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 25px; }
 
-        /* Navigation - PR Page Style */
+        /* Navigation */
         nav { position: fixed; top: 0; width: 100%; padding: 15px 0; z-index: 1000; background: var(--nav-bg); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
         
         .logo-area { display: flex; align-items: center; gap: 15px; }
         .back-btn { color: var(--gold); text-decoration: none; font-size: 1.2rem; transition: 0.3s; cursor: pointer; }
-        .back-btn:hover { transform: translateX(-5px); }
-        
         .logo { font-family: 'Playfair Display'; font-size: 1.4rem; font-weight: 700; color: var(--navy); text-decoration: none; letter-spacing: 1px; }
         [data-theme="dark"] .logo { color: white; }
 
+        /* Mobile Hamburger */
+        .menu-btn { display: none; font-size: 1.5rem; color: var(--gold); cursor: pointer; z-index: 1002; }
+
         .nav-links { display: flex; list-style: none; gap: 25px; align-items: center; }
         .nav-links a { text-decoration: none; color: var(--text); font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        [data-theme="dark"] .nav-links a { color: white; }
         .nav-links a:hover { color: var(--gold); }
 
-        /* Expertise Dropdown */
         .dropdown { position: relative; }
         .dropdown-menu { 
             position: absolute; top: 100%; left: 0; background: var(--card-bg); 
@@ -56,29 +57,25 @@
             padding: 10px 0; z-index: 1001; 
         }
         .dropdown:hover .dropdown-menu { display: block; }
-        .dropdown-menu li a { 
-            padding: 10px 20px; display: block; font-size: 0.75rem; 
-            color: var(--text) !important; text-transform: none; letter-spacing: 0.5px; 
-        }
+        .dropdown-menu li a { padding: 10px 20px; display: block; font-size: 0.75rem; color: var(--text) !important; text-transform: none; letter-spacing: 0.5px; }
         .dropdown-menu li a:hover { background: rgba(181, 148, 16, 0.1); color: var(--gold) !important; }
 
         .resume-btn { border: 1.5px solid var(--gold); padding: 8px 16px; border-radius: 4px; color: var(--gold) !important; }
 
-        /* Header with Dark Mode Shadow */
-        .page-header { padding: 160px 0 80px; background: var(--navy); color: white; text-align: center; position: relative; }
-        [data-theme="dark"] .page-header { box-shadow: 0 10px 30px rgba(181, 148, 16, 0.2); }
+        /* Header + Glow */
+        .page-header { padding: 160px 0 80px; background: var(--navy); color: white; text-align: center; position: relative; z-index: 1; }
+        [data-theme="dark"] .page-header { box-shadow: 0 25px 50px -15px rgba(181, 148, 16, 0.35); }
         .header-tag { background: var(--gold); color: white; padding: 6px 15px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; display: inline-block; margin-bottom: 20px; border-radius: 2px; }
-        .page-header h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--gold); margin-bottom: 20px; }
+        .page-header h1 { font-size: clamp(2.2rem, 6vw, 4rem); color: var(--gold); margin-bottom: 20px; }
 
-        /* Grids & Content */
+        /* Titles & Cards */
         .section-title { font-size: 2.2rem; margin: 60px 0 40px; border-bottom: 2px solid var(--gold); display: inline-block; padding-bottom: 10px; }
         .role-title { font-size: 1.8rem; color: var(--navy); margin-bottom: 15px; font-weight: 700; border-left: 5px solid var(--gold); padding-left: 15px; }
         [data-theme="dark"] .role-title { color: var(--gold); }
-        [data-theme="dark"] .ack-card h3, [data-theme="dark"] .ack-card h4, [data-theme="dark"] .description-box h4, [data-theme="dark"] .event-case h3 { color: white; }
+        [data-theme="dark"] h3, [data-theme="dark"] h4 { color: white; }
 
         .leadership-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin: 20px 0; }
         .leadership-img { width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: 0.3s; cursor: zoom-in; }
-        .leadership-img:hover { transform: scale(1.02); }
 
         .description-box { border-left: 4px solid var(--gold); padding: 20px 30px; background: rgba(181, 148, 16, 0.05); margin: 25px 0; }
         .strategy-list { list-style: none; margin-top: 15px; }
@@ -86,31 +83,46 @@
         [data-theme="dark"] .strategy-list li { color: #cbd5e1; }
         .strategy-list li::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-weight: bold; }
         
-        .stat-badge { display: inline-block; padding: 4px 12px; background: rgba(181, 148, 16, 0.1); border: 1px solid var(--gold); color: var(--gold); font-weight: 700; font-size: 0.7rem; margin-right: 8px; border-radius: 4px; text-transform: uppercase; }
+        .stat-badge { display: inline-block; padding: 4px 12px; background: rgba(181, 148, 16, 0.1); border: 1px solid var(--gold); color: var(--gold); font-weight: 700; font-size: 0.7rem; margin: 0 8px 8px 0; border-radius: 4px; text-transform: uppercase; }
 
         .event-case { background: var(--card-bg); padding: 40px; border-radius: 12px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
 
-        /* Acknowledgements Alignment Fix */
+        /* Ack Cards Alignment */
         .ack-card { display: grid; grid-template-columns: 350px 1fr; gap: 40px; background: var(--card-bg); padding: 40px; border-radius: 12px; margin-bottom: 50px; box-shadow: 0 15px 35px rgba(0,0,0,0.05); border-left: 5px solid var(--gold); align-items: start; }
         .ack-img { width: 100%; border-radius: 6px; cursor: zoom-in; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
 
-        /* Contact Section with Dark Mode Shadow */
-        .contact-section { padding: 120px 0; background: var(--navy); color: white; text-align: center; position: relative; }
-        [data-theme="dark"] .contact-section { box-shadow: 0 -10px 30px rgba(181, 148, 16, 0.2); }
+        /* Contact + Glow */
+        .contact-section { padding: 100px 0; background: var(--navy); color: white; text-align: center; position: relative; z-index: 1; }
+        [data-theme="dark"] .contact-section { box-shadow: 0 -25px 50px -15px rgba(181, 148, 16, 0.35); }
         .availability-tag { display: inline-block; padding: 8px 20px; border: 1px solid var(--gold); color: var(--gold); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
-        .email-link { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 5vw, 3rem); color: white; text-decoration: none; display: block; margin-bottom: 30px; }
+        .email-link { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 5vw, 3rem); color: white; text-decoration: none; display: block; margin-bottom: 30px; transition: 0.3s; word-break: break-all; }
+        .email-link:hover { color: var(--gold); }
         .social-contact { display: flex; justify-content: center; gap: 30px; margin-top: 20px; }
         .social-contact a { color: white; font-size: 2rem; transition: 0.3s; }
         .social-contact a:hover { color: var(--gold); transform: translateY(-5px); }
 
         .modal { display: none; position: fixed; z-index: 3000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; padding: 20px; }
-        #modalContent { width: 90%; height: 90%; display: flex; justify-content: center; align-items: center; }
-        .modal img { max-width: 100%; max-height: 100%; border-radius: 4px; }
+        .modal img { max-width: 90%; max-height: 90%; border-radius: 4px; }
 
+        /* Responsive Fixes */
         @media (max-width: 850px) {
-            .nav-links { display: none; }
-            .ack-card { grid-template-columns: 1fr; padding: 25px; }
+            .menu-btn { display: block; }
+            .nav-links {
+                position: fixed; top: 0; right: -100%; height: 100vh; width: 80%; 
+                background: var(--nav-bg); flex-direction: column; justify-content: center;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.1); transition: 0.4s; z-index: 1001;
+            }
+            .nav-links.active { right: 0; }
+            .dropdown-menu { position: static; box-shadow: none; display: block; border: none; text-align: center; background: transparent; }
+            
+            .ack-card { grid-template-columns: 1fr; padding: 25px; text-align: center; }
             .leadership-grid { grid-template-columns: repeat(3, 1fr); }
+            .event-case { padding: 30px 20px; }
+            .role-title { border-left: none; border-bottom: 3px solid var(--gold); padding-left: 0; text-align: center; }
+            .section-title { width: 100%; text-align: center; }
+        }
+        @media (max-width: 480px) {
+            .leadership-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
@@ -122,8 +134,11 @@
                 <a href="javascript:history.back()" class="back-btn" title="Go Back"><i class="fas fa-arrow-left"></i></a>
                 <a href="index.html" class="logo">M.</a>
             </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
+            
+            <div class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
                 <li class="dropdown">
                     <a href="#">Expertise <i class="fas fa-chevron-down" style="font-size: 0.6rem;"></i></a>
                     <ul class="dropdown-menu">
@@ -134,7 +149,7 @@
                         <li><a href="speaking.html">Anchoring & Public Speaking</a></li>
                     </ul>
                 </li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
                 <li><a href="https://www.linkedin.com/in/rejawanachowdhurymithila" target="_blank">LinkedIn</a></li>
                 <li><a href="YOUR_DRIVE_LINK" target="_blank" class="resume-btn">My Resume</a></li>
             </ul>
@@ -189,7 +204,7 @@
                     <li>Served on the organizing committee for UIU Hackday 2026, the first intra-university 6-hour mini hackathon at UIU.</li>
                     <li>Supported operational planning and logistics to facilitate smooth execution of the event.</li>
                     <li>Coordinated with multiple teams to manage participants, event flow, and on-ground operations.</li>
-                    <li>Contributed to delivering a collaborative and efficient hackathon experience for participants./li>
+                    <li>Contributed to delivering a collaborative and efficient hackathon experience for participants.</li>
                 </ul>
             </div>
         </section>
@@ -278,7 +293,6 @@
     <section id="contact" class="contact-section">
         <div class="container">
             <div class="availability-tag">Available for Part-time Roles • Internships • Freelance Projects.</div>
-            <h2>Let's Connect</h2>
             <a href="mailto:rejawana.mithila@gmail.com" class="email-link">rejawana.mithila@gmail.com</a>
             
             <div class="social-contact">
@@ -290,12 +304,20 @@
     </section>
 
     <div id="imageModal" class="modal" onclick="closeModal()">
-        <div id="modalContent"><img id="modalImg" src=""></div>
+        <img id="modalImg" src="">
     </div>
 
     <script>
-        function openModal(img) { document.getElementById('imageModal').style.display = 'flex'; document.getElementById('modalImg').src = img.src; }
-        function closeModal() { document.getElementById('imageModal').style.display = 'none'; }
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+        function openModal(img) { 
+            document.getElementById('imageModal').style.display = 'flex'; 
+            document.getElementById('modalImg').src = img.src; 
+        }
+        function closeModal() { 
+            document.getElementById('imageModal').style.display = 'none'; 
+        }
     </script>
 </body>
 </html>
